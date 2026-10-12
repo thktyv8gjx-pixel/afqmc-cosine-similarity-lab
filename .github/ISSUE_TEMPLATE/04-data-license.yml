@@ -1,0 +1,15 @@
+name: AFQMC data terms and redistribution review
+description: Track clarification of AFQMC data-use and redistribution terms.
+title: "Clarify AFQMC data-use and redistribution terms"
+labels: [data-governance]
+body:
+  - type: markdown
+    attributes:
+      value: "The checked source pages did not state redistribution permission. Do not attach or paste AFQMC examples."
+  - type: textarea
+    id: source
+    attributes:
+      label: Source and terms checked
+      description: Link official source pages and record any direct clarification received.
+    validations:
+      required: true

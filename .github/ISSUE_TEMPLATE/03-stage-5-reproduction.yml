@@ -1,0 +1,15 @@
+name: Stage 5 independent reproduction and submission
+description: Track separately authorized reproduction and final packaging.
+title: "Stage 5: reproduction and submission"
+labels: [stage-5, reproduction]
+body:
+  - type: markdown
+    attributes:
+      value: "Stage 5 is not authorized by the current freeze task. Keep any private submission files out of this public repository."
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Reproduction evidence
+      description: Record environment, frozen commit, aggregate comparison, and packaging checks only.
+    validations:
+      required: true

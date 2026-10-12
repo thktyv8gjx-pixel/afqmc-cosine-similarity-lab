@@ -1,0 +1,85 @@
+{
+  "scope": "internal tune only; each model threshold was selected on this same split; not independent validation",
+  "sample_count": 6867,
+  "positive_label": 1,
+  "label_counts": {
+    "positive_1": 2115,
+    "negative_0": 4752
+  },
+  "methods": {
+    "count_char2": {
+      "tp": 2080,
+      "fp": 4602,
+      "fn": 35,
+      "tn": 150,
+      "precision": 0.311284046692607,
+      "recall": 0.983451536643026,
+      "f1": 0.47288848471069683,
+      "accuracy": 0.32474151740206786,
+      "false_positive_rate": 0.9684343434343434,
+      "specificity": 0.03156565656565657,
+      "balanced_accuracy": 0.5075085966043412,
+      "roc_auc": 0.552451325707827,
+      "average_precision": 0.34996391123569365,
+      "predicted_positive_rate": 0.9730595602155235,
+      "selected_threshold": 0.10660035817780521
+    },
+    "tfidf_char2": {
+      "tp": 1857,
+      "fp": 3871,
+      "fn": 258,
+      "tn": 881,
+      "precision": 0.32419692737430167,
+      "recall": 0.8780141843971632,
+      "f1": 0.47354328700752263,
+      "accuracy": 0.39871850881025195,
+      "false_positive_rate": 0.814604377104377,
+      "specificity": 0.1853956228956229,
+      "balanced_accuracy": 0.531704903646393,
+      "roc_auc": 0.5722632650380877,
+      "average_precision": 0.360341444723894,
+      "predicted_positive_rate": 0.8341342653269259,
+      "selected_threshold": 0.05574242073415668
+    }
+  },
+  "constant_baselines": {
+    "always_predict_0": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2115,
+      "tn": 4752,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.6920052424639581,
+      "false_positive_rate": 0.0,
+      "specificity": 1.0,
+      "balanced_accuracy": 0.5,
+      "predicted_positive_rate": 0.0
+    },
+    "always_predict_1": {
+      "tp": 2115,
+      "fp": 4752,
+      "fn": 0,
+      "tn": 0,
+      "precision": 0.30799475753604194,
+      "recall": 1.0,
+      "f1": 0.4709418837675351,
+      "accuracy": 0.30799475753604194,
+      "false_positive_rate": 1.0,
+      "specificity": 0.0,
+      "balanced_accuracy": 0.5,
+      "predicted_positive_rate": 1.0
+    }
+  },
+  "f1_gain_over_always_positive": {
+    "count_char2": 0.001946600943161736,
+    "tfidf_char2": 0.002601403239987532
+  },
+  "idf_corpus_unique_normalized_fit_questions": 54330,
+  "vocabulary_dimension": 35242,
+  "idf_corpus_sha256": "990560a2af5118447e593ce1ef91aa7f3d71d64d426ee3eb3b5c0465bb7dc227",
+  "idf_vector_sha256": "0126a347d4a07737c1eebc79810f4b15be2ffe77c90d0902fd095b7c725558a0",
+  "vocabulary_index_sha256": "4ee51825b0482949c293bcd6ac836468259b32d602cbab20f6a6c99117c713d8",
+  "contains_row_level_scores_or_questions": false
+}

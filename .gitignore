@@ -1,0 +1,39 @@
+# Python environments and generated runtime files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+
+# AFQMC source data and row-level audit artifacts: never publish
+stage01_data_audit/raw/
+stage01_data_audit/split_manifest.csv
+stage01_data_audit/*_overlap.csv
+stage01_data_audit/label_conflicts.csv
+stage01_data_audit/duplicate_records.csv
+stage01_data_audit/duplicate_pairs.csv
+stage01_data_audit/data_issues.csv
+stage01_data_audit/*.json
+stage01_data_audit/*.log
+stage01_data_audit/checksums.sha256
+
+# Internal text corpus, vocabulary, per-row metrics, predictions, errors, and logs
+stage03a_internal_experiment/outputs/
+stage03a_internal_experiment/qa_review/outputs/
+stage03b_official_validation/outputs/
+stage03b_official_validation/local_only/
+
+# Instructor and prior-student materials; unrelated coursework
+/实验报告模板.docx
+/Report1_Chen.pdf
+/Report1_Liu.pdf
+/debug.log
+/BasicPlotting_Lab/

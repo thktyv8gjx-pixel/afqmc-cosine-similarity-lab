@@ -1,0 +1,20 @@
+name: High false-positive rate and model limitations
+description: Track analysis of weak ranking separation and operational limits.
+title: "Review high false-positive rate and model limitations"
+labels: [model-limitations, analysis]
+body:
+  - type: markdown
+    attributes:
+      value: "Keep discussion aggregate. Do not publish row-level questions, IDs, or error examples."
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Aggregate evidence
+      description: Provide split, threshold source, FPR, specificity, balanced accuracy, ROC-AUC, and AP.
+    validations:
+      required: true
+  - type: textarea
+    id: implications
+    attributes:
+      label: Practical implications
+      description: Explain what uses are and are not supported by the evidence.

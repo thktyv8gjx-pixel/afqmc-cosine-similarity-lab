@@ -1,0 +1,32 @@
+{
+  "source": "CLUE AFQMC; see the official source links in README.md",
+  "redistribution_permission": "not specified on the checked source pages; raw data is excluded",
+  "fingerprints": {
+    "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+    "train_member_sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+    "dev_member_sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+    "test_member_sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+    "split_manifest_sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907"
+  },
+  "row_counts": {
+    "train": 34334,
+    "dev": 4316,
+    "test": 3861
+  },
+  "train_dev_pair_overlap_groups": 0,
+  "train_dev_shared_normalized_sentences": 170,
+  "internal_split": {
+    "algorithm": "sklearn.model_selection.StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=2026); first fold used as tune, remaining rows fit",
+    "fit_rows": 27467,
+    "tune_rows": 6867,
+    "fit_label_counts": {
+      "0": 19009,
+      "1": 8458
+    },
+    "tune_label_counts": {
+      "0": 4752,
+      "1": 2115
+    }
+  },
+  "contains_row_ids_or_question_text": false
+}

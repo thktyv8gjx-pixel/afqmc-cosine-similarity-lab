@@ -1,0 +1,24 @@
+{
+  "scope": "Stage 3A internal fit/tune QA only; official Dev/Test were not read during Stage 3A QA",
+  "checks_passed": 36,
+  "checks_failed": 0,
+  "implementation_errors_found": false,
+  "source_output_checksum_entries": 20,
+  "source_output_checksum_mismatches": 0,
+  "independent_idf_formula_check_passed": true,
+  "id_alignment_and_threshold_scan_equivalence_passed": true,
+  "exploratory_char2_3": {
+    "threshold": 0.0018404864275300562,
+    "predicted_positive_rate": 0.9921363040629095,
+    "f1": 0.47177419354838707,
+    "false_positive_rate": 0.990530303030303,
+    "specificity": 0.00946969696969697,
+    "balanced_accuracy": 0.5026071889103804,
+    "roc_auc": 0.5622696129936083,
+    "average_precision": 0.35281800759957327
+  },
+  "exploratory_config_sha256": "642e9609c56d44ce2758d590e770000a3a04235572ce0ce8846d73018284b8f9",
+  "error_theme_counts": null,
+  "error_theme_counts_note": "Examples were manually reviewed; no reliable automatic theme totals were claimed.",
+  "contains_row_level_error_examples": false
+}

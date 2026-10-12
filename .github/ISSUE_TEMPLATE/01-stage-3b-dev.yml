@@ -1,0 +1,20 @@
+name: Stage 3B official Dev validation
+description: Track the one-time evaluation with the frozen pre-Dev configuration.
+title: "Stage 3B: official Dev validation"
+labels: [stage-3b, validation]
+body:
+  - type: markdown
+    attributes:
+      value: "Official Dev is an independent final evaluation. Do not use it to select features, fit IDF, or retune thresholds."
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Run evidence
+      description: Record the frozen commit, input fingerprints, aggregate metrics, and QA status. Do not paste row-level text or predictions.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Remaining limitations
+      description: Describe the performance and data-overlap limitations that remain.

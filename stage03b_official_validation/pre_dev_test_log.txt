@@ -1,0 +1,62 @@
+===== stage2_math =====
+command: python -m unittest discover -s tests -t . -v
+test_count_and_tfidf_share_exact_feature_indices (tests.test_math_validation.CharacterAndTfidfTests.test_count_and_tfidf_share_exact_feature_indices) ... ok
+test_hand_counted_chinese_character_bigrams (tests.test_math_validation.CharacterAndTfidfTests.test_hand_counted_chinese_character_bigrams) ... ok
+test_negation_digits_and_punctuation_are_preserved_as_features (tests.test_math_validation.CharacterAndTfidfTests.test_negation_digits_and_punctuation_are_preserved_as_features) ... ok
+test_normalization_is_nfc_and_only_collapses_whitespace (tests.test_math_validation.CharacterAndTfidfTests.test_normalization_is_nfc_and_only_collapses_whitespace) ... ok
+test_tfidf_smoothed_idf_and_l2_normalization (tests.test_math_validation.CharacterAndTfidfTests.test_tfidf_smoothed_idf_and_l2_normalization) ... ok
+test_three_asterisks_produce_repeated_double_asterisk_feature (tests.test_math_validation.CharacterAndTfidfTests.test_three_asterisks_produce_repeated_double_asterisk_feature) ... ok
+test_unseen_bigrams_and_short_text_transform_to_zero (tests.test_math_validation.CharacterAndTfidfTests.test_unseen_bigrams_and_short_text_transform_to_zero) ... ok
+test_candidates_include_unique_scores_and_all_negative_boundary (tests.test_math_validation.ThresholdMetricAndSparseTests.test_candidates_include_unique_scores_and_all_negative_boundary) ... ok
+test_confusion_counts_recompute_binary_metrics (tests.test_math_validation.ThresholdMetricAndSparseTests.test_confusion_counts_recompute_binary_metrics) ... ok
+test_final_threshold_tie_break_prefers_higher_all_negative_boundary (tests.test_math_validation.ThresholdMetricAndSparseTests.test_final_threshold_tie_break_prefers_higher_all_negative_boundary) ... ok
+test_nonbinary_labels_are_rejected_without_coercion (tests.test_math_validation.ThresholdMetricAndSparseTests.test_nonbinary_labels_are_rejected_without_coercion) ... ok
+test_sparse_paired_scores_match_sklearn_diagonal_and_flag_zeros (tests.test_math_validation.ThresholdMetricAndSparseTests.test_sparse_paired_scores_match_sklearn_diagonal_and_flag_zeros) ... ok
+test_threshold_tie_prefers_recall_then_precision_then_higher_threshold (tests.test_math_validation.ThresholdMetricAndSparseTests.test_threshold_tie_prefers_recall_then_precision_then_higher_threshold) ... ok
+test_threshold_uses_greater_than_or_equal (tests.test_math_validation.ThresholdMetricAndSparseTests.test_threshold_uses_greater_than_or_equal) ... ok
+test_zero_denominator_metric_policy (tests.test_math_validation.ThresholdMetricAndSparseTests.test_zero_denominator_metric_policy) ... ok
+test_cosine_is_symmetric_and_in_range (tests.test_math_validation.VectorMathTests.test_cosine_is_symmetric_and_in_range) ... ok
+test_hand_example_partial_overlap_is_four_fifths (tests.test_math_validation.VectorMathTests.test_hand_example_partial_overlap_is_four_fifths) ... ok
+test_identical_nonzero_vectors_have_cosine_one (tests.test_math_validation.VectorMathTests.test_identical_nonzero_vectors_have_cosine_one) ... ok
+test_orthogonal_nonzero_vectors_have_cosine_zero (tests.test_math_validation.VectorMathTests.test_orthogonal_nonzero_vectors_have_cosine_zero) ... ok
+test_same_direction_different_lengths_have_cosine_one (tests.test_math_validation.VectorMathTests.test_same_direction_different_lengths_have_cosine_one) ... ok
+test_zero_vector_convention_is_zero_and_flagged (tests.test_math_validation.VectorMathTests.test_zero_vector_convention_is_zero_and_flagged) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.019s
+
+OK
+
+===== stage3a_implementation =====
+command: python -m unittest discover -s tests -t . -v
+test_manifest_group_crossing_fails_closed (tests.test_stage3a.FrozenDataAndFitTests.test_manifest_group_crossing_fails_closed) ... ok
+test_manifest_reordering_does_not_misalign_rows (tests.test_stage3a.FrozenDataAndFitTests.test_manifest_reordering_does_not_misalign_rows) ... ok
+test_normalizer_preserves_negation_digits_letters_punctuation_and_space (tests.test_stage3a.FrozenDataAndFitTests.test_normalizer_preserves_negation_digits_letters_punctuation_and_space) ... ok
+test_tune_only_sentinel_is_not_added_to_fit_vocabulary (tests.test_stage3a.FrozenDataAndFitTests.test_tune_only_sentinel_is_not_added_to_fit_vocabulary) ... ok
+test_unique_fit_question_corpus_is_sorted_deduplicated_and_provenanced (tests.test_stage3a.FrozenDataAndFitTests.test_unique_fit_question_corpus_is_sorted_deduplicated_and_provenanced) ... ok
+test_vectorizers_fit_same_corpus_and_have_identical_vocabulary_and_order (tests.test_stage3a.FrozenDataAndFitTests.test_vectorizers_fit_same_corpus_and_have_identical_vocabulary_and_order) ... ok
+test_zip_loader_opens_only_train_member (tests.test_stage3a.FrozenDataAndFitTests.test_zip_loader_opens_only_train_member) ... ok
+test_large_high_dimension_sparse_pairing_never_densifies (tests.test_stage3a.SparseFeatureAndCosineTests.test_large_high_dimension_sparse_pairing_never_densifies) ... ok
+test_paired_sparse_cosine_matches_standard_and_is_symmetric (tests.test_stage3a.SparseFeatureAndCosineTests.test_paired_sparse_cosine_matches_standard_and_is_symmetric) ... ok
+test_short_unseen_punctuation_and_repeated_punctuation_behavior (tests.test_stage3a.SparseFeatureAndCosineTests.test_short_unseen_punctuation_and_repeated_punctuation_behavior) ... ok
+test_sparse_cosine_rejects_nonfinite_negative_and_shape_mismatch (tests.test_stage3a.SparseFeatureAndCosineTests.test_sparse_cosine_rejects_nonfinite_negative_and_shape_mismatch) ... ok
+test_optimized_scan_matches_all_stage2_candidates_for_fixtures (tests.test_stage3a.ThresholdOptimizationTests.test_optimized_scan_matches_all_stage2_candidates_for_fixtures) ... ok
+test_optimized_scan_matches_reference_on_many_discrete_ties (tests.test_stage3a.ThresholdOptimizationTests.test_optimized_scan_matches_reference_on_many_discrete_ties) ... ok
+test_threshold_boundary_uses_greater_than_or_equal (tests.test_stage3a.ThresholdOptimizationTests.test_threshold_boundary_uses_greater_than_or_equal) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.140s
+
+OK
+
+===== stage3b_synthetic_helpers =====
+command: python stage03b_official_validation\test_official_dev_runner.py
+test_constant_baselines_have_no_ranking_metric_when_no_scores_exist (__main__.FrozenEvaluatorHelperTests.test_constant_baselines_have_no_ranking_metric_when_no_scores_exist) ... ok
+test_metric_record_matches_independent_confusion_and_sklearn_metrics (__main__.FrozenEvaluatorHelperTests.test_metric_record_matches_independent_confusion_and_sklearn_metrics) ... ok
+test_parser_assigns_stable_synthetic_ids_and_binary_labels (__main__.FrozenEvaluatorHelperTests.test_parser_assigns_stable_synthetic_ids_and_binary_labels) ... ok
+test_parser_rejects_invalid_rows_without_silently_dropping_them (__main__.FrozenEvaluatorHelperTests.test_parser_rejects_invalid_rows_without_silently_dropping_them) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.023s
+
+OK

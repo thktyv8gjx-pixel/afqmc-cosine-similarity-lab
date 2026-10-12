@@ -1,0 +1,202 @@
+{
+  "freeze_version": 1,
+  "status": "pre_dev_frozen_not_yet_evaluated",
+  "created_utc": "2026-10-12T16:48:49.021973+00:00",
+  "project_title": "Chinese customer-service similar-question identification using cosine similarity",
+  "stage_scope": "Stage 3B frozen official Dev evaluation; no Dev result is included in this manifest",
+  "publication_target": {
+    "repository_full_name": "thktyv8gjx-pixel/afqmc-cosine-similarity-lab",
+    "visibility_required": "public",
+    "publication_verified": false,
+    "software_license": "not selected"
+  },
+  "stage3a_config_sha256": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+  "inputs": {
+    "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+    "train_member_sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+    "dev_member_sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+    "test_member_sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+    "manifest_sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+    "train_rows": 34334,
+    "dev_rows": 4316,
+    "test_rows": 3861,
+    "fit_tune_rows": {
+      "fit": 27467,
+      "tune": 6867
+    }
+  },
+  "fit_space": {
+    "fit_pair_rows": 27467,
+    "tune_pair_rows": 6867,
+    "fit_pair_source_row_ids_sha256": "4838defe0811b9b9fefdfe6079b876924f7131d723587a3d0ecd748ded866e8b",
+    "tune_source_id_ordered_sha256_newline_delimited": "9250bf61078358365ffcffa12c8ca8d5c75095aac6fe112b943b698d579a3819",
+    "tune_source_id_label_ordered_sha256_tab_delimited": "6444ad40594904bf00e161cf9dd3acd86c83b4174e7cc18e464c138a996b98aa",
+    "unique_normalized_fit_question_count": 54330,
+    "idf_corpus_content_sha256": "990560a2af5118447e593ce1ef91aa7f3d71d64d426ee3eb3b5c0465bb7dc227",
+    "idf_corpus_serialized_sha256": "d70de6c67841120875276709f3737fbb4e131f5a988baa5a1955ad179eb51be7",
+    "idf_formula": "log((1 + n) / (1 + df)) + 1; n is the number of unique normalized fit questions",
+    "idf_vector_sha256_little_endian_float64": "0126a347d4a07737c1eebc79810f4b15be2ffe77c90d0902fd095b7c725558a0",
+    "vocabulary_dimension": 35242,
+    "vocabulary_index_sha256": "4ee51825b0482949c293bcd6ac836468259b32d602cbab20f6a6c99117c713d8",
+    "count_tfidf_share_feature_names_and_column_indices": true,
+    "fit_scope": "official Train internal fit questions only; no tune, Dev, or Test questions"
+  },
+  "normalization": {
+    "unicode": "NFC",
+    "strip_leading_trailing_whitespace": true,
+    "collapse_contiguous_whitespace_to": "ASCII space",
+    "lowercase": false,
+    "remove_punctuation": false,
+    "remove_digits": false,
+    "remove_english_letters": false,
+    "remove_negation": false,
+    "description": "Only NFC, strip, and collapse whitespace; preserve punctuation, digits, English letters, case, and negation."
+  },
+  "vectorizer_parameters": {
+    "shared": {
+      "input": "content",
+      "encoding": "utf-8",
+      "decode_error": "strict",
+      "strip_accents": null,
+      "lowercase": false,
+      "preprocessor": null,
+      "tokenizer": null,
+      "stop_words": null,
+      "token_pattern": "(?u)\\b\\w\\w+\\b",
+      "analyzer": "char",
+      "ngram_range": [
+        2,
+        2
+      ],
+      "max_df": 1.0,
+      "min_df": 1,
+      "max_features": null,
+      "vocabulary": null,
+      "binary": false,
+      "dtype": "float64"
+    },
+    "count": {
+      "class": "sklearn.feature_extraction.text.CountVectorizer",
+      "norm": "none; cosine normalizes through the L2 denominator"
+    },
+    "tfidf": {
+      "class": "sklearn.feature_extraction.text.TfidfVectorizer",
+      "use_idf": true,
+      "smooth_idf": true,
+      "sublinear_tf": false,
+      "norm": "l2"
+    }
+  },
+  "cosine_parameters": {
+    "formula": "rowwise dot / (left L2 norm * right L2 norm)",
+    "calculation_dtype": "float64",
+    "zero_vector_score": 0.0,
+    "keep_zero_vector_rows": true,
+    "emit_left_right_zero_flags": true,
+    "nonnegative_range": [
+      0.0,
+      1.0
+    ],
+    "floating_tolerance": 1e-12,
+    "clip_only_after_tolerance_check": true,
+    "reject_nan_inf": true,
+    "all_pairs_matrix": false
+  },
+  "thresholds": {
+    "count_char2": {
+      "value": 0.10660035817780521,
+      "source": "Stage 3A internal tune only",
+      "objective": "positive-class F1",
+      "decision_rule": "score >= threshold"
+    },
+    "tfidf_char2": {
+      "value": 0.05574242073415668,
+      "source": "Stage 3A internal tune only",
+      "objective": "positive-class F1",
+      "decision_rule": "score >= threshold"
+    }
+  },
+  "formal_methods": {
+    "primary": "character 2-gram TF-IDF + paired cosine",
+    "baseline": "character 2-gram Count + paired cosine",
+    "constant_baselines": [
+      "always_predict_0",
+      "always_predict_1"
+    ],
+    "excluded_from_official_dev": [
+      "exploratory character 2-3-gram TF-IDF"
+    ]
+  },
+  "metric_definitions": {
+    "positive_label": 1,
+    "precision_recall_f1_accuracy": "binary classification metrics with zero_division=0",
+    "false_positive_rate": "FP / (FP + TN)",
+    "specificity": "TN / (TN + FP)",
+    "balanced_accuracy": "(sensitivity + specificity) / 2",
+    "roc_auc_average_precision": "computed from continuous cosine scores; ranking-only secondary metrics",
+    "constant_baseline_roc_auc_average_precision": "not applicable; constant label predictions have no continuous ranking scores",
+    "confusion_matrix_order": "[[TN, FP], [FN, TP]]"
+  },
+  "official_split_boundary": {
+    "fit_or_fit_transform_after_dev_open": false,
+    "dev_usage": "transform and score only with the frozen fit feature space",
+    "threshold_or_method_selection_on_dev": false,
+    "official_dev_model_evaluation_completed": false,
+    "expected_train_dev_pair_overlap_groups": 0,
+    "shared_normalized_single_questions_between_train_and_dev": 170
+  },
+  "qa_evidence": {
+    "stage2_math_tests_passed": 21,
+    "stage3a_synthetic_implementation_tests_passed": 14,
+    "stage3a_qa_assertions_passed": 36,
+    "stage3a_qa_assertions_failed": 0,
+    "stage3b_synthetic_helper_tests_passed": 4,
+    "independent_metric_and_idf_recheck_passed": true,
+    "original_stage3a_output_checksums_verified": 20,
+    "original_stage3a_output_checksum_mismatches": 0
+  },
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.5.3",
+    "scipy": "1.17.0",
+    "scikit_learn": "1.9.1",
+    "pillow": "12.3.0"
+  },
+  "frozen_source_files_sha256": {
+    ".gitattributes": "26bde0674554bd972681d5c1aa5f64436da63231595decf4d9ece60b452fa6c6",
+    "stage01_data_audit/audit_afqmc.py": "53efd7b02db0ab9466317238b5b917eb528ae0e0affd6536a5053b94466cb318",
+    "stage02_math_protocol/math_validation.py": "7c198462e799dc0633745c627bb2a02c8b302974ba47f80f3b57dffd4dd06857",
+    "stage02_math_protocol/run_math_tests.py": "ef6cce7d2f4db4e601362fb016605828b2485216679a8058d628eb18f10417fd",
+    "stage02_math_protocol/requirements.txt": "0faa39c6233e8e39aeb8c8347a19d6da45acb69cf4c7a432685769817a53c950",
+    "stage02_math_protocol/tests/test_math_validation.py": "b919df7ff4344e25777866a024b5601b2d2dffa01a8a446a23d25ce4ae7e04d2",
+    "stage03a_internal_experiment/config/experiment.json": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+    "stage03a_internal_experiment/requirements.txt": "99bd04d6f3dabcf854f5ece79b0578cc186772e8da7070fb1c1eafba2238d87d",
+    "stage03a_internal_experiment/run_experiment.py": "cad421b7cc2741df06dc530e92d07afac46caea44ad464e590b4afae0b7fdadb",
+    "stage03a_internal_experiment/run_tests.py": "7cbbcde3229eb79ac1674aae1be505c429a459148fb4d038a0ccf912d77330b8",
+    "stage03a_internal_experiment/generate_plots.py": "b8c046467b2ef4c2d910e7850e1ec852efad3780315ec797ef0fece42dbc68d6",
+    "stage03a_internal_experiment/validate_outputs.py": "622dd6a3183641995dfa34e35221c96e12a170f11eca7498415d4220d6bd2f01",
+    "stage03a_internal_experiment/src/data_pipeline.py": "5801579facd4d0a6ae9163b0c55316c52c9f59ee12de696640c8206ff4f46707",
+    "stage03a_internal_experiment/src/features.py": "8a6645316736d7b36f29d79681b720d2b4b742e617ca3d7e71feb278ca061639",
+    "stage03a_internal_experiment/src/pipeline.py": "bde06a979c092ca313e27b561b26c35037f23b1b284ee171500b975722afb6d0",
+    "stage03a_internal_experiment/src/threshold_metrics.py": "949e6086f3d96177f1ca8f562010a0d0020cc84cee32fed981a0f0a0c1fc9ea1",
+    "stage03a_internal_experiment/src/visualize.py": "8a461b0cbb0da78716f63c4e411026ab615e05314c78dbbd61aec36404251fd5",
+    "stage03a_internal_experiment/tests/test_stage3a.py": "d9e48b078b760de7e978729e4f0930278d4ae222c16502b858400baddca634e1",
+    "stage03b_official_validation/requirements.txt": "b5b7cd6d23bc19b3e44ea1bc4c97cfc178a40d00c62637b180ff98c58cc22e55",
+    "stage03b_official_validation/run_official_dev.py": "74e8844bc3ec08de6401c1100d7b0e2e2aad8c566816afc774febac2223c6d34",
+    "stage03b_official_validation/generate_dev_plots.py": "c9a5bfdbb395cb9ccadb8d71f2afa36d4aec736f0abc68c1c391cd09d29414b4",
+    "stage03b_official_validation/test_official_dev_runner.py": "c9b59eb2e52ad72d91a9d259b11459195dec494b391b3702c5ab89d525d5ba2e",
+    "scripts/build_public_evidence.py": "6b7d92d1d93d4b4fc99133ba62f8c5bebf0544c6d234e67a3b240a486146a915",
+    "scripts/build_pre_dev_freeze.py": "081c2ff49e7f6f60eba1ebf16207b9f4840e95fdc96eb442ac2f87c2f500d6c8",
+    "scripts/review_public_staging.py": "1cb0dfcb835d0adc2556fdd7eaf79375fece795ab30466f96901bba343a0bdf5",
+    "scripts/public_allowlist.json": "4e3125bec730cc50def060a066b024e8e643eac7ac23604d5d9915f05fa62f56",
+    "scripts/run_pre_dev_checks.py": "6c60e21b1686ec0255bf378ffbfa5d9582a9d82feb7a00bcc325afed8cac8725"
+  },
+  "safety": {
+    "raw_question_text_in_manifest": false,
+    "row_level_predictions_in_public_release": false,
+    "raw_AFQMC_data_in_public_release": false,
+    "student_or_instructor_files_in_public_release": false,
+    "secrets_found_in_public_candidate_scan": false
+  },
+  "freeze_manifest_sha256": "fd4aaed563815997128c49aecdbfb3b10971f87e9f81b43039f0ac1272ca726c"
+}

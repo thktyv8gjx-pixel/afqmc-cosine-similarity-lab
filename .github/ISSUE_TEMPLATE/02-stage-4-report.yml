@@ -1,0 +1,15 @@
+name: Stage 4 formal report
+description: Track a separately authorized formal Word/PDF report.
+title: "Stage 4: formal report"
+labels: [stage-4, report]
+body:
+  - type: markdown
+    attributes:
+      value: "Stage 4 requires a separate user review after Stage 3B. Do not attach instructor templates or prior-student reports to this public issue."
+  - type: textarea
+    id: scope
+    attributes:
+      label: Report scope
+      description: List the reviewed results and required course sections.
+    validations:
+      required: true
