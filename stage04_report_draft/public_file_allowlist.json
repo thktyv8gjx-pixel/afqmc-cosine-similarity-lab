@@ -1,0 +1,27 @@
+{
+  "scope": "Stage 4A safe draft and aggregate artifacts only",
+  "files": [
+    ".gitignore",
+    "stage04_report_draft/README.md",
+    "stage04_report_draft/Stage03B用户批准与统计口径勘误.md",
+    "stage04_report_draft/Stage04A自检与待确认事项.md",
+    "stage04_report_draft/build_report.py",
+    "stage04_report_draft/validate_report.py",
+    "stage04_report_draft/report_body.md.in",
+    "stage04_report_draft/references.json",
+    "stage04_report_draft/requirements-report.txt",
+    "stage04_report_draft/report_numbers.json",
+    "stage04_report_draft/report_consistency_check.json",
+    "stage04_report_draft/validation_results.json",
+    "stage04_report_draft/数字与引用证据映射.md",
+    "stage04_report_draft/报告正文初稿_公开安全版.md",
+    "stage04_report_draft/figures/01_四种方法指标比较.png",
+    "stage04_report_draft/figures/02_TFIDF混淆矩阵.png",
+    "stage04_report_draft/figures/03_正负分布统一纵轴.png",
+    "stage04_report_draft/figures/04_Tune与Dev对照.png",
+    "stage04_report_draft/figures/plot_generation_record.json",
+    "stage04_report_draft/figures/visual_review.json",
+    "stage04_report_draft/public_file_allowlist.json",
+    "stage04_report_draft/publication_precheck.json"
+  ]
+}

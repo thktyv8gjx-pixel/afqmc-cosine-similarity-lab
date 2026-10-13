@@ -1,0 +1,2 @@
+# Separate report-only plotting environment; never install into frozen experiment environment.
+matplotlib==3.11.2

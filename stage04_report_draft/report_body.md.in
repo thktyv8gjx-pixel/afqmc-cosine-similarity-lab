@@ -1,0 +1,233 @@
+# 基于余弦相似度的中文客服相似问句识别
+
+《人工智能数学实验》实验一正文初稿。核心知识点：向量表示、点积、L2 范数、余弦相似度与评价指标。姓名、学号、班级、专业、指导教师及最终提交日期待本人确认。本稿为 Stage 4A 内容稿，尚未进行最终 Word/PDF 排版。
+
+## 1 问题描述
+
+客服知识库中，一个咨询意图往往对应多种表达。如果能够识别两个问句是否表达类似含义，就有可能减少重复问题整理工作，并为检索已有答复提供候选。然而，问句中出现相同产品词或相同句式，并不一定意味着应当使用同一个答案。实体、否定状态、操作条件不同，都可能使高词面重合的问句指向不同需求。因此，本实验把应用背景限定为客服相似问句的离线二分类研究，研究一个易于解释的数学方法能达到怎样的效果。
+
+实验输入是一对中文问句及其数据集标签，输出是余弦分数和“相似/不相似”预测。采用 AFQMC，标签1表示含义类似，标签0表示含义不同，定义来自 CLUE 官方任务说明。[R1](https://github.com/CLUEbenchmark/CLUE#1-afqmc-蚂蚁金融语义相似度-ant-financial-question-matching-corpus) 标签作为本实验评价依据，不能由程序分数反过来改写。
+
+核心问题是：**在共享字符2-gram词表上，使用 Count 或 TF-IDF 表示问句，并以内部 tune 选择的阈值判断余弦相似度，能否有效区分相似与不相似问句？TF-IDF 相较 Count 的改善有多大，又付出了什么代价？** 为回答这一问题，实验同时保留恒预测0与恒预测1两个基线，避免把非零 F1 直接解释为有用的分类能力。
+
+本研究目标分为数学实现和应用效果两层。前者要求向量坐标、权重、稀疏点积及指标可以核验；后者要求对真实标签有足够区分能力。最终结果支持实现的可核验性，但没有达到可靠客服语义决策的效果要求。下文保留这一不理想结果，解释为什么高召回与低精度可以同时出现。
+
+## 2 数学知识分析与应用
+
+### 2.1 问题的数学表示
+
+记第 i 个句对为 \((s_i^{(1)},s_i^{(2)},y_i)\)，其中 \(y_i\in\{0,1\}\)。先对文本做 Unicode NFC 规范化、去除首尾空白，并将连续空白折叠为一个空格。处理保留大小写、否定词、数字和标点，不做分词、繁简转换或停用词删除。该规则同时用于拟合语料与评价句对，避免同一字符在两个阶段产生不同特征。
+
+对于长度为 L 的规范化文本，字符2-gram是相邻两个字符组成的片段，不添加边界符，最多产生 \(L-1\) 个位置片段；同一片段可以多次出现。将内部 fit 两侧问句规范化后去重，得到 $unique_fit 份唯一文档，再以它们拟合共享词表 \(V=(v_1,\ldots,v_d)\)，本实验 \(d=$vocab\)。每个坐标对应一个固定字符片段，Count 和 TF-IDF 的列索引完全相同。
+
+Count 向量第 j 维是片段 \(v_j\) 在文本中的出现次数：\(c_j(s)=\#\{v_j\text{ 在 }s\text{ 中的出现位置}\}\)。绝大多数坐标为零，因此采用稀疏矩阵而不保存完整稠密向量。向量器在 fit 后只接受 transform；未登录片段不产生新列。长度小于2或没有已知片段的句子可能产生零向量。
+
+TF-IDF 在同一计数向量上改变坐标权重。定义 \(n=$unique_fit\) 为唯一规范化 fit 问句数，\(df_j\) 为含片段 \(v_j\) 的唯一文档数。使用自然计数 TF、平滑 IDF 和 L2 归一化：
+
+\[
+\operatorname{idf}_j=\ln\frac{1+n}{1+df_j}+1,\qquad
+w_j(s)=c_j(s)\operatorname{idf}_j,\qquad
+z(s)=\frac{w(s)}{\|w(s)\|_2}\quad(\|w(s)\|_2>0).
+\]
+
+平滑公式与实际库参数一致。[R2](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html) 片段越常见，其 IDF 越小；这里是相对于低频片段降低权重，并非删除常见片段。一个片段出现在全部拟合文档中时，IDF 仍为1。它是否具有业务判别力，还需由真实评价判断，不能仅凭高 IDF 认定重要。
+
+**文档去重只用于拟合空间与 IDF 的定义，评价句对不去重。** 重复问句作为一个 IDF 文档，避免重复收集频率改变文档权重；同一问句出现在不同评价行时仍参与各行指标。规范化后的唯一文档与句对行是两个不同统计单位。共享词表、相同输入行和相同规范化规则，使主要表示差异集中在计数与 IDF 加权；两种方法的阈值则各自在同一内部 tune 上按相同规则选择。
+
+### 2.2 核心数学原理与求解方法
+
+对于非零向量 \(x,y\)，点积和 L2 范数分别为 \(x\cdot y=\sum_j x_jy_j\) 与 \(\|x\|_2=\sqrt{\sum_jx_j^2}\)。余弦相似度为
+
+\[
+\operatorname{cos}(x,y)=\frac{x\cdot y}{\|x\|_2\|y\|_2}.
+\]
+
+分子累加共同坐标上的贡献，分母消除向量整体长度的影响。这一定义衡量向量方向是否接近；对已进行 L2 归一化的非零 TF-IDF 行，余弦等于点积。[R3](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html) Count 虽没有在向量器中做 L2 归一化，余弦分母仍执行范数校正，故长度缩放本身不会提高分数。
+
+由 Cauchy–Schwarz 不等式，余弦一般处于 \([-1,1]\)。本实验 Count 与 TF-IDF 非负，所以点积非负，非零向量分数处于 \([0,1]\)。两非零向量相同或同方向时余弦为1，无共同非零坐标时为0。若一侧为零向量，几何公式因分母为零而未定义；程序约定将分数设为0，同时记录左右零向量标志，并保留该句对进行评价。这是明确的工程约定，不能写成数学上证明零向量余弦为0。
+
+为核验公式，沿用 Stage 2 已保存的三个**人工例子**。首先取 \(x=(1,2),y=(2,1)\)，点积为4，两范数均为 \(\sqrt5\)，故余弦 \(4/5=0.8\)。同方向但不同长度的 \((1,2)\) 与 \((3,6)\) 则为1，说明该分数关注方向而非原始长度。
+
+第二个例子是“人工智能”与“人工数学”。前者产生 `人工、工智、智能`，后者产生 `人工、工数、数学`。按共享坐标 `(人工, 工数, 工智, 数学, 智能)`，计数向量分别是 \((1,0,1,0,1)\) 和 \((1,1,0,1,0)\)。点积1、范数均为 \(\sqrt3\)，得到 \(\cos=1/3\)。共同片段贡献一个坐标乘积，计算没有额外理解两个句子完整语义。
+
+第三个例子用人工语料“甲乙甲”“甲乙丙”，显式坐标 `(甲乙, 乙甲, 乙丙)`。两份文档计数为 \((1,1,0)\)、\((1,0,1)\)。共有片段的 \(df=2\)，IDF为1；另外两个片段各自 \(df=1\)，IDF为 \(a=\ln(3/2)+1\approx1.4054651081\)。归一化向量为 \((1,a,0)/\sqrt{1+a^2}\)、\((1,0,a)/\sqrt{1+a^2}\)，故余弦为 \(1/(1+a^2)\)。这说明 IDF 能相对降低普遍共同片段的贡献，却没有新增语义坐标。手算与合成测试支持公式实现一致，不是 AFQMC 分类效果证据。
+
+最终判定为 \(\hat y_i=\mathbb{1}[\operatorname{cos}(x_i,y_i)\ge\tau]\)，等号预测1。\(\tau\) 是决策阈值，既不是概率，也没有“余弦0.5就一定语义相似”的普遍解释。选阈值时，候选覆盖内部 tune 全部有限分数，并增加略大于最大分数的边界候选，覆盖全部预测0；并列最优 F1 时依次比较 Recall、Precision 和更高阈值。正式 Dev 只使用冻结阈值，没有再次寻找最优点。
+
+### 2.3 实验方案与验证思路
+
+正式主方案为字符2-gram TF-IDF＋余弦，基础对照为字符2-gram Count＋余弦。两者共用内部 fit 语料、词表、列顺序、预处理、句对标签、余弦及零向量规则。两种表示各自的阈值由同一个内部 tune、同一 F1 选择规则产生并冻结，因而对照比较的是两条登记流程的整体结果。观察到的错误差异同时包含加权与各自决策点的影响，不能把全部差值解释为只改变 IDF 而保持阈值的因果效应。
+
+官方 Train 被固定划分为 fit 与 tune。fit 定义特征空间，tune 选择阈值并作内部诊断；官方 Dev 在冻结后进行受控评价；无公开标签的 Test 不参与本实验效果计算。没有使用全 Train 重拟合模型，也不把 Dev 内容用于改变配置。此前曾登记并在内部 fit/tune 执行一次字符2～3-gram探索；其记录保留，但未纳入正式方法和 Dev 对照。本报告没有增加新模型实验。
+
+正类定义为标签1，以 F1 为主指标，同时报告 Precision、Recall、Accuracy、混淆矩阵、FPR、Specificity、Balanced Accuracy、ROC-AUC、AP 和预测正类比例。设 TP/FP/FN/TN 为真阳性、假阳性、假阴性、真阴性，则
+
+\[
+P=\frac{TP}{TP+FP},\quad R=\frac{TP}{TP+FN},\quad
+F_1=\frac{2TP}{2TP+FP+FN},\quad Acc=\frac{TP+TN}{N},
+\]
+
+\[
+FPR=\frac{FP}{FP+TN},\quad Specificity=\frac{TN}{TN+FP},\quad
+BA=\frac{R+Specificity}{2}.
+\]
+
+Precision 或 Recall 分母为零时采用登记的0值策略，F1定义与库指标一致。[R4](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html) FPR评价真实负例被误判的比例，Precision评价预测正例中的正确比例，二者分母不同。ROC-AUC和AP描述连续分数的排序能力，不依赖此处的固定分类阈值。按既定输出协议，两个常量基线不报告排序指标；这并不是说数学上无法给常量分数计算 AUC。
+
+两种常量基线提供必要参照：恒预测0容易在负例较多时得到较高 Accuracy，却不能找到正例；恒预测1会得到 Recall=1和非零F1，却没有区分负例。正式比较必须同时呈现这两个端点，不能只对比恒预测0的 F1=0。
+
+## 3 Python实现过程与结果展示
+
+### 3.1 实验数据与运行环境
+
+AFQMC 来自 CLUE 官方公开任务入口，本地实际数据规模与官方介绍一致：Train $train_rows 行、Dev $dev_rows 行、Test $test_rows 行。Train 内部 fit 为 $fit_rows 行，tune 为 $tune_rows 行；划分种子 $seed 和逐行 Manifest 已保存。唯一规范化拟合问句 $unique_fit 条，共享词表 $vocab 维。上述都是已完成实验的实际计数，未通过本轮再次读取原始 Dev 获取。
+
+内部 tune 有2115个正例和4752个负例，正式 Dev 有1338个正例和2978个负例。原审计没有发现 Train–Dev 共享句对，但发现170个唯一共享单句；因此本实验保留固定官方集合边界，不能声称 Dev 与训练文本完全无重合，也不能把官方集合名称等同于无任何文本关联的统计样本。
+
+冻结实验环境为 $environment。Stage 4A 报告图表使用单独安装的 matplotlib 绘图依赖，未改变冻结实验运行环境。读取、对齐、拟合、打分和结果保存由既有 Python 程序完成；本轮只读取已有汇总 JSON、CSV、合成测试证据和保存的人工案例记录，生成正文与报告版图表。
+
+数据来源可访问并不等同于原始问句可任意再分发。公开仓库只发布安全源码、汇总指标、聚合图表和审计说明；真实句对与逐行预测保留在本地。最终源码打包中是否包含数据，需要在许可问题解决后再决定。
+
+### 3.2 核心程序与实现步骤
+
+程序依次执行规范化、构建唯一 fit 问句、拟合共享空间、transform 两侧文本、逐行计算余弦、应用冻结阈值、保存标签与预测、复算指标。下面展示与数学对应的**实际源码节选**；省略部分在完整源码中保留，并非另写一个报告专用评价器。
+
+```python
+# stage03a_internal_experiment/src/data_pipeline.py: normalize_text
+return re.sub(r"\s+", " ", unicodedata.normalize("NFC", text).strip())
+
+# features.py: fit_vectorizers
+count.fit(fit_corpus)
+tfidf.fit(fit_corpus)
+if count.vocabulary_ != tfidf.vocabulary_:
+    raise AssertionError("Count and TF-IDF vocabulary indices differ")
+```
+
+`fit_corpus` 只来自内部 fit 的规范化唯一问句。TF-IDF 参数是 `norm="l2"`、`use_idf=True`、`smooth_idf=True`、`sublinear_tf=False`；共享参数是 `analyzer="char"`、`ngram_range=(2,2)`、`lowercase=False`、`binary=False`、float64。除了比较词表字典，还比较特征名称顺序，确保同一列对应同一字符片段。
+
+```python
+# features.py: paired_sparse_cosine，a、b为同形状CSR矩阵
+dot = np.asarray(a.multiply(b).sum(axis=1), dtype=np.float64).ravel()
+left_sq = np.asarray(a.multiply(a).sum(axis=1), dtype=np.float64).ravel()
+right_sq = np.asarray(b.multiply(b).sum(axis=1), dtype=np.float64).ravel()
+left_norm = np.sqrt(left_sq)
+right_norm = np.sqrt(right_sq)
+zero_left = left_norm == 0.0
+zero_right = right_norm == 0.0
+zero_either = zero_left | zero_right
+denom = left_norm * right_norm
+scores = np.zeros(a.shape[0], dtype=np.float64)
+valid = ~zero_either
+scores[valid] = dot[valid] / denom[valid]
+```
+
+每行只与同一原始行的另一句计算点积，没有生成所有句子之间的两两相似矩阵。`ravel()` 将逐行结果转成一维数组；输入同形、有限、非负的检查位于完整函数中。输出先检查是否超出非负余弦范围，再对容差以内的浮点微误差作截断。零行分数为0，但没有被删除。
+
+```python
+# stage03b_official_validation/run_official_dev.py: compute_run
+thresholds = validate_thresholds(freeze)
+# 阈值预校验发生在 read_dev_records 之前
+ids, left_text, right_text = normalized_pair_texts(records)
+# 随后校验 ids 与原始记录和 Manifest 的顺序一致
+left = vectorizer.transform(left_text).tocsr()
+right = vectorizer.transform(right_text).tocsr()
+scores, zero_left, zero_right = paired_sparse_cosine(left, right)
+threshold = thresholds[method]
+predictions = predict_at_threshold(scores, threshold)
+result = classification_metrics(labels, predictions, scores)
+```
+
+正式函数在打开 Dev 前解析嵌套的 `freeze["thresholds"][method]["value"]`，拒绝缺字段、bool、空值、非法类型和非有限值。Count 冻结阈值为 **$threshold_count**，TF-IDF 为 **$threshold_tfidf**，完整 float64 保持不变。以上代码依赖正式程序前文定义的变量和流程，不是可独立运行的完整脚本。
+
+正式运行器第一次尝试在部分 Dev 访问后失败，暴露了阈值对象解析及缺少既定规范化调用两个工程问题。修复使执行恢复登记协议，未改变原数学方法、拟合空间或阈值；建立 v2 冻结后完成一次受控恢复评价。因此这次结果应表述为“工程恢复后的冻结评价”，不能声称从未接触 Dev 或首次盲测。详细时间、提交与门禁证据放在附录，不作为本实验的创新点。
+
+### 3.3 实验结果与可视化对比
+
+表1和表2为官方 Dev 的完整正式对照。每个方法均保留全部句对；两种余弦方法左右零向量、非有限分数和越界分数计数均为0。表格仅在展示时保留六位小数，计算和冻结阈值保留完整精度。
+
+**表1 官方 Dev 混淆计数与分类指标**
+
+$dev_main
+
+**表2 官方 Dev 误报、排序与预测倾向**
+
+$dev_aux
+
+常量方法的 ROC-AUC、AP 用“—”表示按登记约定不报告。恒预测0的 Accuracy 最高，但 Recall 和 F1 都为0；它没有完成寻找相似问句的目标。恒预测1虽然有较高 F1，却没有识别任何负例。这解释了为什么不能仅凭单个 F1 评价模型是否实用。
+
+![图1 官方 Dev 四种方法指标比较](figures/01_四种方法指标比较.png)
+
+图1比较四种方法的 F1、Accuracy、FPR、Specificity 和 Balanced Accuracy，纵轴从0起。FPR 是越低越好的代价指标，其余指标方向在相应定义中说明。两种余弦方案的 F1 柱与恒预测1很接近，而 FPR 仍然高，图中没有用截断纵轴放大小幅改进。
+
+![图2 TF-IDF 官方 Dev 混淆矩阵](figures/02_TFIDF混淆矩阵.png)
+
+图2的行是真实标签、列是预测标签，单位为句对条数。负例被预测为1的单元远大于正确负例单元，直接显示误报是当前决策点的主要问题。配合表1，TF-IDF 找到多数正例，但仅识别出一小部分真实负例。
+
+**表3 内部 tune 结果：阈值选择所用集合，非独立效果估计**
+
+$tune_main
+
+**表4 官方 Dev 全部真实正、负例的余弦分布摘要**
+
+$distribution_table
+
+![图3 官方 Dev 正负余弦分布，统一纵轴](figures/03_正负分布统一纵轴.png)
+
+图3使用共同的24个等宽分箱，横轴均为0至1；纵轴是每个分箱占本标签组的比例，四幅子图采用相同上限和刻度。由于正负例组规模不同，组内比例比直接比较原始柱高更容易看出形状。虚线是各方法的冻结阈值。表4给出不依赖分箱的分位数，可与图形共同判断重叠程度。
+
+![图4 内部 tune 与官方 Dev 的 F1 对照](figures/04_Tune与Dev对照.png)
+
+图4在同一0至1尺度比较内部 tune 与 Dev 的 F1，包含两个常量基线。内部 tune 的正类比例与 Dev 略有差异，两种余弦方法的结果也略有变化。该图用于记录集合间的描述性差异，没有进行统计显著性检验。
+
+### 3.4 结果分析与验证
+
+**TF-IDF 的改善伴随召回损失。** 相比 Count，TF-IDF 的汇总 FP 减少 $fp_reduction 条，FN 增加 $fn_increase 条，正确预测总数净增加 $correct_increase 条；F1 增加 $f1_delta_count。这里是两种方法总计数之间的差，不表示已经统计了每一个样本的预测迁移。TF-IDF 减弱部分常见共同片段，有助于减少误报，但同时降低一些真实正例分数。正式表中的 Recall 下降说明该代价真实存在。
+
+**全正类基线限制了 F1 的解读。** TF-IDF 官方 Dev 的 F1 仅比恒预测1高 $f1_delta_all1，内部 tune 的相应差仅为 $tune_delta_all1。Count 的预测正类比例为 $count_pos_pct%，TF-IDF 为 $tfidf_pos_pct%。当前选择规则以正类 F1 为目标，倾向维持高召回，即使需要接受大量误报，也可能优于提高阈值所导致的漏检损失；这不是标签反转或得分方向反了。
+
+内部 tune 已保存的0.5固定阈值诊断也支持这一解释：阈值较高时 Precision 有所提高，但 Recall 和 F1 显著降低。正式实验保留 tune 所选的较低阈值，没有在看到 Dev 后换用更有利的决策点。余弦分数的绝对尺度依赖特征权重，两方法阈值数值大小不能直接用于比较其判定“严格程度”。
+
+**误报率与预测正例中的错误比例必须区分。** 对 TF-IDF，\(FPR=2425/(2425+553)=$fpr_pct\%\)，回答“真实负例有多少被误判为相似”；\(1-P=2425/(2425+1186)=$fdr_pct\%\)，回答“预测相似中有多少不符合真实标签”。两个比例都很高，但不能混称同一种误报率。用于自动回答时，后者提示候选答案错误的风险；用于排除不相似问题时，前者提示过滤效果较差。实际线上风险仍需业务评价，本实验没有线上用户或决策成本数据。
+
+**正负分布严重重叠，排序能力弱但并非完全随机。** 表4中两种方法的正例中位数略高于负例，但四分位区间大幅交叠；较高分数也可出现在负例，较低分数也可出现在正例。ROC-AUC 分别约0.573和0.585，略高于随机排序的0.5参照，却不足以说明强区分能力。TF-IDF 的 AP 约0.369，相较 Dev 正类比例约0.310有一定排序信息，但仍然有限。不能因为阈值表现差就否定所有排序价值，也不能因为 AUC 高于0.5就断言客服判断可靠。当前没有置信区间或重复实验，不把这些小差异写成显著性结论。
+
+**人工案例展示了词面表示的失效方式。** 此前从保存预测中选取了十二个 TF-IDF 错误案例，包含高分误报、低分漏检及否定线索。本稿只选少量案例解释机制，选择规则偏向极端分数，不是代表总体分布的随机抽样；没有可靠的自动语义分类规则，不能编造实体、金额、时间或否定类错误的总量。
+
+$case_text
+
+这些案例提示两类局限：一是产品实体或否定状态可能只改变少数字符，大量共同2-gram仍占主导，余弦无法强制逻辑或实体一致；二是同一咨询目的可以用很不同的表达，缺少共同2-gram时 IDF 再加权也无法建立不存在的共享坐标。某些高分负例在一般语言理解下似乎接近，还可能涉及标注粒度或缺失上下文。保留标签并说明不确定性，比把模型与标签的分歧自动认定为标注错误更符合证据边界。
+
+**tune 与 Dev 的差异是描述性结果。** Count 的 Dev F1 比 tune 高 $count_f1_shift，TF-IDF 高 $tfidf_f1_shift；四方法表中可见常量基线也随标签比例变化。tune参与了阈值选择，Dev是冻结后的外部于该选择步骤的评价集合，但恢复前有一次部分访问，而且存在已知共享单句。因此不以 Dev 数值稍高宣称泛化能力增强，也不把它写成无任何接触记录的全新盲测。
+
+**数值和实现验证支持有限的结论。** 行 ID、标签、规范化输入和 Manifest 顺序一致；全部样本保留；共享词表、IDF语料及阈值指纹通过既有冻结门禁。恢复前的正常合成及回归测试共50项通过，两个旧缺陷证明另列。Stage 3B 已从保存的逐行预测独立复算指标和分布，本轮再次以混淆计数核对全部四方法的指标，并检查结果源文件未变。测试说明程序符合登记方法，不能把50项通过当成模型效果良好的证据。
+
+综上，数学表示、公式实现和结果可追踪性目标得到支持；“仅靠当前字符词面余弦可靠判断客服语义”的效果目标未达到。当前结果应作为方法局限的真实实验结论，而非通过更改标签、删除难例或重新调参制造改善。
+
+## 4 总结与拓展
+
+本实验将中文客服问句表示为共享字符2-gram空间中的 Count 或 TF-IDF 向量，按逐行余弦和内部 tune 冻结阈值完成二分类。向量、平滑 IDF、L2范数、零向量和阈值等号规则均能与人工例子、程序和保存指标对应。TF-IDF 相比 Count 减少部分误报、提高 Accuracy 与 F1，但增加漏检，且 F1 只略高于恒预测1。很高的 FPR、偏低的 Precision、重叠的分布及较弱排序指标表明，当前协议不足以支持可靠的客服语义相似判断。
+
+该结论针对本次字符特征、数据集合、阈值选择目标和标签体系。它不意味着余弦在所有文本任务中都无效，也不证明当前方案已可承担自动客服决策。作为可解释的课堂数学实验，程序可以帮助理解“坐标表示决定比较对象、指标目标决定决策点”；作为业务方法，仍需要更强的语义信息与对错误成本的专门验证。
+
+后续可考虑两项独立登记的新研究。第一，加入实体、数值与否定状态的一致性特征，在保留词面检索能力的同时，检验这些特征能否减少高重合误报；应先制定人工标注与评价规则，不能把关键词出现次数直接当作错误类别数量。第二，研究具有上下文语义的句向量表示，再以余弦或登记分类规则作对照，并在新的受控数据上评价表达改写问题。两项均未在本实验实现或验证，不能复用当前 Dev 反复挑选方案。既有字符2～3-gram探索不替换正式主方案。
+
+## AI工具使用说明
+
+本项目使用 OpenAI Codex 辅助资料检索、协议整理、Python 编写与工程调试、合成测试设计、指标复算、图表生成及中文正文起草。公式核验沿用人工构造向量与小语料例子，程序核验使用实际测试、源文件和保存输出；这些检查过程也有 AI 辅助，不将其描述为学生完全独立完成的人工证明。Stage 3B 工程恢复及公开结果已由用户批准进入报告整理，本稿尚待本人逐节审阅，特别是原理理解、案例解释、参考文献和所有结论表述。姓名与学号不从系统环境推断。本人最终审阅和修改情况应在排版提交前补充，不虚构已经完成的个人检查。
+
+## 参考文献
+
+以下来源在2026年10月13日访问并核验，分别支持数据定义及方法公式；本项目效果数值来源于本地实验记录，不来源于外部文献。
+
+1. CLUEbenchmark. **CLUE benchmark：AFQMC 蚂蚁金融语义相似度**. 官方项目说明。[任务入口](https://github.com/CLUEbenchmark/CLUE#1-afqmc-蚂蚁金融语义相似度-ant-financial-question-matching-corpus)。
+2. scikit-learn developers. **TfidfTransformer — scikit-learn documentation**. 官方 API 文档。[平滑IDF与归一化](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html)。
+3. scikit-learn developers. **cosine_similarity — scikit-learn documentation**. 官方 API 文档。[余弦定义](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html)。
+4. scikit-learn developers. **f1_score — scikit-learn documentation**. 官方 API 文档。[F1指标定义](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)。
+
+## 附录A 结果版本与核验范围
+
+原冻结提交为 `6deb2ace9f433173b483338172db07318a17a735`，工程恢复冻结 v2 提交为 `45b48f73a07834e9b62202e85ca0ef027029b5df`，本稿引用的已发布结果提交为 `bc07bf822c0342b18d97bfc173e360a670032375`。首次失败证据保留，本次完整结果来自 attempt_002；确切运行事件见 Stage 3B 尝试摘要。本轮没有重新运行正式评价。
+
+新旧方法一致性机器文件实际含 **11组协议字段检查＋2个阈值精确值检查**，另有17个保护源文件摘要核对。历史材料中的“13组协议检查”是将两种计数合并后的不准确口径，本稿予以更正，原历史文件不覆盖。正常测试50项与旧缺陷暴露证明2项分开计数。保存预测上的独立复算已经完成，跨机器从原始输入到结果的完整复现尚待另行授权；工作区原始字节摘要与 Git 换行规范化后的字节摘要应区分，不能混用。
+
+数字来源、计算式与源文件原始字节 SHA-256 见 `report_numbers.json` 和 `数字与引用证据映射.md`；图形输入、比例分母、共同纵轴与生成指纹见 `figures/plot_generation_record.json`。报告正文只展示与研究问题直接相关的过程，详细发布门禁、事故记录和安全审计继续保存在各阶段材料中。

@@ -1,0 +1,1729 @@
+{
+  "scope": "Saved results only; IEEE float64 preserved; prose rounds at presentation only",
+  "values": {
+    "official_dev": {
+      "count_char2": {
+        "accuracy": 0.3269230769230769,
+        "average_precision": 0.3622926684878956,
+        "balanced_accuracy": 0.5071116940272512,
+        "dataset_split": "official_dev",
+        "decision_rule": "score >= threshold",
+        "f1": 0.4747785210630988,
+        "false_positive_rate": 0.9670920080591001,
+        "fn": 25,
+        "fp": 2880,
+        "method": "count_char2",
+        "nonfinite_score_count": 0,
+        "out_of_range_score_count": 0,
+        "positive_label": 1,
+        "precision": 0.31314094920104935,
+        "predicted_positive_proportion": 0.9715013901760889,
+        "recall": 0.9813153961136024,
+        "roc_auc": 0.5725980308008606,
+        "sample_count": 4316,
+        "score_max": 0.9697622757528539,
+        "score_min": 0.0,
+        "specificity": 0.03290799194089993,
+        "threshold": 0.10660035817780521,
+        "threshold_source": "frozen Stage 3A internal tune",
+        "tn": 98,
+        "tp": 1313,
+        "zero_vector_left_count": 0,
+        "zero_vector_pair_count": 0,
+        "zero_vector_right_count": 0
+      },
+      "tfidf_char2": {
+        "accuracy": 0.4029193697868397,
+        "average_precision": 0.3685991869225531,
+        "balanced_accuracy": 0.5360463528757475,
+        "dataset_split": "official_dev",
+        "decision_rule": "score >= threshold",
+        "f1": 0.47928874520105075,
+        "false_positive_rate": 0.8143049026192075,
+        "fn": 152,
+        "fp": 2425,
+        "method": "tfidf_char2",
+        "nonfinite_score_count": 0,
+        "out_of_range_score_count": 0,
+        "positive_label": 1,
+        "precision": 0.32844087510384934,
+        "predicted_positive_proportion": 0.8366543095458758,
+        "recall": 0.8863976083707026,
+        "roc_auc": 0.5849498213606307,
+        "sample_count": 4316,
+        "score_max": 0.9574952680487923,
+        "score_min": 0.0,
+        "specificity": 0.18569509738079248,
+        "threshold": 0.05574242073415668,
+        "threshold_source": "frozen Stage 3A internal tune",
+        "tn": 553,
+        "tp": 1186,
+        "zero_vector_left_count": 0,
+        "zero_vector_pair_count": 0,
+        "zero_vector_right_count": 0
+      },
+      "always_predict_0": {
+        "accuracy": 0.6899907321594069,
+        "average_precision": null,
+        "balanced_accuracy": 0.5,
+        "dataset_split": "official_dev",
+        "f1": 0.0,
+        "false_positive_rate": 0.0,
+        "fn": 1338,
+        "fp": 0,
+        "method": "always_predict_0",
+        "positive_label": 1,
+        "precision": 0.0,
+        "predicted_positive_proportion": 0.0,
+        "recall": 0.0,
+        "roc_auc": null,
+        "sample_count": 4316,
+        "specificity": 1.0,
+        "threshold": null,
+        "threshold_source": null,
+        "tn": 2978,
+        "tp": 0,
+        "zero_vector_pair_count": null
+      },
+      "always_predict_1": {
+        "accuracy": 0.31000926784059313,
+        "average_precision": null,
+        "balanced_accuracy": 0.5,
+        "dataset_split": "official_dev",
+        "f1": 0.47329324372125925,
+        "false_positive_rate": 1.0,
+        "fn": 0,
+        "fp": 2978,
+        "method": "always_predict_1",
+        "positive_label": 1,
+        "precision": 0.31000926784059313,
+        "predicted_positive_proportion": 1.0,
+        "recall": 1.0,
+        "roc_auc": null,
+        "sample_count": 4316,
+        "specificity": 0.0,
+        "threshold": null,
+        "threshold_source": null,
+        "tn": 0,
+        "tp": 1338,
+        "zero_vector_pair_count": null
+      }
+    },
+    "internal_tune": {
+      "count_char2": {
+        "method": "count_char2",
+        "dataset_split": "internal_tune",
+        "threshold": 0.10660035817780521,
+        "threshold_selection_source": "internal_tune_only",
+        "threshold_candidate_count": 1356,
+        "sample_count": 6867,
+        "tp": 2080,
+        "fp": 4602,
+        "fn": 35,
+        "tn": 150,
+        "precision": 0.311284046692607,
+        "recall": 0.983451536643026,
+        "f1": 0.4728884847106969,
+        "accuracy": 0.32474151740206786,
+        "zero_vector_left_count": 0,
+        "zero_vector_right_count": 0,
+        "zero_vector_pair_count": 0,
+        "roc_auc": 0.552451325707827,
+        "average_precision": 0.34996391123569365
+      },
+      "tfidf_char2": {
+        "method": "tfidf_char2",
+        "dataset_split": "internal_tune",
+        "threshold": 0.05574242073415668,
+        "threshold_selection_source": "internal_tune_only",
+        "threshold_candidate_count": 6862,
+        "sample_count": 6867,
+        "tp": 1857,
+        "fp": 3871,
+        "fn": 258,
+        "tn": 881,
+        "precision": 0.32419692737430167,
+        "recall": 0.8780141843971632,
+        "f1": 0.4735432870075226,
+        "accuracy": 0.39871850881025195,
+        "zero_vector_left_count": 0,
+        "zero_vector_right_count": 0,
+        "zero_vector_pair_count": 0,
+        "roc_auc": 0.5722632650380877,
+        "average_precision": 0.360341444723894
+      },
+      "always_predict_0": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2115,
+        "tn": 4752,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.6920052424639581,
+        "false_positive_rate": 0.0,
+        "specificity": 1.0,
+        "balanced_accuracy": 0.5,
+        "predicted_positive_count": 0,
+        "predicted_positive_rate": 0.0,
+        "actual_positive_count": 2115,
+        "actual_negative_count": 4752
+      },
+      "always_predict_1": {
+        "tp": 2115,
+        "fp": 4752,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.30799475753604194,
+        "recall": 1.0,
+        "f1": 0.47094188376753504,
+        "accuracy": 0.30799475753604194,
+        "false_positive_rate": 1.0,
+        "specificity": 0.0,
+        "balanced_accuracy": 0.5,
+        "predicted_positive_count": 6867,
+        "predicted_positive_rate": 1.0,
+        "actual_positive_count": 2115,
+        "actual_negative_count": 4752
+      }
+    },
+    "distributions": [
+      {
+        "method": "count_char2",
+        "label": 0,
+        "count": 2978,
+        "mean": 0.32331957226356667,
+        "min": 0.0,
+        "p05": 0.1259881576697424,
+        "p25": 0.23145502494313785,
+        "median": 0.3086066999241838,
+        "p75": 0.40201512610368484,
+        "p95": 0.5669467095138409,
+        "max": 0.9513113957220207
+      },
+      {
+        "method": "count_char2",
+        "label": 1,
+        "count": 1338,
+        "mean": 0.3564859248282967,
+        "min": 0.07142857142857142,
+        "p05": 0.13828620622105436,
+        "p25": 0.2666909820614909,
+        "median": 0.3418817293789138,
+        "p75": 0.4383570037596046,
+        "p95": 0.6139406135149205,
+        "max": 0.9697622757528539
+      },
+      {
+        "method": "tfidf_char2",
+        "label": 0,
+        "count": 2978,
+        "mean": 0.17191878967912003,
+        "min": 0.0,
+        "p05": 0.011465962300727453,
+        "p25": 0.07363849295802738,
+        "median": 0.13610079069404613,
+        "p75": 0.23704891778947923,
+        "p95": 0.4556261311297713,
+        "max": 0.9533163016702878
+      },
+      {
+        "method": "tfidf_char2",
+        "label": 1,
+        "count": 1338,
+        "mean": 0.20885259684527038,
+        "min": 0.0028886061635766394,
+        "p05": 0.024133052573823238,
+        "p25": 0.1038967825785933,
+        "median": 0.17630177738409375,
+        "p75": 0.2793782368557061,
+        "p95": 0.49981811768250844,
+        "max": 0.9574952680487923
+      }
+    ],
+    "derived": {
+      "fp_reduction_count_minus_tfidf": 455,
+      "fn_increase_tfidf_minus_count": 127,
+      "correct_increase_tfidf_minus_count": 328,
+      "f1_tfidf_minus_count": 0.004510224137951935,
+      "f1_tfidf_minus_all1": 0.0059955014797914985,
+      "tune_f1_tfidf_minus_all1": 0.002601403239987532,
+      "tfidf_false_discovery_fraction": 0.6715591248961507,
+      "tfidf_f1_dev_minus_tune": 0.0057454581935281746,
+      "count_f1_dev_minus_tune": 0.0018900363524019248
+    },
+    "inputs": {
+      "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+      "train_member_sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+      "dev_member_sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+      "test_member_sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+      "manifest_sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+      "train_rows": 34334,
+      "dev_rows": 4316,
+      "test_rows": 3861,
+      "fit_tune_rows": {
+        "fit": 27467,
+        "tune": 6867
+      }
+    },
+    "fit_space": {
+      "fit_pair_rows": 27467,
+      "tune_pair_rows": 6867,
+      "fit_pair_source_row_ids_sha256": "4838defe0811b9b9fefdfe6079b876924f7131d723587a3d0ecd748ded866e8b",
+      "tune_source_id_ordered_sha256_newline_delimited": "9250bf61078358365ffcffa12c8ca8d5c75095aac6fe112b943b698d579a3819",
+      "tune_source_id_label_ordered_sha256_tab_delimited": "6444ad40594904bf00e161cf9dd3acd86c83b4174e7cc18e464c138a996b98aa",
+      "unique_normalized_fit_question_count": 54330,
+      "idf_corpus_content_sha256": "990560a2af5118447e593ce1ef91aa7f3d71d64d426ee3eb3b5c0465bb7dc227",
+      "idf_corpus_serialized_sha256": "d70de6c67841120875276709f3737fbb4e131f5a988baa5a1955ad179eb51be7",
+      "idf_formula": "log((1 + n) / (1 + df)) + 1; n is the number of unique normalized fit questions",
+      "idf_vector_sha256_little_endian_float64": "0126a347d4a07737c1eebc79810f4b15be2ffe77c90d0902fd095b7c725558a0",
+      "vocabulary_dimension": 35242,
+      "vocabulary_index_sha256": "4ee51825b0482949c293bcd6ac836468259b32d602cbab20f6a6c99117c713d8",
+      "count_tfidf_share_feature_names_and_column_indices": true,
+      "fit_scope": "official Train internal fit questions only; no tune, Dev, or Test questions"
+    },
+    "environment": {
+      "python": "3.12.10",
+      "numpy": "2.5.3",
+      "scipy": "1.17.0",
+      "scikit_learn": "1.9.1",
+      "pillow": "12.3.0"
+    },
+    "protocol_check_counts": {
+      "checks": 11,
+      "threshold_float64_hex_equal": 2,
+      "protected_implementation_sources_unchanged": 17
+    },
+    "registered_tests_passed": 50,
+    "split_seed": 2026,
+    "overlap": {
+      "pairs": {
+        "exact_unordered_pair_key_intersection_groups": 0,
+        "normalized_unordered_pair_key_intersection_groups": 0,
+        "normalized_same_direction_overlap_groups": 0,
+        "normalized_reverse_direction_overlap_groups": 0,
+        "train_rows_affected_by_normalized_pair_overlap": 0,
+        "dev_rows_affected_by_normalized_pair_overlap": 0,
+        "train_row_ids_affected": [],
+        "dev_row_ids_affected": []
+      },
+      "sentences": {
+        "exact_single_sentence_key_intersection": 170,
+        "normalized_single_sentence_key_intersection": 170,
+        "train_rows_affected_by_normalized_shared_sentence": 254,
+        "dev_rows_affected_by_normalized_shared_sentence": 171
+      }
+    }
+  },
+  "source_sha256": {
+    "stage03b_official_validation/results/dev_metrics.json": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+    "stage03a_internal_experiment/outputs/metrics_summary.json": "0c082eed7a720e08d70ada99c45481900e07bfa319099f37062909f57f617401",
+    "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json": "b54d97e96afa39005f6176e0e42787a82ea8b6702394af4284bc29f9f145fe3c",
+    "stage03b_official_validation/pre_dev_freeze_manifest.v2.json": "25847ad93838fa1201495330dccf8a8c657e0da5fed3b9bf2864c27e76cb5e0e",
+    "stage01_data_audit/data_audit.json": "c5b8973b5886ba1faa8622dcbdefaa789216120111863499687cf1d586043760",
+    "stage03b_official_validation/recovery/method_consistency_v1_v2.json": "62711a7b33a699a52bae8276a8fbdc62cad6b55cfa4d1b979d49efc00ae77421",
+    "stage03b_official_validation/recovery/synthetic_test_results.json": "bc2f8b8d35623d28015d4fbf02360f2db03b61f82ed765cf6a89b069366c90ab",
+    "stage03b_official_validation/results/independent_recheck.json": "4ff3f2e418bcf25cc1ec93e311c4b24f272bf8a7914fecab9eefe9418586a839",
+    "stage03b_official_validation/results/plot_aggregate_distribution_data.json": "ee29fceacc3a166f3c90d7178d98e36183e711746d9c5a7dbd9e069ad301dd17",
+    "stage03a_internal_experiment/config/experiment.json": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+    "stage03b_official_validation/results/score_distribution_summary.csv": "a4a72c0b73b065eefe748a2ff22551cd4d46a09faa60b661e9e54f3c93be7a65"
+  },
+  "source_fields": [
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/alignment/row_count",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/alignment/unique_ids",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/accuracy",
+      "value": 0.6899907321594069
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/balanced_accuracy",
+      "value": 0.5
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/f1",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/false_positive_rate",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/fn",
+      "value": 1338
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/fp",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/precision",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/predicted_positive_proportion",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/recall",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/sample_count",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/specificity",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/tn",
+      "value": 2978
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_0/tp",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/accuracy",
+      "value": 0.31000926784059313
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/balanced_accuracy",
+      "value": 0.5
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/f1",
+      "value": 0.47329324372125925
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/false_positive_rate",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/fn",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/fp",
+      "value": 2978
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/precision",
+      "value": 0.31000926784059313
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/predicted_positive_proportion",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/recall",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/sample_count",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/specificity",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/tn",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/constant_baselines/always_predict_1/tp",
+      "value": 1338
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/accuracy",
+      "value": 0.3269230769230769
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/average_precision",
+      "value": 0.3622926684878956
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/balanced_accuracy",
+      "value": 0.5071116940272512
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/f1",
+      "value": 0.4747785210630988
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/false_positive_rate",
+      "value": 0.9670920080591001
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/fn",
+      "value": 25
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/fp",
+      "value": 2880
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/nonfinite_score_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/out_of_range_score_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/precision",
+      "value": 0.31314094920104935
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/predicted_positive_proportion",
+      "value": 0.9715013901760889
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/recall",
+      "value": 0.9813153961136024
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/roc_auc",
+      "value": 0.5725980308008606
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/sample_count",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/score_max",
+      "value": 0.9697622757528539
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/score_min",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/specificity",
+      "value": 0.03290799194089993
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/threshold",
+      "value": 0.10660035817780521
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/tn",
+      "value": 98
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/tp",
+      "value": 1313
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/zero_vector_left_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/zero_vector_pair_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/count_char2/zero_vector_right_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/accuracy",
+      "value": 0.4029193697868397
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/average_precision",
+      "value": 0.3685991869225531
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/balanced_accuracy",
+      "value": 0.5360463528757475
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/f1",
+      "value": 0.47928874520105075
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/false_positive_rate",
+      "value": 0.8143049026192075
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/fn",
+      "value": 152
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/fp",
+      "value": 2425
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/nonfinite_score_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/out_of_range_score_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/precision",
+      "value": 0.32844087510384934
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/predicted_positive_proportion",
+      "value": 0.8366543095458758
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/recall",
+      "value": 0.8863976083707026
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/roc_auc",
+      "value": 0.5849498213606307
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/sample_count",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/score_max",
+      "value": 0.9574952680487923
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/score_min",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/specificity",
+      "value": 0.18569509738079248
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/threshold",
+      "value": 0.05574242073415668
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/tn",
+      "value": 553
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/tp",
+      "value": 1186
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/zero_vector_left_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/zero_vector_pair_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/metrics/tfidf_char2/zero_vector_right_count",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/dev_metrics.json",
+      "pointer": "/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/threshold",
+      "value": 0.10660035817780521
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/threshold_candidate_count",
+      "value": 1356
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/sample_count",
+      "value": 6867
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/tp",
+      "value": 2080
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/fp",
+      "value": 4602
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/fn",
+      "value": 35
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/tn",
+      "value": 150
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/precision",
+      "value": 0.311284046692607
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/recall",
+      "value": 0.983451536643026
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/f1",
+      "value": 0.4728884847106969
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/accuracy",
+      "value": 0.32474151740206786
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/zero_vector_left_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/zero_vector_right_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/count_char2/zero_vector_pair_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/threshold",
+      "value": 0.05574242073415668
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/threshold_candidate_count",
+      "value": 6862
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/sample_count",
+      "value": 6867
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/tp",
+      "value": 1857
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/fp",
+      "value": 3871
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/fn",
+      "value": 258
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/tn",
+      "value": 881
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/precision",
+      "value": 0.32419692737430167
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/recall",
+      "value": 0.8780141843971632
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/f1",
+      "value": 0.4735432870075226
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/accuracy",
+      "value": 0.39871850881025195
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/zero_vector_left_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/zero_vector_right_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/tfidf_char2/zero_vector_pair_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/threshold_candidate_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/sample_count",
+      "value": 6867
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/tp",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/fp",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/fn",
+      "value": 2115
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/tn",
+      "value": 4752
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/precision",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/recall",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/f1",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/accuracy",
+      "value": 0.6920052424639581
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/majority_label",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/fit_label_counts/0",
+      "value": 19009
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/fit_label_counts/1",
+      "value": 8458
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/zero_vector_left_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/zero_vector_right_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/methods/majority_fit_baseline/zero_vector_pair_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/paired_correctness/sample_count",
+      "value": 6867
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/paired_correctness/count_char2_vs_tfidf_char2/both_correct",
+      "value": 2000
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/paired_correctness/count_char2_vs_tfidf_char2/count_only_correct",
+      "value": 230
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/paired_correctness/count_char2_vs_tfidf_char2/tfidf_only_correct",
+      "value": 738
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/paired_correctness/count_char2_vs_tfidf_char2/both_wrong",
+      "value": 3899
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/error_case_counts/tfidf_false_positive",
+      "value": 3871
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/error_case_counts/tfidf_false_negative",
+      "value": 258
+    },
+    {
+      "source": "stage03a_internal_experiment/outputs/metrics_summary.json",
+      "pointer": "/error_case_counts/tfidf_total_errors",
+      "value": 4129
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/freeze_version",
+      "value": 2
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/inputs/train_rows",
+      "value": 34334
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/inputs/dev_rows",
+      "value": 4316
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/inputs/test_rows",
+      "value": 3861
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/inputs/fit_tune_rows/fit",
+      "value": 27467
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/inputs/fit_tune_rows/tune",
+      "value": 6867
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/fit_space/fit_pair_rows",
+      "value": 27467
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/fit_space/tune_pair_rows",
+      "value": 6867
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/fit_space/unique_normalized_fit_question_count",
+      "value": 54330
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/fit_space/vocabulary_dimension",
+      "value": 35242
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/vectorizer_parameters/shared/ngram_range/0",
+      "value": 2
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/vectorizer_parameters/shared/ngram_range/1",
+      "value": 2
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/vectorizer_parameters/shared/max_df",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/vectorizer_parameters/shared/min_df",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/cosine_parameters/zero_vector_score",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/cosine_parameters/nonnegative_range/0",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/cosine_parameters/nonnegative_range/1",
+      "value": 1.0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/cosine_parameters/floating_tolerance",
+      "value": 1e-12
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/thresholds/count_char2/value",
+      "value": 0.10660035817780521
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/thresholds/tfidf_char2/value",
+      "value": 0.05574242073415668
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/metric_definitions/positive_label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/official_split_boundary/expected_train_dev_pair_overlap_groups",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/official_split_boundary/shared_normalized_single_questions_between_train_and_dev",
+      "value": 170
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/stage2_math_tests_passed",
+      "value": 21
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/stage3a_synthetic_implementation_tests_passed",
+      "value": 14
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/stage3a_qa_assertions_passed",
+      "value": 36
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/stage3a_qa_assertions_failed",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/stage3b_synthetic_helper_tests_passed",
+      "value": 4
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/original_stage3a_output_checksums_verified",
+      "value": 20
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/qa_evidence/original_stage3a_output_checksum_mismatches",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage2_math/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage2_math/tests_run",
+      "value": 21
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3a_implementation/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3a_implementation/tests_run",
+      "value": 14
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3b_original_helpers/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3b_original_helpers/tests_run",
+      "value": 4
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/v1_regression_proof/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/v1_regression_proof/tests_run",
+      "value": 2
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3b_recovery_integration/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/suites/stage3b_recovery_integration/tests_run",
+      "value": 11
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/registered_tests_passed",
+      "value": 50
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/forbidden_real_dev_open_attempts",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/allowed_synthetic_dev_member_opens",
+      "value": 23
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/preliminary_sandbox_run/tests_run",
+      "value": 10
+    },
+    {
+      "source": "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+      "pointer": "/recovery/tests/preliminary_sandbox_run/errors",
+      "value": 20
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage2_math/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage2_math/tests_run",
+      "value": 21
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3a_implementation/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3a_implementation/tests_run",
+      "value": 14
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3b_original_helpers/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3b_original_helpers/tests_run",
+      "value": 4
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/v1_regression_proof/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/v1_regression_proof/tests_run",
+      "value": 2
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3b_recovery_integration/exit_code",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/suites/stage3b_recovery_integration/tests_run",
+      "value": 11
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/registered_tests_passed",
+      "value": 50
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/forbidden_real_dev_open_attempts",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/allowed_synthetic_dev_member_opens",
+      "value": 23
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/preliminary_sandbox_run/tests_run",
+      "value": 10
+    },
+    {
+      "source": "stage03b_official_validation/recovery/synthetic_test_results.json",
+      "pointer": "/preliminary_sandbox_run/errors",
+      "value": 20
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/tp",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/fp",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/fn",
+      "value": 2115
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/tn",
+      "value": 4752
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/precision",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/recall",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/f1",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/accuracy",
+      "value": 0.6920052424639581
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/false_positive_rate",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/specificity",
+      "value": 1.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/balanced_accuracy",
+      "value": 0.5
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/predicted_positive_count",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/predicted_positive_rate",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/actual_positive_count",
+      "value": 2115
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_0/actual_negative_count",
+      "value": 4752
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/tp",
+      "value": 2115
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/fp",
+      "value": 4752
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/fn",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/tn",
+      "value": 0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/precision",
+      "value": 0.30799475753604194
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/recall",
+      "value": 1.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/f1",
+      "value": 0.47094188376753504
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/accuracy",
+      "value": 0.30799475753604194
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/false_positive_rate",
+      "value": 1.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/specificity",
+      "value": 0.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/balanced_accuracy",
+      "value": 0.5
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/predicted_positive_count",
+      "value": 6867
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/predicted_positive_rate",
+      "value": 1.0
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/actual_positive_count",
+      "value": 2115
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/baseline_metrics/always_predict_1/actual_negative_count",
+      "value": 4752
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/original_char2_diagnostics/count_char2/roc_auc",
+      "value": 0.552451325707827
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/original_char2_diagnostics/count_char2/average_precision",
+      "value": 0.34996391123569365
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/original_char2_diagnostics/tfidf_char2/roc_auc",
+      "value": 0.5722632650380877
+    },
+    {
+      "source": "stage03a_internal_experiment/qa_review/outputs/qa_diagnostics.json",
+      "pointer": "/original_char2_diagnostics/tfidf_char2/average_precision",
+      "value": 0.360341444723894
+    },
+    {
+      "source": "stage03a_internal_experiment/config/experiment.json",
+      "pointer": "/split_seed",
+      "value": 2026
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/exact_unordered_pair_key_intersection_groups",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/normalized_unordered_pair_key_intersection_groups",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/normalized_same_direction_overlap_groups",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/normalized_reverse_direction_overlap_groups",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/train_rows_affected_by_normalized_pair_overlap",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_pair_overlap/dev_rows_affected_by_normalized_pair_overlap",
+      "value": 0
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_shared_sentence_overlap/exact_single_sentence_key_intersection",
+      "value": 170
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_shared_sentence_overlap/normalized_single_sentence_key_intersection",
+      "value": 170
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_shared_sentence_overlap/train_rows_affected_by_normalized_shared_sentence",
+      "value": 254
+    },
+    {
+      "source": "stage01_data_audit/data_audit.json",
+      "pointer": "/train_dev_shared_sentence_overlap/dev_rows_affected_by_normalized_shared_sentence",
+      "value": 171
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/label",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/count",
+      "value": 2978
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/mean",
+      "value": 0.32331957226356667
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/min",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/p05",
+      "value": 0.1259881576697424
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/p25",
+      "value": 0.23145502494313785
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/median",
+      "value": 0.3086066999241838
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/p75",
+      "value": 0.40201512610368484
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/p95",
+      "value": 0.5669467095138409
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/1/max",
+      "value": 0.9513113957220207
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/count",
+      "value": 1338
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/mean",
+      "value": 0.3564859248282967
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/min",
+      "value": 0.07142857142857142
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/p05",
+      "value": 0.13828620622105436
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/p25",
+      "value": 0.2666909820614909
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/median",
+      "value": 0.3418817293789138
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/p75",
+      "value": 0.4383570037596046
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/p95",
+      "value": 0.6139406135149205
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/2/max",
+      "value": 0.9697622757528539
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/label",
+      "value": 0
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/count",
+      "value": 2978
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/mean",
+      "value": 0.17191878967912003
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/min",
+      "value": 0.0
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/p05",
+      "value": 0.011465962300727453
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/p25",
+      "value": 0.07363849295802738
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/median",
+      "value": 0.13610079069404613
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/p75",
+      "value": 0.23704891778947923
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/p95",
+      "value": 0.4556261311297713
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/3/max",
+      "value": 0.9533163016702878
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/label",
+      "value": 1
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/count",
+      "value": 1338
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/mean",
+      "value": 0.20885259684527038
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/min",
+      "value": 0.0028886061635766394
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/p05",
+      "value": 0.024133052573823238
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/p25",
+      "value": 0.1038967825785933
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/median",
+      "value": 0.17630177738409375
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/p75",
+      "value": 0.2793782368557061
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/p95",
+      "value": 0.49981811768250844
+    },
+    {
+      "source": "stage03b_official_validation/results/score_distribution_summary.csv",
+      "pointer": "/data_row/4/max",
+      "value": 0.9574952680487923
+    }
+  ],
+  "derived_formulas": {
+    "fp_reduction_count_minus_tfidf": "dev/count_char2/fp - dev/tfidf_char2/fp",
+    "fn_increase_tfidf_minus_count": "dev/tfidf_char2/fn - dev/count_char2/fn",
+    "correct_increase_tfidf_minus_count": "(dev/tfidf_char2/tp + tn) - (dev/count_char2/tp + tn)",
+    "f1_tfidf_minus_count": "dev/tfidf_char2/f1 - dev/count_char2/f1",
+    "f1_tfidf_minus_all1": "dev/tfidf_char2/f1 - dev/always_predict_1/f1",
+    "tune_f1_tfidf_minus_all1": "tune/tfidf_char2/f1 - qa/baseline_metrics/always_predict_1/f1",
+    "tfidf_false_discovery_fraction": "dev/tfidf_char2/fp / (dev/tfidf_char2/tp + fp)",
+    "tfidf_f1_dev_minus_tune": "dev/tfidf_char2/f1 - tune/tfidf_char2/f1",
+    "count_f1_dev_minus_tune": "dev/count_char2/f1 - tune/count_char2/f1"
+  }
+}

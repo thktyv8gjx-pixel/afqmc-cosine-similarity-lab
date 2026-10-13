@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "saved_inputs_unchanged": true,
+  "official_archive_read": false,
+  "evaluator_run": false,
+  "fit_or_threshold_search": false,
+  "dev_methods_checked": 4,
+  "confusion_scalar_metric_check_tolerance": 1e-14,
+  "saved_independent_recheck_tolerance": 1e-12,
+  "exact_threshold_hex_checked": 2,
+  "required_headings": [
+    "1 问题描述",
+    "2 数学知识分析与应用",
+    "2.1 问题的数学表示",
+    "2.2 核心数学原理与求解方法",
+    "2.3 实验方案与验证思路",
+    "3 Python实现过程与结果展示",
+    "3.1 实验数据与运行环境",
+    "3.2 核心程序与实现步骤",
+    "3.3 实验结果与可视化对比",
+    "3.4 结果分析与验证",
+    "4 总结与拓展"
+  ],
+  "main_section_count": 4,
+  "subsection_count": 7,
+  "public_han_character_count": 6252,
+  "public_non_whitespace_character_count": 13612,
+  "local_selected_case_count": 4,
+  "historical_files_edited": false,
+  "references_verified": 4,
+  "counts_erratum": {
+    "checks": 11,
+    "threshold_float64_hex_equal": 2,
+    "protected_implementation_sources_unchanged": 17
+  },
+  "normal_tests_previously_passed": 50,
+  "new_model_tests_run_in_stage4a": 0,
+  "local_han_character_count": 6609
+}

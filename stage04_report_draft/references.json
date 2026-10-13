@@ -1,0 +1,10 @@
+{
+  "access_date": "2026-10-13",
+  "verification": "Opened primary pages during Stage 4A; bibliographic titles and cited method descriptions checked. Dataset redistribution license not established by this check.",
+  "references": [
+    {"id": "R1", "title": "CLUE benchmark — AFQMC 蚂蚁金融语义相似度", "author": "CLUEbenchmark", "url": "https://github.com/CLUEbenchmark/CLUE#1-afqmc-蚂蚁金融语义相似度-ant-financial-question-matching-corpus", "supports": "Dataset name, split sizes, sentence pair fields and label 1/0 meanings", "verified": true},
+    {"id": "R2", "title": "TfidfTransformer — scikit-learn documentation", "author": "scikit-learn developers", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html", "supports": "Natural TF, smoothed IDF formula and L2 normalization", "verified": true},
+    {"id": "R3", "title": "cosine_similarity — scikit-learn documentation", "author": "scikit-learn developers", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html", "supports": "Normalized dot product and equivalence to dot product for L2 unit vectors", "verified": true},
+    {"id": "R4", "title": "f1_score — scikit-learn documentation", "author": "scikit-learn developers", "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html", "supports": "Binary F1 definition and zero division policy", "verified": true}
+  ]
+}

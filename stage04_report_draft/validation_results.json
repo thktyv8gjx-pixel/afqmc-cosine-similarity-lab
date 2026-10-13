@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks_passed": 10,
+  "checks": [
+    "all_saved_source_bytes_unchanged",
+    "all_number_source_pointers_match",
+    "four_dev_table_rows_and_confusion_formulas_match",
+    "aggregate_differences_and_fpr_fdr_denominators_match",
+    "two_full_precision_threshold_values_match",
+    "four_plot_files_and_underlying_values_match_common_distribution_scale",
+    "full_structure_and_all_image_links_resolve",
+    "public_files_exclude_saved_original_cases_ids_and_machine_paths_local_draft_ignored",
+    "historical_tracked_files_not_modified",
+    "four_primary_references_verified"
+  ],
+  "source_field_count": 277,
+  "new_afqmc_experiments": 0,
+  "original_dev_opens": 0,
+  "model_tests_rerun": 0,
+  "plot_visual_review": "Recorded separately after actual inspection; numerical checks do not prove legibility"
+}

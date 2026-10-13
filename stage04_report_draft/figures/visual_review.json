@@ -1,0 +1,21 @@
+{
+  "reviewed_on": "2026-10-13",
+  "review_method": "Each original Stage 3B PNG and each final Stage 4A report PNG opened and visually inspected through image viewer; AI-assisted visual review, pending student review.",
+  "original_figures_viewed": 4,
+  "report_figures_viewed": 4,
+  "passed": true,
+  "checks": {
+    "chinese_glyphs_visible": true,
+    "titles_axes_units_and_legends_readable": true,
+    "legend_no_longer_overlaps_bar_labels": true,
+    "four_registered_methods_present": true,
+    "confusion_true_rows_predicted_columns_positive_one_clear": true,
+    "distributions_same_bins_and_explicit_common_y_scale": true,
+    "proportion_denominators_disclosed": true,
+    "metric_axes_start_at_zero": true,
+    "sample_sizes_and_frozen_tune_threshold_source_disclosed": true,
+    "no_raw_questions_or_row_predictions_in_images": true
+  },
+  "layout_repairs": "Moved metric-chart legend above axes; increased paired F1 bar spacing. No data, method or threshold changes.",
+  "final_word_pdf_layout_review": "not performed; outside Stage 4A authorization"
+}

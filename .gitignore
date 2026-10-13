@@ -30,6 +30,8 @@ stage03a_internal_experiment/outputs/
 stage03a_internal_experiment/qa_review/outputs/
 stage03b_official_validation/outputs/
 stage03b_official_validation/local_only/
+stage04_report_draft/local_only/
+stage04_report_draft/报告正文初稿.md
 
 # Instructor and prior-student materials; unrelated coursework
 /实验报告模板.docx
