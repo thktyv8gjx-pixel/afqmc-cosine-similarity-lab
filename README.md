@@ -56,7 +56,12 @@ The Stage 3A implementation tests use synthetic fixtures and also verify that th
 python stage03a_internal_experiment\run_tests.py
 ```
 
-Official Dev evaluation is a separate, single authorized step. First review `stage03b_official_validation/01_Dev前配置冻结审计.md` and ensure the exact pre-Dev commit is published. The runner defaults to a fit-space preflight that does not open Dev. Its explicit evaluation mode requires the local-only publication gate written after the public repository and commit have been verified. Never alter the frozen input hashes, vocabulary, IDF source, normalizer, thresholds, or evaluation code after seeing Dev results.
+The controlled Stage 3B recovery evaluation is complete. Attempt 001 accessed Dev partially and failed; version 2 repairs nested threshold parsing and restores registered normalization. Attempt 002 completed under explicit recovery authorization. See [recovery evidence](stage03b_official_validation/recovery/02_v2冻结与恢复门槛.md) and [Stage 3B review](stage03b_official_validation/07_Stage03B最终验收.md). No further Dev run is authorized by these instructions.
+
+For a Train-fit-only preflight, select v2 explicitly:
+```powershell
+python stage03b_official_validation/run_official_dev.py --freeze-manifest stage03b_official_validation/pre_dev_freeze_manifest.v2.json
+```
 
 ## Current internal results and limitations
 
@@ -79,3 +84,14 @@ Stage 0 passed; Stage 1 is conditional pass; Stage 2 passed; Stage 3A and its QA
 ## Review and academic integrity
 
 The repository contains code, aggregate results, and data-free audit evidence. Keep the source archive, row-level questions, predictions, and error examples local. Check all calculations and cited sources, document any AI assistance required by course policy, and make the final academic decisions and report your own. No result here establishes production readiness.
+
+## Official Dev recovery results (awaiting user review)
+
+| Method | F1 | ROC-AUC | AP | FPR |
+|---|---:|---:|---:|---:|
+| count_char2 | 0.474779 | 0.572598 | 0.362293 | 0.967092 |
+| tfidf_char2 | 0.479289 | 0.584950 | 0.368599 | 0.814305 |
+| always_predict_0 | 0.000000 | n/a | n/a | 0.000000 |
+| always_predict_1 | 0.473293 | n/a | n/a | 1.000000 |
+
+TF-IDF exceeds the always-positive F1 by only 0.005996. All 4,316 rows are retained. High false-positive rates and weak separation remain limitations. Stage 4/5 have not started. Only reviewed aggregate evidence is public; questions, predictions and real cases remain local.

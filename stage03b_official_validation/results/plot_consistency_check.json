@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "all_four_figures_byte_identical_on_saved_result_rebuild": {
+    "dev_metric_comparison": true,
+    "dev_tfidf_confusion_matrix": true,
+    "dev_score_distributions": true,
+    "internal_tune_vs_dev_f1": true
+  },
+  "visual_review_four_figures_completed": true,
+  "source_metrics_sha256": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+  "source_predictions_sha256": "a6a37c2a306fcbdade600f4ed85138a5ec32e528f9a10b215b419f681be76483",
+  "raw_dev_reopened": false,
+  "distribution_panels": "within-class proportions; each panel scales to its own peak, use numeric distribution table for cross-panel magnitude comparison"
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "reviewed aggregate delivery only, no row-level source content",
+  "files": [
+    "README.md",
+    "scripts/build_stage3b_delivery.py",
+    "stage03b_official_validation/results/attempt_002_execution_summary.json",
+    "stage03b_official_validation/results/delivery_consistency_check.json",
+    "stage03b_official_validation/results/dev_metrics.csv",
+    "stage03b_official_validation/results/dev_metrics.json",
+    "stage03b_official_validation/results/independent_recheck.json",
+    "stage03b_official_validation/results/internal_tune_vs_dev.csv",
+    "stage03b_official_validation/results/plot_aggregate_distribution_data.json",
+    "stage03b_official_validation/results/plot_consistency_check.json",
+    "stage03b_official_validation/results/plot_rebuild_record.json",
+    "stage03b_official_validation/results/publication_gate_verification.json",
+    "stage03b_official_validation/results/score_distribution_summary.csv",
+    "stage03b_official_validation/figures/dev_metrics_comparison.png",
+    "stage03b_official_validation/figures/dev_score_distributions.png",
+    "stage03b_official_validation/figures/dev_tfidf_confusion_matrix.png",
+    "stage03b_official_validation/figures/internal_tune_vs_dev_f1.png",
+    "stage03b_official_validation/02_官方Dev评价结果.md",
+    "stage03b_official_validation/03_Count与TFIDF正式对照分析.md",
+    "stage03b_official_validation/04_高误报与识别局限分析.md",
+    "stage03b_official_validation/05_正式结果可视化与一致性核验.md",
+    "stage03b_official_validation/06_独立复现与代码审计.md",
+    "stage03b_official_validation/07_Stage03B最终验收.md",
+    "scripts/public_stage3b_results_allowlist.json",
+    "stage03b_official_validation/results/SHA256SUMS"
+  ]
+}

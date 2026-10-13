@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "original_stage3a_outputs_20_verified": {
+    "outputs/artifacts/feature_vocabulary.csv": true,
+    "outputs/artifacts/fit_corpus.jsonl": true,
+    "outputs/config_fingerprint.json": true,
+    "outputs/figures/internal_tune_method_comparison.png": true,
+    "outputs/figures/internal_tune_score_distribution.png": true,
+    "outputs/figures/internal_tune_tfidf_confusion_matrix.png": true,
+    "outputs/figures/internal_tune_threshold_metrics.png": true,
+    "outputs/fit_corpus_record.json": true,
+    "outputs/internal_tune_predictions.csv": true,
+    "outputs/metrics_summary.csv": true,
+    "outputs/metrics_summary.json": true,
+    "outputs/paired_correctness.json": true,
+    "outputs/plot_metadata.json": true,
+    "outputs/post_run_validation.json": true,
+    "outputs/run_metadata.json": true,
+    "outputs/stage3a_test_results.json": true,
+    "outputs/tfidf_error_cases.csv": true,
+    "outputs/threshold_scan_count_char2.csv": true,
+    "outputs/threshold_scan_tfidf_char2.csv": true,
+    "outputs/vocabulary_record.json": true
+  },
+  "v1_v2_method_consistency": {
+    "checks": {
+      "stage3a_config_sha256": true,
+      "inputs": true,
+      "fit_space": true,
+      "normalization": true,
+      "vectorizer_parameters": true,
+      "cosine_parameters": true,
+      "thresholds": true,
+      "formal_methods": true,
+      "metric_definitions": true,
+      "official_split_boundary": true,
+      "environment": true
+    },
+    "threshold_float64_hex_equal": {
+      "count_char2": true,
+      "tfidf_char2": true
+    },
+    "passed": true
+  },
+  "saved_row_recheck_passed": true,
+  "four_figure_rebuild_passed": true,
+  "public_metrics_byte_identical_to_local_metrics": true,
+  "public_figures_match_saved_result_build": true,
+  "manual_case_count": 12,
+  "manual_theme_population_counts": "not estimated",
+  "real_dev_reopened_for_delivery": false,
+  "source_version_fingerprints_still_pass": true,
+  "original_v1_manifest_bytes_unchanged": true
+}

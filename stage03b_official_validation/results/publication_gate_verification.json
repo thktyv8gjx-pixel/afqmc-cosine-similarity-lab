@@ -1,0 +1,20 @@
+{
+  "passed_before_dev_read": true,
+  "gate": {
+    "repository_full_name": "thktyv8gjx-pixel/afqmc-cosine-similarity-lab",
+    "visibility": "public",
+    "verified": true,
+    "freeze_version": 2,
+    "freeze_manifest_sha256": "dc8798a981ea15689a84005f256e292ddecb5397f56375394650b3699e21b6d2",
+    "freeze_manifest_raw_bytes_sha256": "25847ad93838fa1201495330dccf8a8c657e0da5fed3b9bf2864c27e76cb5e0e",
+    "freeze_commit_sha": "45b48f73a07834e9b62202e85ca0ef027029b5df",
+    "remote_main_sha": "45b48f73a07834e9b62202e85ca0ef027029b5df",
+    "authorized_attempt_id": "attempt_002",
+    "original_freeze_commit_sha": "6deb2ace9f433173b483338172db07318a17a735",
+    "remote_verification": "git ls-remote origin refs/heads/main and GitHub API visibility in current session",
+    "verified_at_utc": "2026-10-13T12:35:55.907632+00:00"
+  },
+  "local_gate_sha256": "2d85737372e3b688559e71110e7c715298d3726ddb32c4c41ecb9d552a756ddb",
+  "authorization_record_sha256": "6b9f615a394924abfc66afd2f95862c520461e0850cf38ff54d0d42ce6a2bb64",
+  "attempt_001_record_sha256": "b550c08654fd6cb3b2bce8313118713c2b0ef1142e83f89552afc3421b931673"
+}

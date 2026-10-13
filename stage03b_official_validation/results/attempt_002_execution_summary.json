@@ -1,0 +1,97 @@
+{
+  "attempt_id": "attempt_002",
+  "status": "completed_recovery_evaluation",
+  "last_stage": "result_write_completed",
+  "recorded_utc": "2026-10-13T12:44:30.292562+00:00",
+  "dev_read_started": true,
+  "freeze_commit_sha": "45b48f73a07834e9b62202e85ca0ef027029b5df",
+  "freeze_version": 2,
+  "freeze_manifest_sha256": "dc8798a981ea15689a84005f256e292ddecb5397f56375394650b3699e21b6d2",
+  "recovery_of": "attempt_001",
+  "original_freeze_commit_sha": "6deb2ace9f433173b483338172db07318a17a735",
+  "result_fingerprints": {
+    "dev_metrics.csv": "14c5570838bc25661247b155fba6b0123a2797fa2d4b9b27b535d12bca7e323c",
+    "dev_metrics.json": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+    "dev_predictions_local_only.csv": "a6a37c2a306fcbdade600f4ed85138a5ec32e528f9a10b215b419f681be76483",
+    "dev_records_local_only.jsonl": "078420e4a0c56610f247fb5af16d7d7fdc617f8c2a8066973898f1c9647b0ddd"
+  },
+  "review_status": "recovery completed, awaiting user review",
+  "stages": [
+    {
+      "attempt_id": "attempt_002",
+      "stage": "started",
+      "recorded_utc": "2026-10-13T12:44:29.930453+00:00",
+      "freeze_commit_sha": "45b48f73a07834e9b62202e85ca0ef027029b5df",
+      "freeze_version": 2,
+      "freeze_manifest_sha256": "dc8798a981ea15689a84005f256e292ddecb5397f56375394650b3699e21b6d2",
+      "recovery_of": "attempt_001",
+      "original_freeze_commit_sha": "6deb2ace9f433173b483338172db07318a17a735"
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "dev_read_started",
+      "recorded_utc": "2026-10-13T12:44:29.932470+00:00"
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "dev_read_completed",
+      "recorded_utc": "2026-10-13T12:44:29.962601+00:00",
+      "dev_member_sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+      "parsed_rows": 4316
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "aligned_and_normalized",
+      "recorded_utc": "2026-10-13T12:44:30.068358+00:00",
+      "rows": 4316
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "count_char2_computation_started",
+      "recorded_utc": "2026-10-13T12:44:30.069439+00:00"
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "count_char2_computation_completed",
+      "recorded_utc": "2026-10-13T12:44:30.135641+00:00",
+      "scored_rows": 4316
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "tfidf_char2_computation_started",
+      "recorded_utc": "2026-10-13T12:44:30.140565+00:00"
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "tfidf_char2_computation_completed",
+      "recorded_utc": "2026-10-13T12:44:30.199078+00:00",
+      "scored_rows": 4316
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "all_metrics_completed",
+      "recorded_utc": "2026-10-13T12:44:30.211978+00:00",
+      "rows": 4316,
+      "methods": 4
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "result_write_started",
+      "recorded_utc": "2026-10-13T12:44:30.213979+00:00"
+    },
+    {
+      "attempt_id": "attempt_002",
+      "stage": "result_write_completed",
+      "recorded_utc": "2026-10-13T12:44:30.291561+00:00",
+      "result_fingerprints": {
+        "dev_metrics.csv": "14c5570838bc25661247b155fba6b0123a2797fa2d4b9b27b535d12bca7e323c",
+        "dev_metrics.json": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+        "dev_predictions_local_only.csv": "a6a37c2a306fcbdade600f4ed85138a5ec32e528f9a10b215b419f681be76483",
+        "dev_records_local_only.jsonl": "078420e4a0c56610f247fb5af16d7d7fdc617f8c2a8066973898f1c9647b0ddd"
+      }
+    }
+  ],
+  "attempt_001_approximate_log_last_write_utc": "2026-10-13T11:22:47.039383+00:00",
+  "exact_attempt_001_process_time": "unknown; filesystem timestamp only",
+  "original_dev_replay_performed": false
+}

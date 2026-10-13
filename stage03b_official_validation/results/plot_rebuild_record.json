@@ -1,0 +1,32 @@
+{
+  "source_metrics_sha256": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+  "source_predictions_sha256": "a6a37c2a306fcbdade600f4ed85138a5ec32e528f9a10b215b419f681be76483",
+  "figures": {
+    "dev_metric_comparison": {
+      "path": "outputs/figures/dev_metrics_comparison.png",
+      "sha256": "4385ca79c7ff1dcb9b447e4b82c43c1b6a6b0ab1f62f3e285d959e228b9dbdfd",
+      "width": 1600,
+      "height": 1000
+    },
+    "dev_tfidf_confusion_matrix": {
+      "path": "outputs/figures/dev_tfidf_confusion_matrix.png",
+      "sha256": "9808b04301bfe005399cfcc7ba125e5793fa42726e5a5b7e80fe82a41d614170",
+      "width": 1600,
+      "height": 1000
+    },
+    "dev_score_distributions": {
+      "path": "outputs/figures/dev_score_distributions.png",
+      "sha256": "758b726f653d5d60339f87e228597cabbfb86458f88a321af78293442273e6fd",
+      "width": 1600,
+      "height": 1000
+    },
+    "internal_tune_vs_dev_f1": {
+      "path": "outputs/figures/internal_tune_vs_dev_f1.png",
+      "sha256": "2b02e7ec5cd598440bcb39f798757b860c8d926242956b3b30bb2cd42ffa0f12",
+      "width": 1600,
+      "height": 1000
+    }
+  },
+  "all_figures_aggregate_only": true,
+  "row_level_question_text_in_figures": false
+}
