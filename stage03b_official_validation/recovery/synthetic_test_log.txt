@@ -1,0 +1,121 @@
+[stage2_math]
+test_count_and_tfidf_share_exact_feature_indices (tests.test_math_validation.CharacterAndTfidfTests.test_count_and_tfidf_share_exact_feature_indices) ... ok
+test_hand_counted_chinese_character_bigrams (tests.test_math_validation.CharacterAndTfidfTests.test_hand_counted_chinese_character_bigrams) ... ok
+test_negation_digits_and_punctuation_are_preserved_as_features (tests.test_math_validation.CharacterAndTfidfTests.test_negation_digits_and_punctuation_are_preserved_as_features) ... ok
+test_normalization_is_nfc_and_only_collapses_whitespace (tests.test_math_validation.CharacterAndTfidfTests.test_normalization_is_nfc_and_only_collapses_whitespace) ... ok
+test_tfidf_smoothed_idf_and_l2_normalization (tests.test_math_validation.CharacterAndTfidfTests.test_tfidf_smoothed_idf_and_l2_normalization) ... ok
+test_three_asterisks_produce_repeated_double_asterisk_feature (tests.test_math_validation.CharacterAndTfidfTests.test_three_asterisks_produce_repeated_double_asterisk_feature) ... ok
+test_unseen_bigrams_and_short_text_transform_to_zero (tests.test_math_validation.CharacterAndTfidfTests.test_unseen_bigrams_and_short_text_transform_to_zero) ... ok
+test_candidates_include_unique_scores_and_all_negative_boundary (tests.test_math_validation.ThresholdMetricAndSparseTests.test_candidates_include_unique_scores_and_all_negative_boundary) ... ok
+test_confusion_counts_recompute_binary_metrics (tests.test_math_validation.ThresholdMetricAndSparseTests.test_confusion_counts_recompute_binary_metrics) ... ok
+test_final_threshold_tie_break_prefers_higher_all_negative_boundary (tests.test_math_validation.ThresholdMetricAndSparseTests.test_final_threshold_tie_break_prefers_higher_all_negative_boundary) ... ok
+test_nonbinary_labels_are_rejected_without_coercion (tests.test_math_validation.ThresholdMetricAndSparseTests.test_nonbinary_labels_are_rejected_without_coercion) ... ok
+test_sparse_paired_scores_match_sklearn_diagonal_and_flag_zeros (tests.test_math_validation.ThresholdMetricAndSparseTests.test_sparse_paired_scores_match_sklearn_diagonal_and_flag_zeros) ... ok
+test_threshold_tie_prefers_recall_then_precision_then_higher_threshold (tests.test_math_validation.ThresholdMetricAndSparseTests.test_threshold_tie_prefers_recall_then_precision_then_higher_threshold) ... ok
+test_threshold_uses_greater_than_or_equal (tests.test_math_validation.ThresholdMetricAndSparseTests.test_threshold_uses_greater_than_or_equal) ... ok
+test_zero_denominator_metric_policy (tests.test_math_validation.ThresholdMetricAndSparseTests.test_zero_denominator_metric_policy) ... ok
+test_cosine_is_symmetric_and_in_range (tests.test_math_validation.VectorMathTests.test_cosine_is_symmetric_and_in_range) ... ok
+test_hand_example_partial_overlap_is_four_fifths (tests.test_math_validation.VectorMathTests.test_hand_example_partial_overlap_is_four_fifths) ... ok
+test_identical_nonzero_vectors_have_cosine_one (tests.test_math_validation.VectorMathTests.test_identical_nonzero_vectors_have_cosine_one) ... ok
+test_orthogonal_nonzero_vectors_have_cosine_zero (tests.test_math_validation.VectorMathTests.test_orthogonal_nonzero_vectors_have_cosine_zero) ... ok
+test_same_direction_different_lengths_have_cosine_one (tests.test_math_validation.VectorMathTests.test_same_direction_different_lengths_have_cosine_one) ... ok
+test_zero_vector_convention_is_zero_and_flagged (tests.test_math_validation.VectorMathTests.test_zero_vector_convention_is_zero_and_flagged) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.018s
+
+OK
+
+[stage3a_implementation]
+test_manifest_group_crossing_fails_closed (tests.test_stage3a.FrozenDataAndFitTests.test_manifest_group_crossing_fails_closed) ... ok
+test_manifest_reordering_does_not_misalign_rows (tests.test_stage3a.FrozenDataAndFitTests.test_manifest_reordering_does_not_misalign_rows) ... ok
+test_normalizer_preserves_negation_digits_letters_punctuation_and_space (tests.test_stage3a.FrozenDataAndFitTests.test_normalizer_preserves_negation_digits_letters_punctuation_and_space) ... ok
+test_tune_only_sentinel_is_not_added_to_fit_vocabulary (tests.test_stage3a.FrozenDataAndFitTests.test_tune_only_sentinel_is_not_added_to_fit_vocabulary) ... ok
+test_unique_fit_question_corpus_is_sorted_deduplicated_and_provenanced (tests.test_stage3a.FrozenDataAndFitTests.test_unique_fit_question_corpus_is_sorted_deduplicated_and_provenanced) ... ok
+test_vectorizers_fit_same_corpus_and_have_identical_vocabulary_and_order (tests.test_stage3a.FrozenDataAndFitTests.test_vectorizers_fit_same_corpus_and_have_identical_vocabulary_and_order) ... ok
+test_zip_loader_opens_only_train_member (tests.test_stage3a.FrozenDataAndFitTests.test_zip_loader_opens_only_train_member) ... ok
+test_large_high_dimension_sparse_pairing_never_densifies (tests.test_stage3a.SparseFeatureAndCosineTests.test_large_high_dimension_sparse_pairing_never_densifies) ... ok
+test_paired_sparse_cosine_matches_standard_and_is_symmetric (tests.test_stage3a.SparseFeatureAndCosineTests.test_paired_sparse_cosine_matches_standard_and_is_symmetric) ... ok
+test_short_unseen_punctuation_and_repeated_punctuation_behavior (tests.test_stage3a.SparseFeatureAndCosineTests.test_short_unseen_punctuation_and_repeated_punctuation_behavior) ... ok
+test_sparse_cosine_rejects_nonfinite_negative_and_shape_mismatch (tests.test_stage3a.SparseFeatureAndCosineTests.test_sparse_cosine_rejects_nonfinite_negative_and_shape_mismatch) ... ok
+test_optimized_scan_matches_all_stage2_candidates_for_fixtures (tests.test_stage3a.ThresholdOptimizationTests.test_optimized_scan_matches_all_stage2_candidates_for_fixtures) ... ok
+test_optimized_scan_matches_reference_on_many_discrete_ties (tests.test_stage3a.ThresholdOptimizationTests.test_optimized_scan_matches_reference_on_many_discrete_ties) ... ok
+test_threshold_boundary_uses_greater_than_or_equal (tests.test_stage3a.ThresholdOptimizationTests.test_threshold_boundary_uses_greater_than_or_equal) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.159s
+
+OK
+
+[stage3b_original_helpers]
+test_constant_baselines_have_no_ranking_metric_when_no_scores_exist (__main__.FrozenEvaluatorHelperTests.test_constant_baselines_have_no_ranking_metric_when_no_scores_exist) ... ok
+test_metric_record_matches_independent_confusion_and_sklearn_metrics (__main__.FrozenEvaluatorHelperTests.test_metric_record_matches_independent_confusion_and_sklearn_metrics) ... ok
+test_parser_assigns_stable_synthetic_ids_and_binary_labels (__main__.FrozenEvaluatorHelperTests.test_parser_assigns_stable_synthetic_ids_and_binary_labels) ... ok
+test_parser_rejects_invalid_rows_without_silently_dropping_them (__main__.FrozenEvaluatorHelperTests.test_parser_rejects_invalid_rows_without_silently_dropping_them) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.021s
+
+OK
+
+[v1_regression_proof]
+{"v1_threshold_error_reproduced": true, "v1_normalization_failure_reproduced": true, "expected_regressions_proven": true}
+test_actual_compute_accepts_nested_thresholds (__main__.RecoveryTests.test_actual_compute_accepts_nested_thresholds) ... ERROR
+test_actual_compute_normalizes_like_stage3a (__main__.RecoveryTests.test_actual_compute_normalizes_like_stage3a) ... FAIL
+
+======================================================================
+ERROR: test_actual_compute_accepts_nested_thresholds (__main__.RecoveryTests.test_actual_compute_accepts_nested_thresholds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\stage03b_official_validation\test_recovery_runner.py", line 87, in test_actual_compute_accepts_nested_thresholds
+    summary, rows = self.compute()
+                    ^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\stage03b_official_validation\test_recovery_runner.py", line 84, in compute
+    return EVALUATOR.compute_run(self.freeze, self.vectorizers, self.archive, self.manifest)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<PROJECT_ROOT>\stage03b_official_validation\run_official_dev.py", line 289, in compute_run
+    def align_dev_manifest(records: list[dict[str, Any]], manifest_path: Path) -> list[str]:
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'dict'
+
+======================================================================
+FAIL: test_actual_compute_normalizes_like_stage3a (__main__.RecoveryTests.test_actual_compute_normalizes_like_stage3a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<PROJECT_ROOT>\stage03b_official_validation\test_recovery_runner.py", line 100, in test_actual_compute_normalizes_like_stage3a
+    self.assertEqual(vectorizer.inputs[0], self.left)
+AssertionError: Lists differ: ['  Café  不退款 12! A  ', '订单  12 元', 'ABC 不付款!', ' 可以退款 '] != ['Café 不退款 12! A', '订单 12 元', 'ABC 不付款!', '可以退款']
+
+First differing element 0:
+'  Café  不退款 12! A  '
+'Café 不退款 12! A'
+
+- ['  Café  不退款 12! A  ', '订单  12 元', 'ABC 不付款!', ' 可以退款 ']
+?   --   ^^^          --       -                    -    -
+
++ ['Café 不退款 12! A', '订单 12 元', 'ABC 不付款!', '可以退款']
+?      ^
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.051s
+
+FAILED (failures=1, errors=1)
+
+[stage3b_recovery_integration]
+test_actual_compute_accepts_nested_thresholds (__main__.RecoveryTests.test_actual_compute_accepts_nested_thresholds) ... ok
+test_actual_compute_normalizes_like_stage3a (__main__.RecoveryTests.test_actual_compute_normalizes_like_stage3a) ... ok
+test_all_methods_and_independent_confusions (__main__.RecoveryTests.test_all_methods_and_independent_confusions) ... ok
+test_failed_attempt_persists_without_outputs_and_cannot_be_reused (__main__.RecoveryTests.test_failed_attempt_persists_without_outputs_and_cannot_be_reused) ... ok
+test_fingerprint_format_and_content_block_reader (__main__.RecoveryTests.test_fingerprint_format_and_content_block_reader) ... ok
+test_frozen_source_mismatch_rejected_before_dev (__main__.RecoveryTests.test_frozen_source_mismatch_rejected_before_dev) ... ok
+test_invalid_thresholds_rejected_before_reader (__main__.RecoveryTests.test_invalid_thresholds_rejected_before_reader) ... ok
+test_json_csv_real_write_reread_and_recompute (__main__.RecoveryTests.test_json_csv_real_write_reread_and_recompute) ... ok
+test_manifest_and_normalized_id_alignment_fail_closed (__main__.RecoveryTests.test_manifest_and_normalized_id_alignment_fail_closed) ... ok
+test_threshold_equality_is_positive_in_formal_function (__main__.RecoveryTests.test_threshold_equality_is_positive_in_formal_function) ... ok
+test_threshold_full_precision (__main__.RecoveryTests.test_threshold_full_precision) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.405s
+
+OK

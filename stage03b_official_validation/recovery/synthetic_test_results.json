@@ -1,0 +1,46 @@
+{
+  "scope": "synthetic tests plus existing config/source only; no real Dev read",
+  "suites": {
+    "stage2_math": {
+      "exit_code": 0,
+      "tests_run": 21,
+      "passed": true,
+      "expected_v1_failures": false
+    },
+    "stage3a_implementation": {
+      "exit_code": 0,
+      "tests_run": 14,
+      "passed": true,
+      "expected_v1_failures": false
+    },
+    "stage3b_original_helpers": {
+      "exit_code": 0,
+      "tests_run": 4,
+      "passed": true,
+      "expected_v1_failures": false
+    },
+    "v1_regression_proof": {
+      "exit_code": 0,
+      "tests_run": 2,
+      "passed": true,
+      "expected_v1_failures": true
+    },
+    "stage3b_recovery_integration": {
+      "exit_code": 0,
+      "tests_run": 11,
+      "passed": true,
+      "expected_v1_failures": false
+    }
+  },
+  "passed": true,
+  "registered_tests_passed": 50,
+  "real_dev_open_guard_enforced": true,
+  "forbidden_real_dev_open_attempts": 0,
+  "allowed_synthetic_dev_member_opens": 23,
+  "preliminary_sandbox_run": {
+    "tests_run": 10,
+    "errors": 20,
+    "cause": "temporary directory PermissionError before fixture creation; rerun with requested sandbox escalation"
+  },
+  "completed_utc": "2026-10-13T12:26:50.430034+00:00"
+}

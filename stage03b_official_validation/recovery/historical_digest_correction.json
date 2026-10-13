@@ -1,0 +1,11 @@
+{
+  "record_type": "additive_historical_digest_correction",
+  "old_record_unchanged": true,
+  "old_value": "fd4aaed563815997128c49aecdb3b10971f87e9f81b43039f0ac1272ca726c",
+  "old_length": 62,
+  "authoritative_manifest_raw_bytes_sha256": "da712a8db96b2ddc2da716352474ae0c73c3cedc4821d2e6ae4655447ef4424b",
+  "authoritative_manifest_canonical_sha256": "fd4aaed563815997128c49aecdbfb3b10971f87e9f81b43039f0ac1272ca726c",
+  "canonical_algorithm": "UTF-8 JSON ensure_ascii=False, sort_keys=True, separators=(comma,colon), allow_nan=False, exclude freeze_manifest_sha256, append LF",
+  "derived_from_actual_bytes": true,
+  "recorded_utc": "2026-10-13T12:20:47.881812+00:00"
+}

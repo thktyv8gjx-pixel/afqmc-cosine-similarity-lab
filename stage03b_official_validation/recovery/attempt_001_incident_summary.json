@@ -1,0 +1,39 @@
+{
+  "attempt_id": "attempt_001",
+  "status": "failed_after_partial_dev_access",
+  "recorded_retrospectively_utc": "2026-10-13T12:20:47.821108+00:00",
+  "original_freeze_commit_sha": "6deb2ace9f433173b483338172db07318a17a735",
+  "v1_manifest_raw_bytes_sha256": "da712a8db96b2ddc2da716352474ae0c73c3cedc4821d2e6ae4655447ef4424b",
+  "v1_manifest_git_blob_bytes_sha256": "6fc22f13f96e6b34d5931440a5a5fc12d174459a27b473b26ee82453061c030f",
+  "v1_worktree_vs_git_blob_difference": "CRLF versus LF only; parsed contents and canonical digest agree",
+  "v1_manifest_canonical_sha256": "fd4aaed563815997128c49aecdbfb3b10971f87e9f81b43039f0ac1272ca726c",
+  "original_runner_sha256": "74e8844bc3ec08de6401c1100d7b0e2e2aad8c566816afc774febac2223c6d34",
+  "execution_command": "python stage03b_official_validation/run_official_dev.py --execute-official-dev",
+  "command_evidence": "prior session tool invocation; command is not embedded in the original log",
+  "file_observed_last_write_utc": "2026-10-13T11:22:47.039383+00:00",
+  "exact_process_start_end_utc": "unknown; filesystem times are approximate evidence, not process timestamps",
+  "exception_type": "TypeError",
+  "exception_message": "float() argument must be a string or a real number, not 'dict'",
+  "failure_location": "v1 run_official_dev.py:289",
+  "completed_stages_inferred_from_frozen_control_flow_and_trace": [
+    "Dev member read",
+    "archive/member checks",
+    "4316-row parsing check",
+    "ordered Manifest label/ID alignment",
+    "Count transform and cosine scores"
+  ],
+  "not_completed_inferred": [
+    "Count threshold prediction",
+    "formal metrics",
+    "TF-IDF evaluation",
+    "final result writes"
+  ],
+  "observed_files": {
+    "stage03b_official_validation/qa_review/official_dev_execution.log": "1a23eb7a03f4a9cf23c9960823dfd52a71407bf601586bae4ec4702fc62bf0cc",
+    "stage03b_official_validation/qa_review/official_dev_attempt_blocker.md": "792cfb87b270dfd1a45c5b717182aa3216a7c19c68a0a8d9ac47171d65a16d57",
+    "stage03b_official_validation/local_only/pre_dev_freeze_commit.json": "8581b0dd61b2a60615375ee8e06e5580d2b3851674ab210740b4392656eddf1d"
+  },
+  "observed_outputs_exists": false,
+  "information_exposure_limits": "available tool/log evidence contains PASS and traceback, no sample text or score arrays; other memory inspection and unrelated logs were not audited",
+  "evaluation_attempt_number_scope": "Stage 3B evaluation attempts, not all historical data-audit reads"
+}

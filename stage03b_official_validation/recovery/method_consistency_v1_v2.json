@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "stage3a_config_sha256": true,
+    "inputs": true,
+    "fit_space": true,
+    "normalization": true,
+    "vectorizer_parameters": true,
+    "cosine_parameters": true,
+    "thresholds": true,
+    "formal_methods": true,
+    "metric_definitions": true,
+    "official_split_boundary": true,
+    "environment": true
+  },
+  "threshold_float64_hex_equal": {
+    "count_char2": true,
+    "tfidf_char2": true
+  },
+  "passed": true,
+  "protected_implementation_sources_unchanged": {
+    "stage01_data_audit/audit_afqmc.py": true,
+    "stage02_math_protocol/math_validation.py": true,
+    "stage02_math_protocol/run_math_tests.py": true,
+    "stage02_math_protocol/requirements.txt": true,
+    "stage02_math_protocol/tests/test_math_validation.py": true,
+    "stage03a_internal_experiment/config/experiment.json": true,
+    "stage03a_internal_experiment/requirements.txt": true,
+    "stage03a_internal_experiment/run_experiment.py": true,
+    "stage03a_internal_experiment/run_tests.py": true,
+    "stage03a_internal_experiment/generate_plots.py": true,
+    "stage03a_internal_experiment/validate_outputs.py": true,
+    "stage03a_internal_experiment/src/data_pipeline.py": true,
+    "stage03a_internal_experiment/src/features.py": true,
+    "stage03a_internal_experiment/src/pipeline.py": true,
+    "stage03a_internal_experiment/src/threshold_metrics.py": true,
+    "stage03a_internal_experiment/src/visualize.py": true,
+    "stage03a_internal_experiment/tests/test_stage3a.py": true
+  }
+}

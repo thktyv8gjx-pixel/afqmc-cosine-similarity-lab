@@ -1,0 +1,23 @@
+{
+  "scope": "reviewed v2 repair/freeze changes only",
+  "files": [
+    "stage03b_official_validation/run_official_dev.py",
+    "stage03b_official_validation/recovery_runtime.py",
+    "stage03b_official_validation/test_recovery_runner.py",
+    "stage03b_official_validation/recheck_saved_results.py",
+    "stage03b_official_validation/pre_dev_freeze_manifest.v2.json",
+    "scripts/build_recovery_freeze.py",
+    "scripts/run_recovery_checks.py",
+    "scripts/review_recovery_staging.py",
+    "scripts/synthetic_guard/sitecustomize.py",
+    "stage03b_official_validation/recovery/01_首次失败与工程修复.md",
+    "stage03b_official_validation/recovery/02_v2冻结与恢复门槛.md",
+    "stage03b_official_validation/recovery/attempt_001_incident_summary.json",
+    "stage03b_official_validation/recovery/freeze_fingerprints.json",
+    "stage03b_official_validation/recovery/historical_digest_correction.json",
+    "stage03b_official_validation/recovery/method_consistency_v1_v2.json",
+    "stage03b_official_validation/recovery/synthetic_test_log.txt",
+    "stage03b_official_validation/recovery/synthetic_test_results.json",
+    "scripts/public_freeze_v2_allowlist.json"
+  ]
+}

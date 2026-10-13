@@ -49,6 +49,8 @@ from data_pipeline import (  # noqa: E402
 from features import fit_vectorizers, normalized_pair_texts, paired_sparse_cosine  # noqa: E402
 from pipeline import canonical_source_id_fingerprint  # noqa: E402
 from threshold_metrics import metrics_from_predictions, predict_at_threshold  # noqa: E402
+from recovery_runtime import (AttemptRecorder, METHODS, require_sha256, validate_manifest_digest,
+                              validate_thresholds, verify_recovery_reference, write_exclusive_json)
 
 
 FREEZE_PATH = STAGE3B_DIR / "pre_dev_freeze_manifest.json"
@@ -134,9 +136,9 @@ def parse_manifest_split(manifest_path: Path, split_name: str) -> list[dict[str,
 
 
 def verify_frozen_code(freeze: dict[str, Any]) -> None:
-    payload = {key: value for key, value in freeze.items() if key != "freeze_manifest_sha256"}
-    if sha256_bytes(stable_json_bytes(payload)) != freeze["freeze_manifest_sha256"]:
-        raise AssertionError("canonical freeze manifest fingerprint mismatch")
+    validate_thresholds(freeze)
+    validate_manifest_digest(freeze)
+    verify_recovery_reference(freeze, ROOT)
     for relative_path, expected in freeze["frozen_source_files_sha256"].items():
         actual = sha256_file(ROOT / relative_path)
         if actual != expected:
@@ -201,8 +203,28 @@ def build_frozen_fit_space(freeze: dict[str, Any]) -> tuple[dict[str, Any], list
     return {"count_char2": count_vectorizer, "tfidf_char2": tfidf_vectorizer}, fit_rows
 
 
-def require_publication_gate(freeze: dict[str, Any]) -> str:
-    gate = read_json(GATE_PATH)
+def require_publication_gate(freeze: dict[str, Any], freeze_path: Path, gate_path: Path) -> str:
+    gate = read_json(gate_path)
+    require_sha256(gate.get("freeze_manifest_sha256"))
+    require_sha256(gate.get("freeze_manifest_raw_bytes_sha256"))
+    if gate["freeze_manifest_raw_bytes_sha256"] != sha256_file(freeze_path):
+        raise AssertionError("publication gate raw-byte manifest fingerprint mismatch")
+    if gate.get("freeze_version") != 2 or gate.get("authorized_attempt_id") != "attempt_002":
+        raise AssertionError("publication gate is not the authorized recovery gate")
+    prior_path = STAGE3B_DIR / "local_only" / "attempts" / "attempt_001" / "record.json"
+    prior = read_json(prior_path)
+    if sha256_file(prior_path) != freeze["recovery"]["attempt_001_record_sha256"]:
+        raise AssertionError("prior incident fingerprint mismatch")
+    if prior.get("status") != "failed_after_partial_dev_access":
+        raise AssertionError("prior partial-access incident is not acknowledged")
+    authorization_path = STAGE3B_DIR / "local_only" / "recovery_authorization.json"
+    authorization = read_json(authorization_path)
+    if sha256_file(authorization_path) != freeze["recovery"]["authorization_record_sha256"]:
+        raise AssertionError("recovery authorization fingerprint mismatch")
+    if authorization.get("authorized_attempt_id") != "attempt_002" or authorization.get("original_freeze_commit_sha") != freeze["recovery"]["original_freeze_commit_sha"]:
+        raise AssertionError("recovery authorization does not match the incident and v2")
+    if authorization.get("attempt_001_record_sha256") != sha256_file(prior_path):
+        raise AssertionError("authorization does not bind the preserved incident")
     if gate.get("repository_full_name") != freeze["publication_target"]["repository_full_name"]:
         raise AssertionError("publication gate names a different repository")
     if gate.get("visibility") != "public" or gate.get("verified") is not True:
@@ -245,9 +267,11 @@ def classification_metrics(labels: np.ndarray, predictions: np.ndarray, scores: 
     return result
 
 
-def read_dev_records(archive_path: Path, freeze: dict[str, Any]) -> tuple[list[dict[str, Any]], str]:
+def read_dev_records(archive_path: Path, freeze: dict[str, Any], recorder: AttemptRecorder | None = None) -> tuple[list[dict[str, Any]], str]:
     if sha256_file(archive_path) != freeze["inputs"]["archive_sha256"]:
         raise AssertionError("archive changed immediately before the Dev read")
+    if recorder:
+        recorder.event("dev_read_started")
     with zipfile.ZipFile(archive_path, "r") as archive:
         with archive.open("dev.json", "r") as member:
             raw = member.read()
@@ -257,10 +281,12 @@ def read_dev_records(archive_path: Path, freeze: dict[str, Any]) -> tuple[list[d
     records = parse_jsonl_records(raw, "dev")
     if len(records) != freeze["inputs"]["dev_rows"]:
         raise AssertionError("official Dev row count mismatch")
+    if recorder:
+        recorder.event("dev_read_completed", dev_member_sha256=actual_hash, parsed_rows=len(records))
     return records, actual_hash
 
 
-def align_dev_manifest(records: list[dict[str, Any]], manifest_path: Path) -> None:
+def align_dev_manifest(records: list[dict[str, Any]], manifest_path: Path) -> list[str]:
     manifest_rows = parse_manifest_split(manifest_path, "dev")
     row_ids = [row["source_row_id"] for row in records]
     manifest_ids = [row["source_row_id"] for row in manifest_rows]
@@ -269,24 +295,34 @@ def align_dev_manifest(records: list[dict[str, Any]], manifest_path: Path) -> No
     for raw, meta in zip(records, manifest_rows, strict=True):
         if str(raw["label"]) != meta["label"]:
             raise AssertionError("Dev raw label does not match the frozen manifest")
+    return manifest_ids
 
 
-def compute_run(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_path: Path, manifest_path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    records, dev_hash = read_dev_records(archive_path, freeze)
-    align_dev_manifest(records, manifest_path)
+def compute_run(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_path: Path, manifest_path: Path,
+                recorder: AttemptRecorder | None = None, records_sink: Any = None) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    thresholds = validate_thresholds(freeze)
+    validate_manifest_digest(freeze)
+    records, dev_hash = read_dev_records(archive_path, freeze, recorder)
+    manifest_ids = align_dev_manifest(records, manifest_path)
     labels = np.asarray([row["label"] for row in records], dtype=np.int8)
-    ids = [row["source_row_id"] for row in records]
-    left_text = [row["sentence1"] for row in records]
-    right_text = [row["sentence2"] for row in records]
+    raw_ids = [row["source_row_id"] for row in records]
+    ids, left_text, right_text = normalized_pair_texts(records)
+    if ids != raw_ids or ids != manifest_ids or len(set(ids)) != len(records):
+        raise AssertionError("normalized pair IDs differ from raw or manifest order")
+    if recorder:
+        recorder.event("aligned_and_normalized", rows=len(records))
+    if records_sink is not None:
+        records_sink(records)
     methods: dict[str, Any] = {}
     prediction_rows: list[dict[str, Any]] = []
-    thresholds = freeze["thresholds"]
-    for method in ("count_char2", "tfidf_char2"):
+    for method in METHODS:
+        if recorder:
+            recorder.event(method + "_computation_started")
         vectorizer = vectorizers[method]
         left = vectorizer.transform(left_text).tocsr()
         right = vectorizer.transform(right_text).tocsr()
         scores, zero_left, zero_right = paired_sparse_cosine(left, right)
-        threshold = float(thresholds[method])
+        threshold = thresholds[method]
         predictions = predict_at_threshold(scores, threshold)
         result = classification_metrics(labels, predictions, scores)
         result.update({
@@ -300,8 +336,13 @@ def compute_run(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_pat
             "zero_vector_left_count": int(zero_left.sum()),
             "zero_vector_right_count": int(zero_right.sum()),
             "zero_vector_pair_count": int(np.sum(zero_left | zero_right)),
+            "nonfinite_score_count": int(np.sum(~np.isfinite(scores))),
+            "out_of_range_score_count": int(np.sum((scores < 0) | (scores > 1))),
+            "score_min": float(np.min(scores)), "score_max": float(np.max(scores)),
         })
         methods[method] = result
+        if recorder:
+            recorder.event(method + "_computation_completed", scored_rows=len(records))
         for index, row in enumerate(records):
             prediction_rows.append({
                 "source_row_id": ids[index],
@@ -329,6 +370,8 @@ def compute_run(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_pat
             "zero_vector_pair_count": None,
         })
         baselines[method] = result
+    if recorder:
+        recorder.event("all_metrics_completed", rows=len(records), methods=4)
 
     summary = {
         "scope": "Official Dev evaluation with the pre-registered feature space and exact frozen thresholds",
@@ -350,6 +393,7 @@ def compute_run(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_pat
             "raw_order_matches_manifest": True,
             "all_labels_match_manifest": True,
             "all_rows_scored_by_both_methods": True,
+            "normalized_id_order_matches_raw_and_manifest": True,
         },
     }
     return summary, prediction_rows
@@ -363,7 +407,8 @@ def write_predictions_csv(path: Path, rows: list[dict[str, Any]]) -> bytes:
     writer.writerows(rows)
     payload = stream.getvalue().encode("utf-8")
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(payload)
+    with path.open("xb") as handle:
+        handle.write(payload)
     return payload
 
 
@@ -380,71 +425,71 @@ def metric_csv_bytes(summary: dict[str, Any]) -> bytes:
     return stream.getvalue().encode("utf-8")
 
 
+def run_saved_evaluation(freeze: dict[str, Any], vectorizers: dict[str, Any], archive_path: Path,
+                         manifest_path: Path, output: Path, attempts_root: Path,
+                         attempt_id: str, metadata: dict[str, Any]) -> dict[str, Any]:
+    if output.exists() and any(output.iterdir()):
+        raise RuntimeError("result directory is nonempty; refusing to overwrite")
+    recorder = AttemptRecorder(attempts_root, attempt_id, metadata)
+    records_cache: list[dict[str, Any]] = []
+    try:
+        summary, rows = compute_run(freeze, vectorizers, archive_path, manifest_path, recorder,
+                                    records_sink=lambda records: records_cache.extend(records))
+        output.mkdir(parents=True, exist_ok=True)
+        recorder.event("result_write_started")
+        predictions = write_predictions_csv(output / "dev_predictions_local_only.csv", rows)
+        metrics = stable_json_bytes(summary)
+        files = {"dev_metrics.json": metrics, "dev_metrics.csv": metric_csv_bytes(summary),
+                 "dev_records_local_only.jsonl": b"".join(stable_json_bytes(row) for row in records_cache)}
+        for name, payload in files.items():
+            with (output / name).open("xb") as handle:
+                handle.write(payload)
+        fingerprints = {name: sha256_file(path) for name, path in
+                        ((p.name, p) for p in output.iterdir() if p.is_file())}
+        record = {"attempt_id": attempt_id, "freeze_commit_sha": metadata.get("freeze_commit_sha"),
+                  "official_dev_member_opened": True, "feature_vectorizer_fit_calls_after_dev_open": 0,
+                  "dev_transform_only": True, "thresholds_changed": False,
+                  "prediction_rows_sha256": sha256_bytes(predictions), "metrics_json_sha256": sha256_bytes(metrics),
+                  "result_fingerprints": fingerprints}
+        write_exclusive_json(output / "execution_record.json", record)
+        recorder.event("result_write_completed", result_fingerprints=fingerprints)
+        recorder.finish("completed_recovery_evaluation", result_fingerprints=fingerprints)
+        return summary
+    except Exception as error:
+        recorder.finish("failed_after_partial_dev_access" if any(e["stage"] == "dev_read_started" for e in recorder.events)
+                        else "failed_before_dev_access", error_type=type(error).__name__)
+        raise
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Preflight the frozen fit space; official Dev requires an explicit one-time flag.")
-    mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--execute-official-dev", action="store_true", help="open and evaluate Dev once, after the public-commit gate passes")
-    mode.add_argument("--replay-for-reproducibility", action="store_true", help="repeat the identical frozen evaluation and compare with saved outputs")
+    parser = argparse.ArgumentParser(description="Explicit v2 freeze preflight and controlled attempt_002.")
+    parser.add_argument("--freeze-manifest", type=Path, required=True)
+    parser.add_argument("--execute-official-dev", action="store_true")
+    parser.add_argument("--attempt-id", default="attempt_002")
     args = parser.parse_args()
-    freeze = read_json(FREEZE_PATH)
+    freeze = read_json(args.freeze_manifest)
     verify_frozen_code(freeze)
     vectorizers, _fit_rows = build_frozen_fit_space(freeze)
     print("PASS: frozen Train fit corpus, vocabulary, IDF, configuration, and runtime versions match.")
-
-    if not args.execute_official_dev and not args.replay_for_reproducibility:
+    if not args.execute_official_dev:
         print("PRE-FLIGHT ONLY: official Dev was not opened.")
         return 0
-
-    commit_sha = require_publication_gate(freeze)
+    if args.attempt_id != freeze["recovery"]["authorized_attempt_id"] or args.attempt_id != "attempt_002":
+        raise AssertionError("only the explicitly authorized attempt_002 may run")
+    gate_path = STAGE3B_DIR / "local_only" / "part_a_publication_record.v2.json"
+    commit_sha = require_publication_gate(freeze, args.freeze_manifest, gate_path)
     config = read_json(EXPERIMENT_DIR / "config" / "experiment.json")
-    archive_path = ROOT / config["data_scope"]["archive_path"]
-    manifest_path = ROOT / config["data_scope"]["manifest_path"]
-    if args.execute_official_dev:
-        if OUTPUT_DIR.exists() and any(OUTPUT_DIR.iterdir()):
-            raise RuntimeError("official Dev output directory is non-empty; refusing a second evaluation")
-        summary, rows = compute_run(freeze, vectorizers, archive_path, manifest_path)
-        OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        predictions_bytes = write_predictions_csv(OUTPUT_DIR / "dev_predictions_local_only.csv", rows)
-        metrics_bytes = stable_json_bytes(summary)
-        (OUTPUT_DIR / "dev_metrics.json").write_bytes(metrics_bytes)
-        (OUTPUT_DIR / "dev_metrics.csv").write_bytes(metric_csv_bytes(summary))
-        write_json(OUTPUT_DIR / "execution_record.json", {
-            "executed_utc": datetime.now(timezone.utc).isoformat(),
-            "freeze_commit_sha": commit_sha,
-            "official_dev_member_opened": True,
-            "feature_vectorizer_fit_calls_after_dev_open": 0,
-            "dev_transform_only": True,
-            "thresholds_changed": False,
-            "prediction_rows_sha256": sha256_bytes(predictions_bytes),
-            "metrics_json_sha256": sha256_bytes(metrics_bytes),
-        })
-        print(f"Wrote local-only frozen Dev predictions and aggregate metrics for {summary['alignment']['row_count']} rows.")
-        return 0
-
-    expected_predictions = (OUTPUT_DIR / "dev_predictions_local_only.csv").read_bytes()
-    expected_metrics = (OUTPUT_DIR / "dev_metrics.json").read_bytes()
-    summary, rows = compute_run(freeze, vectorizers, archive_path, manifest_path)
-    from io import StringIO
-    replay_stream = StringIO(newline="")
-    writer = csv.DictWriter(replay_stream, fieldnames=PREDICTION_FIELDS, lineterminator="\n")
-    writer.writeheader()
-    writer.writerows(rows)
-    replay_predictions = replay_stream.getvalue().encode("utf-8")
-    replay_metrics = stable_json_bytes(summary)
-    checks = {
-        "same_prediction_csv_sha256": sha256_bytes(replay_predictions) == sha256_bytes(expected_predictions),
-        "same_metrics_json_sha256": sha256_bytes(replay_metrics) == sha256_bytes(expected_metrics),
-        "same_row_count": len(rows) == summary["alignment"]["row_count"] * 2 == freeze["inputs"]["dev_rows"] * 2,
-    }
-    write_json(OUTPUT_DIR / "reproducibility_check.json", {
-        "replayed_utc": datetime.now(timezone.utc).isoformat(),
-        "scope": "Identical frozen rerun for reproducibility only; no parameter selection or edits",
-        "checks": checks,
-        "passed": all(checks.values()),
-    })
-    if not all(checks.values()):
-        raise AssertionError(f"frozen reproducibility replay mismatch: {checks}")
-    print("PASS: identical frozen Dev replay matches the saved predictions and metrics exactly.")
+    data = config["data_scope"]
+    try:
+        summary = run_saved_evaluation(freeze, vectorizers, ROOT / data["archive_path"],
+            ROOT / data["manifest_path"], OUTPUT_DIR, STAGE3B_DIR / "local_only" / "attempts",
+            args.attempt_id, {"freeze_commit_sha": commit_sha, "freeze_version": 2,
+                "freeze_manifest_sha256": freeze["freeze_manifest_sha256"],
+                "recovery_of": "attempt_001", "original_freeze_commit_sha": freeze["recovery"]["original_freeze_commit_sha"]})
+    except Exception as error:
+        print(f"RECOVERY FAILED: {type(error).__name__}; preserved attempt state; no automatic retry.")
+        return 1
+    print(f"COMPLETED attempt_002: {summary['alignment']['row_count']} rows; frozen methods and local-only records saved.")
     return 0
 
 
