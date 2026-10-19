@@ -1,0 +1,144 @@
+{
+  "status": "DATA_PREPARATION_AND_MANIFEST_VERIFIED_NOT_DEV_REPLAY",
+  "base_commit": "b6540387c426ff77a6d7e614678a7b1f903a1a3a",
+  "isolation": "Independent local Git clone of base commit plus explicit preparation files; previous clean venv reused, not reinstalled this round",
+  "official_url": "https://storage.googleapis.com/cluebenchmark/tasks/afqmc_public.zip",
+  "official_download": "PASS_REAL_NETWORK_DOWNLOAD",
+  "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+  "members": {
+    "train.json": {
+      "rows": 34334,
+      "fields": [
+        "label",
+        "sentence1",
+        "sentence2"
+      ],
+      "label_counts": {
+        "0": 23761,
+        "1": 10573
+      },
+      "bytes": 4392205,
+      "sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+      "crc": "PASS"
+    },
+    "test.json": {
+      "rows": 3861,
+      "fields": [
+        "id",
+        "sentence1",
+        "sentence2"
+      ],
+      "label_counts": {},
+      "bytes": 481865,
+      "sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+      "crc": "PASS"
+    },
+    "dev.json": {
+      "rows": 4316,
+      "fields": [
+        "label",
+        "sentence1",
+        "sentence2"
+      ],
+      "label_counts": {
+        "0": 2978,
+        "1": 1338
+      },
+      "bytes": 551449,
+      "sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+      "crc": "PASS"
+    }
+  },
+  "manifest": {
+    "sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+    "rows": 42511,
+    "internal_split_rows": {
+      "fit": 27467,
+      "tune": 6867
+    },
+    "seed": 2026,
+    "repeated_split_generation_identical": true,
+    "existing_manifest_preserved": false,
+    "versions": {
+      "python": "3.12.10",
+      "numpy": "2.5.3",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.9.1"
+    },
+    "serialization": "Stage 1 write_csv; UTF-8 BOM; fixed columns; CRLF",
+    "status": "BYTE_IDENTICAL_TO_FROZEN_MANIFEST"
+  },
+  "manifest_byte_comparisons": {
+    "new_vs_offline": true,
+    "new_vs_original_stage1": true,
+    "new_vs_original_manifest": true
+  },
+  "new_preparation_tests": {
+    "run": 26,
+    "failures": 0,
+    "errors": 0
+  },
+  "existing_synthetic_tests": {
+    "passed": true,
+    "tests_run": 49,
+    "failures": 0,
+    "errors": 0,
+    "groups": {
+      "math": 21,
+      "implementation": 13,
+      "official_helpers": 4,
+      "recovery": 11
+    },
+    "excluded_real_train_tests": 1,
+    "git_history_proof_tests_not_run": 2,
+    "raw_afqmc_reads": 0,
+    "official_dev_evaluation": false,
+    "synthetic_zip_member_reads": 19,
+    "uses_isolated_virtual_environment": true,
+    "python_version": "3.12.10"
+  },
+  "synthetic_cosine_demo": "PASS",
+  "snapshot_files": 39,
+  "pip_check": {
+    "exit_code": 0,
+    "message": "No broken requirements found."
+  },
+  "protected_sources_unchanged": 34,
+  "historical_dev_metrics_unchanged": true,
+  "audit_guards": {
+    "prepare": {
+      "formal_experiment_source_access": 0,
+      "blocked": 0
+    },
+    "original": {
+      "formal_experiment_source_access": 0,
+      "blocked": 0
+    }
+  },
+  "model_runs": 0,
+  "new_dev_performance_evaluations": 0,
+  "dev_read_for_data_audit": true,
+  "raw_data_or_manifest_or_personal_reports_published": false,
+  "limitations": [
+    "Windows AMD64 Python 3.12.10 tested; other platforms untested",
+    "First sandbox run blocked before assertions by temporary-directory permissions",
+    "First live download rejected due to omitted Test id in new schema validator; corrected from historical Stage1 schema; log retained",
+    "Old 64-file candidate has five JSON byte hashes differing after Git LF checkout; historical inventory unchanged; new 39-file synthetic snapshot uses registered canonical configuration digests and strict source byte hashes",
+    "Formal Dev replay and row-level result recomputation still require explicit authorization and private historical records",
+    "Teacher acceptance and final course ZIP pending"
+  ],
+  "private_log_hashes": {
+    "clone.log": "83044aacb437730f4f98f8b103f5107a65c52bb0a2acd0c5d60a7263416dffbc",
+    "clone_data_free_check.log": "bfaf25c72b19ede943ba83686b2a50a1db95c516c1fa6906639a79bc0ef7ffe8",
+    "clone_data_free_check_v2.log": "5f04cec69c5e83e2b60dfbe79d131834811d85b392352c19168adbc0a0d37aa7",
+    "clone_data_free_check_v3.log": "7f94d26cc22241e3a64ae9a91fc0798029cddb09b117a13ac4ed9438ff053bf4",
+    "data_free_check.log": "9d0efbb76c252efe47ee338841e920fb4b0cffb4346b50602e49abd33bcc1818",
+    "historical_stage1.log": "13680aa5bf5a85b178bce3ec93bd848f62f867b027d64e1a14edefe88098af36",
+    "new_synthetic_tests.log": "c62735fadc120516d09e743e1e0f4b2a5734891ea65dca08c2755c90fa71500f",
+    "new_synthetic_tests_v2.log": "244a792f9013722106c75474499fc16eecc7f94a3e36edc81e33f30af2f0c2e6",
+    "official_download_and_manifest.log": "ac4750c54b80824aff10f94165a29610d70cd90b9c47f2b24346e67d9ea7fe46",
+    "official_download_and_manifest_v2.log": "06bdf5a52654f9c384dd7252c63e858aa28828c44553cf59198dcc42c6304659",
+    "offline_rebuild.log": "2cd59a9c8a204e4b84d2cf72086f0e4107bbd57bbde4f0aa766a9b89425ba8e2",
+    "pip_check.log": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+  }
+}

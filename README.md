@@ -14,54 +14,63 @@ Both methods use the same vocabulary of character 2-grams and the same paired co
 
 Each method uses its threshold selected on the internal tune split by positive-class F1, with the frozen rule `score >= threshold`. These thresholds are not probabilities. Do not retune them on official Dev.
 
-## Environment and installation
+## 环境安装与运行边界
 
-The recorded environment is Python 3.12.10, NumPy 2.5.3, SciPy 1.17.0, scikit-learn 1.9.1, and Pillow 12.3.0. Install the pinned dependencies with:
+使用项目专用环境，不使用工作区中其他课程实验的根requirements文件。本次已验证环境为Windows AMD64、Python 3.12.10。依赖安装仍需网络或合法、已核验的依赖来源。
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r stage03a_internal_experiment\requirements.txt
+.\.venv\Scripts\python.exe -m pip install --only-binary=:all: --require-hashes -r stage05_p1_closure_review/requirements-cp312-win_amd64.lock.txt
+.\.venv\Scripts\python.exe -m pip check
 ```
 
-The Stage 2 synthetic math checks also use the numerical dependencies in `stage02_math_protocol/requirements.txt`.
+下文`python`指上述项目虚拟环境解释器，可直接用`.\.venv\Scripts\python.exe`替换；不要求激活环境。完整9包平台锁含wheel SHA，仅适用于CPython 3.12 / Windows AMD64。其他系统可按`stage03a_internal_experiment/requirements.txt`安装，但尚未现场验收；Manifest入口严格检查已记录的Python、NumPy、SciPy及scikit-learn版本，不通过时不会改变冻结输入。
 
-## Preparing data locally
-
-1. Download the archive from the source above into `stage01_data_audit/raw/afqmc_public.zip`.
-2. Compare its SHA-256 with the frozen manifest before extracting or using it.
-3. Keep all raw data and row-level audit outputs local. The historical Stage 3A runner expects the Stage 1 split manifest at `stage01_data_audit/split_manifest.csv`; that file is intentionally not included here because it contains row-level identifiers and assignments.
-4. To regenerate the Stage 1 audit and local manifest, run `python stage01_data_audit/audit_afqmc.py --archive stage01_data_audit/raw/afqmc_public.zip`. This audit reads the three source splits for data-quality and overlap checks, but it does not fit text features, score pairs, select thresholds, or compute model metrics. Its row-level output files remain local and are excluded by `.gitignore`.
-5. For the current frozen experiment, compare the locally generated input fingerprints with `stage03b_official_validation/pre_dev_freeze_manifest.json` before running Stage 3A. Do not treat Stage 1 auditing as permission to fit or evaluate a model on Dev or Test.
-
-The SHA-256 fingerprint is a version check only. It is not a substitute for obtaining the data lawfully.
-
-## Reproduction commands
-
-Run Stage 2's hand-built vector and tiny synthetic-corpus tests:
+### A. 无原始数据的数学测试与合成演示
 
 ```powershell
-python stage02_math_protocol\run_math_tests.py
+python scripts/check_afqmc_synthetic.py
+python scripts/test_prepare_afqmc.py
 ```
 
-Run the Stage 3A internal fit/tune experiment only after the local Stage 1 prerequisites are present:
+第一条核对已登记的v1/v2规范化清单摘要、34个冻结源码及三个合成辅助文件的原始字节哈希，建立不含`.git`、原始数据和私有报告的39文件临时快照，运行原49项合成测试及自有两句语料的Count/TF-IDF余弦演示。第二条运行26项数据准备合成测试（模拟网络故障、错版本、CRC、字段和Manifest门禁），不接触真实AFQMC。两条均需要上面的数值依赖；临时产物保存在已忽略的local_only目录。合成验证成功不等于完整AFQMC结果复现成功。
+
+### B. 官方数据下载、完整性校验和Manifest准备
 
 ```powershell
-python stage03a_internal_experiment\run_experiment.py --root .
+python scripts/prepare_afqmc.py
 ```
 
-The Stage 3A implementation tests use synthetic fixtures and also verify that the loader opens only `train.json`:
+从CLUE公布的固定URL下载到`stage01_data_audit/raw/afqmc_public.zip`。使用同目录临时文件，只有固定SHA-256、3成员CRC和成员指纹、Train/Dev/Test数量34,334/4,316/3,861及字段全部通过后才以原始字节发布到本地。Test保留整数`id`，没有label，不补造标签。已有正确归档直接校验，已有错误归档保留并报错；不切换镜像或数据版本，不解压生成重复问句文件。
+
+随后复用原Stage1的固定种子2026、分组五折首折及写出函数，生成完整42,511行`stage01_data_audit/split_manifest.csv`。固定列序、UTF-8 BOM及CRLF是字节复现协议的一部分。必须与目标SHA-256 `e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907`一致，才接纳候选；已有正确文件保留并比对，已有错误文件不覆盖。新入口不调用旧审计主函数，因此不会额外生成含真实案例的重复/冲突报告。
 
 ```powershell
-python stage03a_internal_experiment\run_tests.py
+# 已手工从官方入口获取同一归档，或重复离线核验
+python scripts/prepare_afqmc.py --offline
+# 只下载并检查归档、CRC、数量和字段；不重建Manifest，仅需Python标准库
+python scripts/prepare_afqmc.py --archive-only
 ```
 
-The controlled Stage 3B recovery evaluation is complete. Attempt 001 accessed Dev partially and failed; version 2 repairs nested threshold parsing and restores registered normalization. Attempt 002 completed under explicit recovery authorization. See [recovery evidence](stage03b_official_validation/recovery/02_v2冻结与恢复门槛.md) and [Stage 3B review](stage03b_official_validation/07_Stage03B最终验收.md). No further Dev run is authorized by these instructions.
+标准库归档检查使用Python 3.11及以上；完整Manifest重建使用已记录的Python 3.12.10和依赖版本。默认根目录由脚本位置决定，不依赖终端当前目录；`--root`只用于明确指定的项目副本。归档检查会读取三个拆分进行数据结构审计，Manifest划分只使用Train；两者均不构造模型特征、不预测、不搜索阈值、不重评Dev。
 
-For a Train-fit-only preflight, select v2 explicitly:
+官方下载地址和手工放置路径会在网络失败时打印，退出码为2；失败临时文件清理，半文件不冒充可用归档。目标归档SHA-256为`5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc`。原始归档与Manifest仍被`.gitignore`排除。详见[来源说明](DATASET_PROVENANCE.md)和[实际准备验证](public_evidence/data_preparation/README.md)。
+
+### C. 前提齐备后可单独运行的真实Train实验
+
+仅在B完整成功、环境与配置核验通过、并明确希望开展新的内部Train实验时使用：
+
 ```powershell
-python stage03b_official_validation/run_official_dev.py --freeze-manifest stage03b_official_validation/pre_dev_freeze_manifest.v2.json
+python stage03a_internal_experiment/run_experiment.py --root .
 ```
+
+该入口使用Train内部fit/tune；不应作为数据安装或合成测试的一部分自动执行。输出为本地忽略目录；若已有历史输出或门禁阻止执行，停止并检查，不删除历史文件来绕过。此次数据准备任务没有运行该命令，没有修改词表、IDF规则、阈值或正式结果。
+
+### D. 正式Dev的历史冻结与恢复边界
+
+Stage3B已有一次部分访问失败和一次经授权的v2恢复评价，全部4,316条记录保留。v2只修复嵌套阈值解析和既定规范化调用；方法及精确阈值未改变。见[恢复证据](stage03b_official_validation/recovery/02_v2冻结与恢复门槛.md)和[正式评价审查](stage03b_official_validation/07_Stage03B最终验收.md)。
+
+下载或重建Manifest不授予新的模型评价权限；本说明不提供默认执行Dev评价的命令，也不删除尝试记录、改发布门禁或重用旧授权。正式Dev完整重放需要另行明确授权及历史发布门禁核验；保存结果的逐行独立复算还需未公开的本地预测文件，不能从公开汇总恢复逐行记录。
 
 ## Current internal results and limitations
 
@@ -79,7 +88,7 @@ Reviewed, data-free aggregate evidence is collected in [`public_evidence/`](publ
 
 ## Project status
 
-Stage 0 passed; Stage 1 is conditional pass; Stage 2 passed; Stage 3A and its QA review are conditional pass. The formal primary method and Count baseline are frozen before official Dev. Character 2–3-gram TF-IDF was a preregistered internal exploratory sensitivity run and is excluded from the formal Dev comparison. Stage 4 report production and Stage 5 packaging require separate review.
+Stage 0 passed; Stage 1 is conditional pass; Stage 2 passed; Stage 3A and its QA review are conditional pass. The formal primary method and Count baseline are frozen before official Dev. Character 2–3-gram TF-IDF was a preregistered internal exploratory sensitivity run and is excluded from the formal Dev comparison. The report revision remains local; final course packaging and submission require separate review.
 
 ## Review and academic integrity
 
@@ -94,4 +103,4 @@ The repository contains code, aggregate results, and data-free audit evidence. K
 | always_predict_0 | 0.000000 | n/a | n/a | 0.000000 |
 | always_predict_1 | 0.473293 | n/a | n/a | 1.000000 |
 
-TF-IDF exceeds the always-positive F1 by only 0.005996. All 4,316 rows are retained. High false-positive rates and weak separation remain limitations. Stage 4/5 have not started. Only reviewed aggregate evidence is public; questions, predictions and real cases remain local.
+TF-IDF exceeds the always-positive F1 by only 0.005996. All 4,316 rows are retained. High false-positive rates and weak separation remain limitations. Report and source-delivery reviews have progressed; final course acceptance remains pending. Only reviewed aggregate evidence is public; questions, predictions and real cases remain local.
