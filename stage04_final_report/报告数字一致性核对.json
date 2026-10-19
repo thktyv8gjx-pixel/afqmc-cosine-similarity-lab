@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "checked_result_table_values": 120,
+  "saved_metrics_public_private_copies_equal": true,
+  "word_pdf_table_values_match": true,
+  "two_full_precision_thresholds_match": true,
+  "confusion_formula_checks": 4,
+  "derived_count_differences": [
+    455,
+    127,
+    328
+  ],
+  "fpr_false_discovery_denominators_distinct": true,
+  "normal_paragraph_text_coverage_in_pdf": true,
+  "template_geometry_and_twenty_preserve_parts_equal": true,
+  "native_omml_count": 49,
+  "display_equation_count": 13,
+  "raw_latex_artifacts": 0,
+  "pdf_pages": 14,
+  "word_computed_pages": 14,
+  "word_export_engine": "Microsoft Word ExportAsFixedFormat",
+  "docx_sha256": "7eb840c78930e9e3546b7bd90173b40c0fe93bcfba79951b467491238e2f4fb3",
+  "pdf_sha256": "cb5468bfe8e0d86853193fd6cb427841aaa7ce9cfdf6fd83bee394ef371a96f2",
+  "real_question_quotes_in_report": false,
+  "private_cases_verified": 4,
+  "model_reruns": 0,
+  "raw_dev_reads": 0,
+  "visual_review_required_separately": true,
+  "source_report_numbers_sha256": "537e45ad31aa25892f4f85ca815902706d53fc57f0290e7bf10abe4bea1855a0",
+  "source_metrics_sha256": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b"
+}

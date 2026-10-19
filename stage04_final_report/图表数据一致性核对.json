@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "figure_assets": 6,
+  "figure_groups": 4,
+  "figure1_bar_count": 20,
+  "figure3_distribution_panels": 4,
+  "figure3_common_bins": 24,
+  "figure3_common_ymax": 0.2,
+  "embedded_image_bytes_match_saved_print_figures": true,
+  "all_plot_values_match_4a_and_saved_aggregates": true,
+  "figure2_matrix": [
+    [
+      553,
+      2425
+    ],
+    [
+      152,
+      1186
+    ]
+  ],
+  "full_precision_thresholds": {
+    "count_char2": 0.10660035817780521,
+    "tfidf_char2": 0.05574242073415668
+  },
+  "figure_asset_sha256": {
+    "fig1a.png": "2ec099b021cde08d97e62f437d0e182e526a7b7ef5c5a476bf8f17d4ab8d1f3c",
+    "fig1b.png": "c4ce1240f43d9b182079996cb8e6b7c5cd1c7b788f0758d45bcffe0a91dd2b94",
+    "fig2.png": "2581ac6d00d23af57dc865b89079a65a9c8d3d74de15cc708776323e0e11d0b8",
+    "fig3a.png": "08c44262438b4d752c9914966bc784a52d7be88aae747b04736876dd1c1e6d10",
+    "fig3b.png": "70aa9b213f39685737d55f15166b46b647e41c9ef4a7d114338206cf0580e16b",
+    "fig4.png": "441f0c8081c4f06c96d5b24e489f54af12d6e95856e3e7b902c00fb05ef8c367"
+  },
+  "model_reruns": 0,
+  "raw_dev_reads": 0
+}

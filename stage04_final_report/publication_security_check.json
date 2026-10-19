@@ -1,0 +1,23 @@
+{
+  "passed_pre_staging": true,
+  "review_date": "2026-10-19",
+  "repository": "thktyv8gjx-pixel/afqmc-cosine-similarity-lab",
+  "visibility_verified": "PUBLIC",
+  "github_authentication_verified": true,
+  "baseline_head": "b75a372734885b823ac398f541e7504aaabafbf6",
+  "public_file_count": 11,
+  "secret_or_restricted_hits": 0,
+  "report_word_pdf_kept_local": true,
+  "real_cases_kept_private": true,
+  "ignored_raw_datasets_not_added": true,
+  "stage4a_and_experiment_files_not_modified_by_this_task": true,
+  "unrelated_readme_and_five_experiment_gitignore_changes_preserved_unstaged": true,
+  "gitignore_staging": "Only three Stage4B exclusion lines are staged via explicit cached patch; working file retains concurrent five-experiment exclusions",
+  "index_review_required": true,
+  "known_open_risks": [
+    "identity and personal review pending",
+    "dataset quotation/redistribution and source ZIP arrangement pending",
+    "limited model discrimination retained",
+    "full cross-machine reproduction pending"
+  ]
+}

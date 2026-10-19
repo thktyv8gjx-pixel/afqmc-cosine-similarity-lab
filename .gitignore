@@ -32,6 +32,9 @@ stage03b_official_validation/outputs/
 stage03b_official_validation/local_only/
 stage04_report_draft/local_only/
 stage04_report_draft/报告正文初稿.md
+stage04_final_report/local_only/
+stage04_final_report/*.docx
+stage04_final_report/*.pdf
 
 # Instructor and prior-student materials; unrelated coursework
 /实验报告模板.docx

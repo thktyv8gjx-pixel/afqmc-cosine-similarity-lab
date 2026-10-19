@@ -1,0 +1,244 @@
+{
+  "review_date": "2026-10-19",
+  "reviewer": "Codex AI-assisted visual inspection; student review pending",
+  "word_pages": 14,
+  "pdf_pages": 14,
+  "render_dpi": 140,
+  "word_render_engine": "Microsoft Word ExportAsFixedFormat, packaged render_docx.py rasterize with explicit native Word PDF adapter",
+  "pdf_render_engine": "bundled Poppler pdftoppm direct PDF rasterization",
+  "all_pages_actually_viewed": true,
+  "all_word_pdf_pixels_equal": true,
+  "passed": true,
+  "page_records": [
+    {
+      "page": 1,
+      "word_render": "local_only/word_render_v3/page-1.png",
+      "pdf_render": "local_only/pdf_render_v3/page-01.png",
+      "word_png_sha256": "eaae647e0383dcdaab9e6fc7f642352e45bcfa6e5ac84493c6411846f34e5ada",
+      "pdf_png_sha256": "eaae647e0383dcdaab9e6fc7f642352e45bcfa6e5ac84493c6411846f34e5ada",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "原封面、应用题目及六项红色待填信息；页眉与页码保留"
+    },
+    {
+      "page": 2,
+      "word_render": "local_only/word_render_v3/page-2.png",
+      "pdf_render": "local_only/pdf_render_v3/page-02.png",
+      "word_png_sha256": "c12a4afcfc83a0f8b6fcb9967e598fad0dcaa66f672659eaba2b1fb7a0c24109",
+      "pdf_png_sha256": "c12a4afcfc83a0f8b6fcb9967e598fad0dcaa66f672659eaba2b1fb7a0c24109",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "第1部分和第2.1节；文本输入与标签用途已明确，规范化及Count定义可读"
+    },
+    {
+      "page": 3,
+      "word_render": "local_only/word_render_v3/page-3.png",
+      "pdf_render": "local_only/pdf_render_v3/page-03.png",
+      "word_png_sha256": "b4ff04285b142302f78c737dfd77125539f0ef1c43baaff49a5b3859c4b73f9a",
+      "pdf_png_sha256": "b4ff04285b142302f78c737dfd77125539f0ef1c43baaff49a5b3859c4b73f9a",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "自然TF、平滑IDF、TF-IDF、L2、点积与余弦；上下标及分式清楚"
+    },
+    {
+      "page": 4,
+      "word_render": "local_only/word_render_v3/page-4.png",
+      "pdf_render": "local_only/pdf_render_v3/page-04.png",
+      "word_png_sha256": "5217cfa2c5be5959f3e8d96cd4ea17df36d198fc24b8fc4f665d50bf85311fda",
+      "pdf_png_sha256": "5217cfa2c5be5959f3e8d96cd4ea17df36d198fc24b8fc4f665d50bf85311fda",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "人工IDF例、阈值判定与第2.3节；七个评价公式完整，过大连排空白已消除"
+    },
+    {
+      "page": 5,
+      "word_render": "local_only/word_render_v3/page-5.png",
+      "pdf_render": "local_only/pdf_render_v3/page-05.png",
+      "word_png_sha256": "28b13713f38d0b3be72c717bbf693eba9a751e2287fa31c7c8bf598626be8f13",
+      "pdf_png_sha256": "28b13713f38d0b3be72c717bbf693eba9a751e2287fa31c7c8bf598626be8f13",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "指标解释、数据规模/环境和规范化/共享空间代码；行文及代码不溢出"
+    },
+    {
+      "page": 6,
+      "word_render": "local_only/word_render_v3/page-6.png",
+      "pdf_render": "local_only/pdf_render_v3/page-06.png",
+      "word_png_sha256": "b8c9150ac60d0fa592121dff2bfd39582e733871adea06a059f963df392486bb",
+      "pdf_png_sha256": "b8c9150ac60d0fa592121dff2bfd39582e733871adea06a059f963df392486bb",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "稀疏点积与transform代码、完整阈值、第3.3节导语；代码和分数精度可读"
+    },
+    {
+      "page": 7,
+      "word_render": "local_only/word_render_v3/page-7.png",
+      "pdf_render": "local_only/pdf_render_v3/page-07.png",
+      "word_png_sha256": "09b94535afe131058be62c790e4c0bdfc570fcbc486aaad7cb41ff78f4071f26",
+      "pdf_png_sha256": "09b94535afe131058be62c790e4c0bdfc570fcbc486aaad7cb41ff78f4071f26",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "表1(a)(b)和表2(a)(b)；四个五行小表均完整留在同一页，无超宽或极小字号"
+    },
+    {
+      "page": 8,
+      "word_render": "local_only/word_render_v3/page-8.png",
+      "pdf_render": "local_only/pdf_render_v3/page-08.png",
+      "word_png_sha256": "1769c6fbe34cce6e0b3fe553a36fca064e8aad7c0de60a704dfa345de36461f7",
+      "pdf_png_sha256": "1769c6fbe34cce6e0b3fe553a36fca064e8aad7c0de60a704dfa345de36461f7",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "图1(a)(b)共20柱；图例与顶端标注分离，解释和阈值来源齐全"
+    },
+    {
+      "page": 9,
+      "word_render": "local_only/word_render_v3/page-9.png",
+      "pdf_render": "local_only/pdf_render_v3/page-09.png",
+      "word_png_sha256": "a50475ffa436b222975eb1be65d84b45a6738ad68fc8a8040c2c2848e720a4da",
+      "pdf_png_sha256": "a50475ffa436b222975eb1be65d84b45a6738ad68fc8a8040c2c2848e720a4da",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "图2四格计数和表3(a)(b)；真值行预测列明确，tune非独立估计已标注"
+    },
+    {
+      "page": 10,
+      "word_render": "local_only/word_render_v3/page-10.png",
+      "pdf_render": "local_only/pdf_render_v3/page-10.png",
+      "word_png_sha256": "bf516e265c98a80ff686f629a711bfc3f81238214bf9e35dd1c5d09b428b1d7d",
+      "pdf_png_sha256": "bf516e265c98a80ff686f629a711bfc3f81238214bf9e35dd1c5d09b428b1d7d",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "表4(a)(b)和图3(a)；Count正负分布分箱、比例分母、共同纵轴及阈值可读"
+    },
+    {
+      "page": 11,
+      "word_render": "local_only/word_render_v3/page-11.png",
+      "pdf_render": "local_only/pdf_render_v3/page-11.png",
+      "word_png_sha256": "486e3a472196cf974b2574bcf3c90f1d65e0a87819be0e0e3dc76f390cda675e",
+      "pdf_png_sha256": "486e3a472196cf974b2574bcf3c90f1d65e0a87819be0e0e3dc76f390cda675e",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "图3(b)、图4与第3.4节开头；共同纵轴一致，F1纵轴未截断，因果归因已修订"
+    },
+    {
+      "page": 12,
+      "word_render": "local_only/word_render_v3/page-12.png",
+      "pdf_render": "local_only/pdf_render_v3/page-12.png",
+      "word_png_sha256": "5d73db75ee25cf8f1d8364043b7f57a4576bb75b1103a018dc5c42c5f7754ed3",
+      "pdf_png_sha256": "5d73db75ee25cf8f1d8364043b7f57a4576bb75b1103a018dc5c42c5f7754ed3",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "高误报、弱区分、常量基线、案例边界及tune/Dev差异；文字和内联公式可读"
+    },
+    {
+      "page": 13,
+      "word_render": "local_only/word_render_v3/page-13.png",
+      "pdf_render": "local_only/pdf_render_v3/page-13.png",
+      "word_png_sha256": "d859e5bf8691462761e4353816309781b78698ea20e692e1c017ec430ec634df",
+      "pdf_png_sha256": "d859e5bf8691462761e4353816309781b78698ea20e692e1c017ec430ec634df",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "结论、两个未实施拓展及AI使用说明；未夸大效果或本人复核情况"
+    },
+    {
+      "page": 14,
+      "word_render": "local_only/word_render_v3/page-14.png",
+      "pdf_render": "local_only/pdf_render_v3/page-14.png",
+      "word_png_sha256": "352a68f06e80e9291e5a2d4127d6a530f2351e3354158e0da3b09e0c15b3666e",
+      "pdf_png_sha256": "352a68f06e80e9291e5a2d4127d6a530f2351e3354158e0da3b09e0c15b3666e",
+      "dimensions_px": [
+        1158,
+        1638
+      ],
+      "word_page_actually_viewed": true,
+      "pdf_page_actually_viewed": true,
+      "pixel_identical": true,
+      "visual_result": "PASS",
+      "observation": "四条独立参考条目与可见URL、版本附录；长网址自然换行，页尾无溢出"
+    }
+  ],
+  "iterations": {
+    "v1": "14 pages reviewed; legend/math text/references/spacing repairs identified",
+    "v2": "14 pages reviewed; excessive equation-chain whitespace and small table split identified",
+    "v3": "14 Word and 14 PDF page images viewed; accepted for user review"
+  },
+  "no_model_rerun": true
+}

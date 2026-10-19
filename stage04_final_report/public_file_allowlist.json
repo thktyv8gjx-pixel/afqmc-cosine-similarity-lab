@@ -1,0 +1,16 @@
+{
+  "scope": "Stage4B safe audits only; no Word/PDF, teacher material, row text or predictions",
+  "files": [
+    ".gitignore",
+    "stage04_final_report/README.md",
+    "stage04_final_report/Stage04B最终验收与待确认事项.md",
+    "stage04_final_report/案例核验与引用边界.md",
+    "stage04_final_report/教师100分标准逐项检查表.md",
+    "stage04_final_report/图表与公式验收记录.md",
+    "stage04_final_report/报告数字一致性核对.json",
+    "stage04_final_report/全部页面视觉检查.json",
+    "stage04_final_report/图表数据一致性核对.json",
+    "stage04_final_report/public_file_allowlist.json",
+    "stage04_final_report/publication_security_check.json"
+  ]
+}
