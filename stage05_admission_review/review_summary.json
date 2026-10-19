@@ -1,0 +1,30 @@
+{
+  "reviewed_utc": "2026-10-19T03:39:40.268926+00:00",
+  "source_baseline_commit": "6b26d2106ad08d73c2119aa86170eea322de5fc1",
+  "verdict": "CONDITIONAL PASS",
+  "admission_scope": "Prepare isolated source delivery and data-free validation only; not final packaging/submission acceptance",
+  "python_sources_syntax_checked": 35,
+  "frozen_files_sha256_verified": 34,
+  "existing_environment_pip_check": "PASS",
+  "synthetic_tests_passed": 49,
+  "synthetic_test_failures": 0,
+  "synthetic_test_errors": 0,
+  "excluded_real_train_test_count": 1,
+  "historical_git_proof_tests_not_run": 2,
+  "new_environment_install_performed": false,
+  "cross_machine_reproduction_performed": false,
+  "raw_afqmc_member_reads": 0,
+  "official_dev_evaluations": 0,
+  "proposed_package_file_count": 58,
+  "proposed_inventory_verified_against_actual_files": true,
+  "created_final_zip": false,
+  "reports_modified_or_publicized": false,
+  "course_platform_accessed": false,
+  "pending": [
+    "Teacher acceptance of data acquisition instructions rather than bundled AFQMC",
+    "Prerequisite Manifest/data acquisition and permitted access scope",
+    "Clean environment installation and separate final ZIP extraction acceptance",
+    "Submission date and institution heading remain pending by user instruction"
+  ],
+  "status": "STAGE05_ADMISSION_READY_FOR_USER_REVIEW"
+}

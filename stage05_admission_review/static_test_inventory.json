@@ -1,0 +1,255 @@
+{
+  "test_methods": [
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_identical_nonzero_vectors_have_cosine_one",
+      "line": 21
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_orthogonal_nonzero_vectors_have_cosine_zero",
+      "line": 26
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_same_direction_different_lengths_have_cosine_one",
+      "line": 31
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_hand_example_partial_overlap_is_four_fifths",
+      "line": 36
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_zero_vector_convention_is_zero_and_flagged",
+      "line": 41
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_cosine_is_symmetric_and_in_range",
+      "line": 45
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_hand_counted_chinese_character_bigrams",
+      "line": 55
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_tfidf_smoothed_idf_and_l2_normalization",
+      "line": 67
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_count_and_tfidf_share_exact_feature_indices",
+      "line": 88
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_unseen_bigrams_and_short_text_transform_to_zero",
+      "line": 96
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_three_asterisks_produce_repeated_double_asterisk_feature",
+      "line": 102
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_negation_digits_and_punctuation_are_preserved_as_features",
+      "line": 108
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_normalization_is_nfc_and_only_collapses_whitespace",
+      "line": 117
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_threshold_uses_greater_than_or_equal",
+      "line": 122
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_candidates_include_unique_scores_and_all_negative_boundary",
+      "line": 125
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_threshold_tie_prefers_recall_then_precision_then_higher_threshold",
+      "line": 131
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_final_threshold_tie_break_prefers_higher_all_negative_boundary",
+      "line": 139
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_confusion_counts_recompute_binary_metrics",
+      "line": 144
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_zero_denominator_metric_policy",
+      "line": 152
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_nonbinary_labels_are_rejected_without_coercion",
+      "line": 159
+    },
+    {
+      "source": "stage02_math_protocol/tests/test_math_validation.py",
+      "name": "test_sparse_paired_scores_match_sklearn_diagonal_and_flag_zeros",
+      "line": 163
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_normalizer_preserves_negation_digits_letters_punctuation_and_space",
+      "line": 39
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_manifest_reordering_does_not_misalign_rows",
+      "line": 43
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_manifest_group_crossing_fails_closed",
+      "line": 57
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_unique_fit_question_corpus_is_sorted_deduplicated_and_provenanced",
+      "line": 69
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_vectorizers_fit_same_corpus_and_have_identical_vocabulary_and_order",
+      "line": 82
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_tune_only_sentinel_is_not_added_to_fit_vocabulary",
+      "line": 90
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_zip_loader_opens_only_train_member",
+      "line": 97
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_short_unseen_punctuation_and_repeated_punctuation_behavior",
+      "line": 121
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_paired_sparse_cosine_matches_standard_and_is_symmetric",
+      "line": 134
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_sparse_cosine_rejects_nonfinite_negative_and_shape_mismatch",
+      "line": 145
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_large_high_dimension_sparse_pairing_never_densifies",
+      "line": 153
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_optimized_scan_matches_all_stage2_candidates_for_fixtures",
+      "line": 197
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_optimized_scan_matches_reference_on_many_discrete_ties",
+      "line": 207
+    },
+    {
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "name": "test_threshold_boundary_uses_greater_than_or_equal",
+      "line": 218
+    },
+    {
+      "source": "stage03b_official_validation/test_official_dev_runner.py",
+      "name": "test_parser_assigns_stable_synthetic_ids_and_binary_labels",
+      "line": 17
+    },
+    {
+      "source": "stage03b_official_validation/test_official_dev_runner.py",
+      "name": "test_parser_rejects_invalid_rows_without_silently_dropping_them",
+      "line": 23
+    },
+    {
+      "source": "stage03b_official_validation/test_official_dev_runner.py",
+      "name": "test_metric_record_matches_independent_confusion_and_sklearn_metrics",
+      "line": 29
+    },
+    {
+      "source": "stage03b_official_validation/test_official_dev_runner.py",
+      "name": "test_constant_baselines_have_no_ranking_metric_when_no_scores_exist",
+      "line": 40
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_actual_compute_accepts_nested_thresholds",
+      "line": 86
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_actual_compute_normalizes_like_stage3a",
+      "line": 92
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_threshold_full_precision",
+      "line": 112
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_invalid_thresholds_rejected_before_reader",
+      "line": 117
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_fingerprint_format_and_content_block_reader",
+      "line": 140
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_threshold_equality_is_positive_in_formal_function",
+      "line": 153
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_all_methods_and_independent_confusions",
+      "line": 159
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_json_csv_real_write_reread_and_recompute",
+      "line": 171
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_frozen_source_mismatch_rejected_before_dev",
+      "line": 193
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_failed_attempt_persists_without_outputs_and_cannot_be_reused",
+      "line": 206
+    },
+    {
+      "source": "stage03b_official_validation/test_recovery_runner.py",
+      "name": "test_manifest_and_normalized_id_alignment_fail_closed",
+      "line": 215
+    }
+  ],
+  "executed": false
+}

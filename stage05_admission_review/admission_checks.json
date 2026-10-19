@@ -1,0 +1,1135 @@
+{
+  "audit_utc": "2026-10-19T03:34:36.701825+00:00",
+  "source_commit": "6b26d2106ad08d73c2119aa86170eea322de5fc1",
+  "syntax_checked_source_files": 35,
+  "unresolved_external_imports": [],
+  "third_party_imports": {
+    "sklearn": [
+      "stage01_data_audit/audit_afqmc.py",
+      "stage02_math_protocol/run_math_tests.py",
+      "stage02_math_protocol/tests/test_math_validation.py",
+      "stage03a_internal_experiment/run_tests.py",
+      "stage03a_internal_experiment/src/features.py",
+      "stage03a_internal_experiment/src/pipeline.py",
+      "stage03a_internal_experiment/tests/test_stage3a.py",
+      "stage03b_official_validation/recheck_saved_results.py",
+      "stage03b_official_validation/run_official_dev.py",
+      "stage03b_official_validation/test_recovery_runner.py",
+      "stage03a_internal_experiment/qa_review/independent_metric_recheck.py",
+      "stage03a_internal_experiment/qa_review/run_qa_diagnostics.py"
+    ],
+    "numpy": [
+      "stage02_math_protocol/math_validation.py",
+      "stage02_math_protocol/run_math_tests.py",
+      "stage02_math_protocol/tests/test_math_validation.py",
+      "stage03a_internal_experiment/run_tests.py",
+      "stage03a_internal_experiment/src/features.py",
+      "stage03a_internal_experiment/src/pipeline.py",
+      "stage03a_internal_experiment/src/threshold_metrics.py",
+      "stage03a_internal_experiment/tests/test_stage3a.py",
+      "stage03a_internal_experiment/validate_outputs.py",
+      "stage03b_official_validation/recheck_saved_results.py",
+      "stage03b_official_validation/run_official_dev.py",
+      "stage03b_official_validation/test_official_dev_runner.py",
+      "stage03b_official_validation/test_recovery_runner.py",
+      "stage04_report_draft/build_report.py",
+      "stage03a_internal_experiment/qa_review/independent_metric_recheck.py",
+      "stage03a_internal_experiment/qa_review/run_qa_diagnostics.py"
+    ],
+    "scipy": [
+      "stage02_math_protocol/math_validation.py",
+      "stage02_math_protocol/run_math_tests.py",
+      "stage02_math_protocol/tests/test_math_validation.py",
+      "stage03a_internal_experiment/run_tests.py",
+      "stage03a_internal_experiment/src/features.py",
+      "stage03a_internal_experiment/src/pipeline.py",
+      "stage03a_internal_experiment/tests/test_stage3a.py",
+      "stage03b_official_validation/run_official_dev.py"
+    ],
+    "PIL": [
+      "stage03a_internal_experiment/run_tests.py",
+      "stage03a_internal_experiment/src/pipeline.py",
+      "stage03a_internal_experiment/src/visualize.py",
+      "stage03a_internal_experiment/validate_outputs.py",
+      "stage03b_official_validation/generate_dev_plots.py",
+      "stage03b_official_validation/run_official_dev.py",
+      "stage03a_internal_experiment/qa_review/run_qa_diagnostics.py"
+    ],
+    "matplotlib": [
+      "stage04_report_draft/build_report.py"
+    ]
+  },
+  "environment_matches_frozen": true,
+  "installed_versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.9.1",
+    "Pillow": "12.3.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "packaging": "26.3"
+  },
+  "transitive_runtime_requirements": [
+    {
+      "parent": "scipy",
+      "dependency": "numpy",
+      "constraint": "<2.7,>=1.26.4",
+      "installed": "2.5.3",
+      "matches": true
+    },
+    {
+      "parent": "scikit-learn",
+      "dependency": "numpy",
+      "constraint": ">=1.24.1",
+      "installed": "2.5.3",
+      "matches": true
+    },
+    {
+      "parent": "scikit-learn",
+      "dependency": "scipy",
+      "constraint": ">=1.10.0",
+      "installed": "1.17.0",
+      "matches": true
+    },
+    {
+      "parent": "scikit-learn",
+      "dependency": "joblib",
+      "constraint": ">=1.4.0",
+      "installed": "1.6.0",
+      "matches": true
+    },
+    {
+      "parent": "scikit-learn",
+      "dependency": "narwhals",
+      "constraint": ">=2.0.1",
+      "installed": "2.26.0",
+      "matches": true
+    },
+    {
+      "parent": "scikit-learn",
+      "dependency": "threadpoolctl",
+      "constraint": ">=3.5.0",
+      "installed": "3.7.0",
+      "matches": true
+    },
+    {
+      "parent": "joblib",
+      "dependency": "cloudpickle",
+      "constraint": ">=3.0",
+      "installed": "3.1.2",
+      "matches": true
+    }
+  ],
+  "pip_check_returncode": 0,
+  "pip_check_clean": true,
+  "frozen_source_files_verified": 34,
+  "git_blob_fingerprint_differences": [],
+  "frozen_checks": [
+    {
+      "path": ".gitattributes",
+      "expected_sha256": "26bde0674554bd972681d5c1aa5f64436da63231595decf4d9ece60b452fa6c6",
+      "worktree_sha256": "26bde0674554bd972681d5c1aa5f64436da63231595decf4d9ece60b452fa6c6",
+      "match": true,
+      "git_blob_sha256": "26bde0674554bd972681d5c1aa5f64436da63231595decf4d9ece60b452fa6c6",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage01_data_audit/audit_afqmc.py",
+      "expected_sha256": "53efd7b02db0ab9466317238b5b917eb528ae0e0affd6536a5053b94466cb318",
+      "worktree_sha256": "53efd7b02db0ab9466317238b5b917eb528ae0e0affd6536a5053b94466cb318",
+      "match": true,
+      "git_blob_sha256": "53efd7b02db0ab9466317238b5b917eb528ae0e0affd6536a5053b94466cb318",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage02_math_protocol/math_validation.py",
+      "expected_sha256": "7c198462e799dc0633745c627bb2a02c8b302974ba47f80f3b57dffd4dd06857",
+      "worktree_sha256": "7c198462e799dc0633745c627bb2a02c8b302974ba47f80f3b57dffd4dd06857",
+      "match": true,
+      "git_blob_sha256": "7c198462e799dc0633745c627bb2a02c8b302974ba47f80f3b57dffd4dd06857",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage02_math_protocol/run_math_tests.py",
+      "expected_sha256": "ef6cce7d2f4db4e601362fb016605828b2485216679a8058d628eb18f10417fd",
+      "worktree_sha256": "ef6cce7d2f4db4e601362fb016605828b2485216679a8058d628eb18f10417fd",
+      "match": true,
+      "git_blob_sha256": "ef6cce7d2f4db4e601362fb016605828b2485216679a8058d628eb18f10417fd",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage02_math_protocol/requirements.txt",
+      "expected_sha256": "0faa39c6233e8e39aeb8c8347a19d6da45acb69cf4c7a432685769817a53c950",
+      "worktree_sha256": "0faa39c6233e8e39aeb8c8347a19d6da45acb69cf4c7a432685769817a53c950",
+      "match": true,
+      "git_blob_sha256": "0faa39c6233e8e39aeb8c8347a19d6da45acb69cf4c7a432685769817a53c950",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage02_math_protocol/tests/test_math_validation.py",
+      "expected_sha256": "b919df7ff4344e25777866a024b5601b2d2dffa01a8a446a23d25ce4ae7e04d2",
+      "worktree_sha256": "b919df7ff4344e25777866a024b5601b2d2dffa01a8a446a23d25ce4ae7e04d2",
+      "match": true,
+      "git_blob_sha256": "b919df7ff4344e25777866a024b5601b2d2dffa01a8a446a23d25ce4ae7e04d2",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/config/experiment.json",
+      "expected_sha256": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+      "worktree_sha256": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+      "match": true,
+      "git_blob_sha256": "d94b173e8d5bbb829565615cebac7a1cec806dfa835a640868b7b65f6787e32c",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/requirements.txt",
+      "expected_sha256": "99bd04d6f3dabcf854f5ece79b0578cc186772e8da7070fb1c1eafba2238d87d",
+      "worktree_sha256": "99bd04d6f3dabcf854f5ece79b0578cc186772e8da7070fb1c1eafba2238d87d",
+      "match": true,
+      "git_blob_sha256": "99bd04d6f3dabcf854f5ece79b0578cc186772e8da7070fb1c1eafba2238d87d",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/run_experiment.py",
+      "expected_sha256": "cad421b7cc2741df06dc530e92d07afac46caea44ad464e590b4afae0b7fdadb",
+      "worktree_sha256": "cad421b7cc2741df06dc530e92d07afac46caea44ad464e590b4afae0b7fdadb",
+      "match": true,
+      "git_blob_sha256": "cad421b7cc2741df06dc530e92d07afac46caea44ad464e590b4afae0b7fdadb",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/run_tests.py",
+      "expected_sha256": "7cbbcde3229eb79ac1674aae1be505c429a459148fb4d038a0ccf912d77330b8",
+      "worktree_sha256": "7cbbcde3229eb79ac1674aae1be505c429a459148fb4d038a0ccf912d77330b8",
+      "match": true,
+      "git_blob_sha256": "7cbbcde3229eb79ac1674aae1be505c429a459148fb4d038a0ccf912d77330b8",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/generate_plots.py",
+      "expected_sha256": "b8c046467b2ef4c2d910e7850e1ec852efad3780315ec797ef0fece42dbc68d6",
+      "worktree_sha256": "b8c046467b2ef4c2d910e7850e1ec852efad3780315ec797ef0fece42dbc68d6",
+      "match": true,
+      "git_blob_sha256": "b8c046467b2ef4c2d910e7850e1ec852efad3780315ec797ef0fece42dbc68d6",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/validate_outputs.py",
+      "expected_sha256": "622dd6a3183641995dfa34e35221c96e12a170f11eca7498415d4220d6bd2f01",
+      "worktree_sha256": "622dd6a3183641995dfa34e35221c96e12a170f11eca7498415d4220d6bd2f01",
+      "match": true,
+      "git_blob_sha256": "622dd6a3183641995dfa34e35221c96e12a170f11eca7498415d4220d6bd2f01",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/src/data_pipeline.py",
+      "expected_sha256": "5801579facd4d0a6ae9163b0c55316c52c9f59ee12de696640c8206ff4f46707",
+      "worktree_sha256": "5801579facd4d0a6ae9163b0c55316c52c9f59ee12de696640c8206ff4f46707",
+      "match": true,
+      "git_blob_sha256": "5801579facd4d0a6ae9163b0c55316c52c9f59ee12de696640c8206ff4f46707",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/src/features.py",
+      "expected_sha256": "8a6645316736d7b36f29d79681b720d2b4b742e617ca3d7e71feb278ca061639",
+      "worktree_sha256": "8a6645316736d7b36f29d79681b720d2b4b742e617ca3d7e71feb278ca061639",
+      "match": true,
+      "git_blob_sha256": "8a6645316736d7b36f29d79681b720d2b4b742e617ca3d7e71feb278ca061639",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/src/pipeline.py",
+      "expected_sha256": "bde06a979c092ca313e27b561b26c35037f23b1b284ee171500b975722afb6d0",
+      "worktree_sha256": "bde06a979c092ca313e27b561b26c35037f23b1b284ee171500b975722afb6d0",
+      "match": true,
+      "git_blob_sha256": "bde06a979c092ca313e27b561b26c35037f23b1b284ee171500b975722afb6d0",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/src/threshold_metrics.py",
+      "expected_sha256": "949e6086f3d96177f1ca8f562010a0d0020cc84cee32fed981a0f0a0c1fc9ea1",
+      "worktree_sha256": "949e6086f3d96177f1ca8f562010a0d0020cc84cee32fed981a0f0a0c1fc9ea1",
+      "match": true,
+      "git_blob_sha256": "949e6086f3d96177f1ca8f562010a0d0020cc84cee32fed981a0f0a0c1fc9ea1",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/src/visualize.py",
+      "expected_sha256": "8a461b0cbb0da78716f63c4e411026ab615e05314c78dbbd61aec36404251fd5",
+      "worktree_sha256": "8a461b0cbb0da78716f63c4e411026ab615e05314c78dbbd61aec36404251fd5",
+      "match": true,
+      "git_blob_sha256": "8a461b0cbb0da78716f63c4e411026ab615e05314c78dbbd61aec36404251fd5",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "expected_sha256": "d9e48b078b760de7e978729e4f0930278d4ae222c16502b858400baddca634e1",
+      "worktree_sha256": "d9e48b078b760de7e978729e4f0930278d4ae222c16502b858400baddca634e1",
+      "match": true,
+      "git_blob_sha256": "d9e48b078b760de7e978729e4f0930278d4ae222c16502b858400baddca634e1",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/requirements.txt",
+      "expected_sha256": "b5b7cd6d23bc19b3e44ea1bc4c97cfc178a40d00c62637b180ff98c58cc22e55",
+      "worktree_sha256": "b5b7cd6d23bc19b3e44ea1bc4c97cfc178a40d00c62637b180ff98c58cc22e55",
+      "match": true,
+      "git_blob_sha256": "b5b7cd6d23bc19b3e44ea1bc4c97cfc178a40d00c62637b180ff98c58cc22e55",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/run_official_dev.py",
+      "expected_sha256": "a99a192101be7830e9b0206796a0bf9f743c6ae47ac905fb6201f6a151cae174",
+      "worktree_sha256": "a99a192101be7830e9b0206796a0bf9f743c6ae47ac905fb6201f6a151cae174",
+      "match": true,
+      "git_blob_sha256": "a99a192101be7830e9b0206796a0bf9f743c6ae47ac905fb6201f6a151cae174",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/generate_dev_plots.py",
+      "expected_sha256": "c9a5bfdbb395cb9ccadb8d71f2afa36d4aec736f0abc68c1c391cd09d29414b4",
+      "worktree_sha256": "c9a5bfdbb395cb9ccadb8d71f2afa36d4aec736f0abc68c1c391cd09d29414b4",
+      "match": true,
+      "git_blob_sha256": "c9a5bfdbb395cb9ccadb8d71f2afa36d4aec736f0abc68c1c391cd09d29414b4",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/test_official_dev_runner.py",
+      "expected_sha256": "c9b59eb2e52ad72d91a9d259b11459195dec494b391b3702c5ab89d525d5ba2e",
+      "worktree_sha256": "c9b59eb2e52ad72d91a9d259b11459195dec494b391b3702c5ab89d525d5ba2e",
+      "match": true,
+      "git_blob_sha256": "c9b59eb2e52ad72d91a9d259b11459195dec494b391b3702c5ab89d525d5ba2e",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/build_public_evidence.py",
+      "expected_sha256": "6b7d92d1d93d4b4fc99133ba62f8c5bebf0544c6d234e67a3b240a486146a915",
+      "worktree_sha256": "6b7d92d1d93d4b4fc99133ba62f8c5bebf0544c6d234e67a3b240a486146a915",
+      "match": true,
+      "git_blob_sha256": "6b7d92d1d93d4b4fc99133ba62f8c5bebf0544c6d234e67a3b240a486146a915",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/build_pre_dev_freeze.py",
+      "expected_sha256": "081c2ff49e7f6f60eba1ebf16207b9f4840e95fdc96eb442ac2f87c2f500d6c8",
+      "worktree_sha256": "081c2ff49e7f6f60eba1ebf16207b9f4840e95fdc96eb442ac2f87c2f500d6c8",
+      "match": true,
+      "git_blob_sha256": "081c2ff49e7f6f60eba1ebf16207b9f4840e95fdc96eb442ac2f87c2f500d6c8",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/review_public_staging.py",
+      "expected_sha256": "1cb0dfcb835d0adc2556fdd7eaf79375fece795ab30466f96901bba343a0bdf5",
+      "worktree_sha256": "1cb0dfcb835d0adc2556fdd7eaf79375fece795ab30466f96901bba343a0bdf5",
+      "match": true,
+      "git_blob_sha256": "1cb0dfcb835d0adc2556fdd7eaf79375fece795ab30466f96901bba343a0bdf5",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/public_allowlist.json",
+      "expected_sha256": "4e3125bec730cc50def060a066b024e8e643eac7ac23604d5d9915f05fa62f56",
+      "worktree_sha256": "4e3125bec730cc50def060a066b024e8e643eac7ac23604d5d9915f05fa62f56",
+      "match": true,
+      "git_blob_sha256": "4e3125bec730cc50def060a066b024e8e643eac7ac23604d5d9915f05fa62f56",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/run_pre_dev_checks.py",
+      "expected_sha256": "6c60e21b1686ec0255bf378ffbfa5d9582a9d82feb7a00bcc325afed8cac8725",
+      "worktree_sha256": "6c60e21b1686ec0255bf378ffbfa5d9582a9d82feb7a00bcc325afed8cac8725",
+      "match": true,
+      "git_blob_sha256": "6c60e21b1686ec0255bf378ffbfa5d9582a9d82feb7a00bcc325afed8cac8725",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/recovery_runtime.py",
+      "expected_sha256": "04f430cc6e38ac25c9ac25f4a41ce74811737dae68e523ef3808564fb949a984",
+      "worktree_sha256": "04f430cc6e38ac25c9ac25f4a41ce74811737dae68e523ef3808564fb949a984",
+      "match": true,
+      "git_blob_sha256": "04f430cc6e38ac25c9ac25f4a41ce74811737dae68e523ef3808564fb949a984",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/test_recovery_runner.py",
+      "expected_sha256": "6ffc006cda497d1308ebd338e67fb8656a6e61197d6725a6129d622145d89c76",
+      "worktree_sha256": "6ffc006cda497d1308ebd338e67fb8656a6e61197d6725a6129d622145d89c76",
+      "match": true,
+      "git_blob_sha256": "6ffc006cda497d1308ebd338e67fb8656a6e61197d6725a6129d622145d89c76",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "stage03b_official_validation/recheck_saved_results.py",
+      "expected_sha256": "8b7fae93a2cf8ee7aba8508dbe29644477f7e6956d1d29a367352ae22eac3598",
+      "worktree_sha256": "8b7fae93a2cf8ee7aba8508dbe29644477f7e6956d1d29a367352ae22eac3598",
+      "match": true,
+      "git_blob_sha256": "8b7fae93a2cf8ee7aba8508dbe29644477f7e6956d1d29a367352ae22eac3598",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/build_recovery_freeze.py",
+      "expected_sha256": "eb409a938f416b99f1c3f17e2f00441f348374bbca867a9130cb8ca240edf6fb",
+      "worktree_sha256": "eb409a938f416b99f1c3f17e2f00441f348374bbca867a9130cb8ca240edf6fb",
+      "match": true,
+      "git_blob_sha256": "eb409a938f416b99f1c3f17e2f00441f348374bbca867a9130cb8ca240edf6fb",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/run_recovery_checks.py",
+      "expected_sha256": "2faee89091f06f04fb3843c4e011246b52b1ddd2a83f231bdeba431c9d2f4044",
+      "worktree_sha256": "2faee89091f06f04fb3843c4e011246b52b1ddd2a83f231bdeba431c9d2f4044",
+      "match": true,
+      "git_blob_sha256": "2faee89091f06f04fb3843c4e011246b52b1ddd2a83f231bdeba431c9d2f4044",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/review_recovery_staging.py",
+      "expected_sha256": "c5fd046d29ec3440713830293566f4eb7bccea66e6a9c54f03bc3ea9353df308",
+      "worktree_sha256": "c5fd046d29ec3440713830293566f4eb7bccea66e6a9c54f03bc3ea9353df308",
+      "match": true,
+      "git_blob_sha256": "c5fd046d29ec3440713830293566f4eb7bccea66e6a9c54f03bc3ea9353df308",
+      "git_blob_matches_frozen": true
+    },
+    {
+      "path": "scripts/synthetic_guard/sitecustomize.py",
+      "expected_sha256": "922f864e239af067ffb002dccf7b979ca4403e49a85fca25228043cf62ca7fd3",
+      "worktree_sha256": "922f864e239af067ffb002dccf7b979ca4403e49a85fca25228043cf62ca7fd3",
+      "match": true,
+      "git_blob_sha256": "922f864e239af067ffb002dccf7b979ca4403e49a85fca25228043cf62ca7fd3",
+      "git_blob_matches_frozen": true
+    }
+  ],
+  "source_inventory": [
+    {
+      "path": "scripts/build_pre_dev_freeze.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 15126,
+      "sha256": "081c2ff49e7f6f60eba1ebf16207b9f4840e95fdc96eb442ac2f87c2f500d6c8",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib",
+        "typing"
+      ]
+    },
+    {
+      "path": "scripts/build_public_evidence.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5974,
+      "sha256": "6b7d92d1d93d4b4fc99133ba62f8c5bebf0544c6d234e67a3b240a486146a915",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "json",
+        "pathlib",
+        "typing"
+      ]
+    },
+    {
+      "path": "scripts/build_recovery_freeze.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 9900,
+      "sha256": "eb409a938f416b99f1c3f17e2f00441f348374bbca867a9130cb8ca240edf6fb",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "argparse",
+        "copy",
+        "datetime",
+        "json",
+        "pathlib",
+        "recovery_runtime",
+        "subprocess",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/review_public_staging.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 3792,
+      "sha256": "1cb0dfcb835d0adc2556fdd7eaf79375fece795ab30466f96901bba343a0bdf5",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "json",
+        "pathlib",
+        "re",
+        "subprocess",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/review_recovery_staging.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 1584,
+      "sha256": "c5fd046d29ec3440713830293566f4eb7bccea66e6a9c54f03bc3ea9353df308",
+      "syntax": "PASS",
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "review_public_staging",
+        "subprocess"
+      ]
+    },
+    {
+      "path": "scripts/run_pre_dev_checks.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 2599,
+      "sha256": "6c60e21b1686ec0255bf378ffbfa5d9582a9d82feb7a00bcc325afed8cac8725",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "datetime",
+        "json",
+        "pathlib",
+        "re",
+        "subprocess",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/run_recovery_checks.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 3403,
+      "sha256": "2faee89091f06f04fb3843c4e011246b52b1ddd2a83f231bdeba431c9d2f4044",
+      "syntax": "PASS",
+      "imports": [
+        "datetime",
+        "json",
+        "os",
+        "pathlib",
+        "re",
+        "subprocess",
+        "sys"
+      ]
+    },
+    {
+      "path": "scripts/synthetic_guard/sitecustomize.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 910,
+      "sha256": "922f864e239af067ffb002dccf7b979ca4403e49a85fca25228043cf62ca7fd3",
+      "syntax": "PASS",
+      "imports": [
+        "json",
+        "os",
+        "pathlib",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage01_data_audit/audit_afqmc.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 37577,
+      "sha256": "53efd7b02db0ab9466317238b5b917eb528ae0e0affd6536a5053b94466cb318",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "datetime",
+        "hashlib",
+        "importlib",
+        "json",
+        "math",
+        "pathlib",
+        "platform",
+        "re",
+        "sklearn",
+        "statistics",
+        "sys",
+        "typing",
+        "unicodedata",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage02_math_protocol/math_validation.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5536,
+      "sha256": "7c198462e799dc0633745c627bb2a02c8b302974ba47f80f3b57dffd4dd06857",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "collections",
+        "math",
+        "numpy",
+        "re",
+        "scipy",
+        "unicodedata"
+      ]
+    },
+    {
+      "path": "stage02_math_protocol/run_math_tests.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 1581,
+      "sha256": "ef6cce7d2f4db4e601362fb016605828b2485216679a8058d628eb18f10417fd",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "datetime",
+        "json",
+        "numpy",
+        "pathlib",
+        "platform",
+        "scipy",
+        "sklearn",
+        "sys",
+        "unittest"
+      ]
+    },
+    {
+      "path": "stage02_math_protocol/tests/__init__.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 55,
+      "sha256": "cc63d878d6a93dfa96d7772b5234852321ee650e635a2377aaf6890da0ee8490",
+      "syntax": "PASS",
+      "imports": []
+    },
+    {
+      "path": "stage02_math_protocol/tests/test_math_validation.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 8246,
+      "sha256": "b919df7ff4344e25777866a024b5601b2d2dffa01a8a446a23d25ce4ae7e04d2",
+      "syntax": "PASS",
+      "imports": [
+        "math",
+        "math_validation",
+        "numpy",
+        "scipy",
+        "sklearn",
+        "unittest"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/generate_plots.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 913,
+      "sha256": "b8c046467b2ef4c2d910e7850e1ec852efad3780315ec797ef0fece42dbc68d6",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "argparse",
+        "json",
+        "pathlib",
+        "pipeline",
+        "sys",
+        "visualize"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/run_experiment.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 840,
+      "sha256": "cad421b7cc2741df06dc530e92d07afac46caea44ad464e590b4afae0b7fdadb",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "argparse",
+        "json",
+        "pathlib",
+        "pipeline",
+        "sys"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/run_tests.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 1655,
+      "sha256": "7cbbcde3229eb79ac1674aae1be505c429a459148fb4d038a0ccf912d77330b8",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "datetime",
+        "json",
+        "numpy",
+        "pathlib",
+        "platform",
+        "scipy",
+        "sklearn",
+        "sys",
+        "unittest"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/src/__init__.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 50,
+      "sha256": "72195a7a62e6d43716febeb80f995cdf61790e9b0389e7acf49a71a9aaa23c4f",
+      "syntax": "PASS",
+      "imports": []
+    },
+    {
+      "path": "stage03a_internal_experiment/src/data_pipeline.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 7233,
+      "sha256": "5801579facd4d0a6ae9163b0c55316c52c9f59ee12de696640c8206ff4f46707",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "collections",
+        "csv",
+        "hashlib",
+        "json",
+        "pathlib",
+        "re",
+        "typing",
+        "unicodedata",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/src/features.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5041,
+      "sha256": "8a6645316736d7b36f29d79681b720d2b4b742e617ca3d7e71feb278ca061639",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "csv",
+        "data_pipeline",
+        "hashlib",
+        "numpy",
+        "pathlib",
+        "scipy",
+        "sklearn",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/src/pipeline.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 21657,
+      "sha256": "bde06a979c092ca313e27b561b26c35037f23b1b284ee171500b975722afb6d0",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "collections",
+        "csv",
+        "data_pipeline",
+        "datetime",
+        "features",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib",
+        "platform",
+        "scipy",
+        "sklearn",
+        "sys",
+        "threshold_metrics",
+        "typing",
+        "visualize"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/src/threshold_metrics.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5074,
+      "sha256": "949e6086f3d96177f1ca8f562010a0d0020cc84cee32fed981a0f0a0c1fc9ea1",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "collections",
+        "math",
+        "numpy",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/src/visualize.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 15750,
+      "sha256": "8a461b0cbb0da78716f63c4e411026ab615e05314c78dbbd61aec36404251fd5",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "collections",
+        "csv",
+        "data_pipeline",
+        "hashlib",
+        "pathlib",
+        "pipeline",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/tests/__init__.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 76,
+      "sha256": "333cedb6e226a6b3b4a0d2e82d691e126d84a2ab83647f3a7f1df24c6a04b062",
+      "syntax": "PASS",
+      "imports": []
+    },
+    {
+      "path": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 11770,
+      "sha256": "d9e48b078b760de7e978729e4f0930278d4ae222c16502b858400baddca634e1",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "data_pipeline",
+        "features",
+        "hashlib",
+        "importlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "scipy",
+        "sklearn",
+        "sys",
+        "threshold_metrics",
+        "unittest",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/validate_outputs.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 10845,
+      "sha256": "622dd6a3183641995dfa34e35221c96e12a170f11eca7498415d4220d6bd2f01",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "collections",
+        "csv",
+        "data_pipeline",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "pipeline",
+        "sys",
+        "threshold_metrics",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/generate_dev_plots.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 10857,
+      "sha256": "c9a5bfdbb395cb9ccadb8d71f2afa36d4aec736f0abc68c1c391cd09d29414b4",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "collections",
+        "csv",
+        "hashlib",
+        "json",
+        "pathlib",
+        "sys",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/recheck_saved_results.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5238,
+      "sha256": "8b7fae93a2cf8ee7aba8508dbe29644477f7e6956d1d29a367352ae22eac3598",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "argparse",
+        "csv",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "sklearn"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/recovery_runtime.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 5731,
+      "sha256": "04f430cc6e38ac25c9ac25f4a41ce74811737dae68e523ef3808564fb949a984",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "datetime",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "re",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/run_official_dev.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 25879,
+      "sha256": "a99a192101be7830e9b0206796a0bf9f743c6ae47ac905fb6201f6a151cae174",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "argparse",
+        "collections",
+        "csv",
+        "data_pipeline",
+        "datetime",
+        "features",
+        "hashlib",
+        "io",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "pipeline",
+        "recovery_runtime",
+        "scipy",
+        "sklearn",
+        "subprocess",
+        "sys",
+        "threshold_metrics",
+        "typing",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/test_official_dev_runner.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 2259,
+      "sha256": "c9b59eb2e52ad72d91a9d259b11459195dec494b391b3702c5ab89d525d5ba2e",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "numpy",
+        "pathlib",
+        "run_official_dev",
+        "sys",
+        "unittest"
+      ]
+    },
+    {
+      "path": "stage03b_official_validation/test_recovery_runner.py",
+      "role": "frozen_or_runtime_source",
+      "tracked": true,
+      "bytes": 14386,
+      "sha256": "6ffc006cda497d1308ebd338e67fb8656a6e61197d6725a6129d622145d89c76",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "copy",
+        "csv",
+        "io",
+        "json",
+        "numpy",
+        "pathlib",
+        "recheck_saved_results",
+        "recovery_runtime",
+        "run_official_dev",
+        "sklearn",
+        "subprocess",
+        "sys",
+        "tempfile",
+        "types",
+        "unittest",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "stage04_report_draft/build_report.py",
+      "role": "optional_report_source",
+      "tracked": true,
+      "bytes": 21705,
+      "sha256": "e195a704a643d4858ae6bd04a58205cf697d4f76d2ea3b990f67051f11b7f522",
+      "syntax": "PASS",
+      "imports": [
+        "argparse",
+        "csv",
+        "hashlib",
+        "json",
+        "math",
+        "matplotlib",
+        "numpy",
+        "pathlib",
+        "re",
+        "string",
+        "subprocess",
+        "sys"
+      ]
+    },
+    {
+      "path": "stage04_report_draft/validate_report.py",
+      "role": "optional_report_source",
+      "tracked": true,
+      "bytes": 7130,
+      "sha256": "1044f4d3c2629f4c28f40ad56103179e03a523dc871c3a50d598217c389dbf68",
+      "syntax": "PASS",
+      "imports": [
+        "csv",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "re",
+        "subprocess"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/qa_review/independent_metric_recheck.py",
+      "role": "local_historical_qa",
+      "tracked": false,
+      "bytes": 16232,
+      "sha256": "f16db19d01a5d153651efdaf8c905568c1f3a4816f76fa00037b2163a31687d5",
+      "syntax": "PASS",
+      "imports": [
+        "__future__",
+        "csv",
+        "data_pipeline",
+        "features",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "sklearn",
+        "sys",
+        "typing"
+      ]
+    },
+    {
+      "path": "stage03a_internal_experiment/qa_review/run_qa_diagnostics.py",
+      "role": "local_historical_qa",
+      "tracked": false,
+      "bytes": 31970,
+      "sha256": "744ed28c6aef41d712986ea1ed43048731eec4c4de3bddd40cc8315137254a9e",
+      "syntax": "PASS",
+      "imports": [
+        "PIL",
+        "__future__",
+        "collections",
+        "csv",
+        "data_pipeline",
+        "datetime",
+        "features",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "sklearn",
+        "sys",
+        "threshold_metrics",
+        "typing"
+      ]
+    }
+  ],
+  "static_test_method_count": 50,
+  "tests_executed": 0,
+  "models_imported_or_executed": 0,
+  "raw_archives_opened": 0,
+  "raw_dev_read_or_evaluated": false,
+  "created_zip": false,
+  "protected_report_and_metric_hashes": {
+    "stage04_final_report/revision_highest_audit/document_gate.json": "002dd399a97169ecee638be9da2b3627b76e1d24b1d73301e8bfe3a2c218b384",
+    "stage03b_official_validation/results/dev_metrics.json": "814fcbb596806080ee8765f74988abbc76a7c1c047c8f4a81402bcabeec5721b",
+    "stage03b_official_validation/pre_dev_freeze_manifest.json": "da712a8db96b2ddc2da716352474ae0c73c3cedc4821d2e6ae4655447ef4424b",
+    "stage03b_official_validation/pre_dev_freeze_manifest.v2.json": "25847ad93838fa1201495330dccf8a8c657e0da5fed3b9bf2864c27e76cb5e0e"
+  },
+  "findings": [
+    {
+      "id": "A01",
+      "severity": "P1",
+      "status": "mitigated_by_dedicated_instructions",
+      "fact": "Root README/requirements refer to other mathematics experiments. Use AFQMC-specific instructions and a separate environment."
+    },
+    {
+      "id": "A02",
+      "severity": "P1",
+      "status": "documented_prerequisite",
+      "source": "stage03a_internal_experiment/tests/test_stage3a.py:97",
+      "fact": "test_zip_loader_opens_only_train_member requires actual local Train archive; suite is not fully data-free."
+    },
+    {
+      "id": "A03",
+      "severity": "P1",
+      "status": "documented_prerequisite",
+      "source": "stage03b_official_validation/test_recovery_runner.py:226",
+      "fact": "--prove-v1 requires the original Git commit; normal source ZIP has no Git history."
+    },
+    {
+      "id": "A04",
+      "severity": "P1",
+      "status": "not_executed",
+      "fact": "No clean environment installation, offline wheel installation or another-machine reproduction has been done by this admission audit."
+    },
+    {
+      "id": "A05",
+      "severity": "P1",
+      "status": "hold_for_data_terms_and_course_acceptance",
+      "fact": "AFQMC redistribution permission not established. Plan excludes original data; teacher acceptance of acquisition instructions remains unconfirmed."
+    },
+    {
+      "id": "A06",
+      "severity": "P1",
+      "status": "documented_no_replay",
+      "source": "stage03b_official_validation/run_official_dev.py:207",
+      "fact": "Official runner uses private incident/authorization/gate records and exact historical Git state; it is historical source, not a portable default entry."
+    },
+    {
+      "id": "A07",
+      "severity": "P1",
+      "status": "documented_missing_evidence",
+      "fact": "Row-level predictions and Manifest are intentionally local. Public aggregate evidence cannot regenerate per-row scores or validate individual classifications."
+    },
+    {
+      "id": "A08",
+      "severity": "P2",
+      "status": "documented_optional_toolchain",
+      "fact": "Report builders need separate plot dependencies, fonts and nonpublic inputs; final report is not an automatically reproducible output of the public-only package."
+    },
+    {
+      "id": "A09",
+      "severity": "P1",
+      "status": "historical_source_only_not_default",
+      "source": "stage03a_internal_experiment/qa_review/run_qa_diagnostics.py:333",
+      "fact": "Historical QA runner also executes registered char(2,3) exploration and reads private manual notes; do not offer it as the formal default or execute it during this audit."
+    }
+  ],
+  "verdict": "CONDITIONAL_ADMISSION_FOR_PACKAGING_PREPARATION_ONLY"
+}

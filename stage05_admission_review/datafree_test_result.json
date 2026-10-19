@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "tests_run": 49,
+  "failures": 0,
+  "errors": 0,
+  "groups": {
+    "math": 21,
+    "implementation": 13,
+    "official_helpers": 4,
+    "recovery": 11
+  },
+  "excluded_train_archive_test_count": 1,
+  "original_v1_git_proof_not_run": true,
+  "zip_member_reads": [
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json",
+    "dev.json"
+  ],
+  "raw_afqmc_member_reads": 0,
+  "source_tree_contains_afqmc_or_git": false,
+  "environment": "Existing frozen interpreter; copied sources only, not clean installed environment",
+  "started_utc": "2026-10-19T03:37:40.095090+00:00",
+  "finished_utc": "2026-10-19T03:37:44.024040+00:00",
+  "returncode": 0
+}

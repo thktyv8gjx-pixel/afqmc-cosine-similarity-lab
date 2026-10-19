@@ -1,0 +1,20 @@
+{
+  "files": [
+    ".gitignore",
+    "stage05_admission_review/01_源码与依赖准入审查.md",
+    "stage05_admission_review/02_数据素材与许可交付方案.md",
+    "stage05_admission_review/03_准入决定与下一步门槛.md",
+    "stage05_admission_review/admission_checks.json",
+    "stage05_admission_review/audit_delivery.py",
+    "stage05_admission_review/datafree_test_result.json",
+    "stage05_admission_review/proposed_package_inventory.json",
+    "stage05_admission_review/README_AFQMC_DELIVERY.md",
+    "stage05_admission_review/requirements-afqmc.lock.txt",
+    "stage05_admission_review/review_summary.json",
+    "stage05_admission_review/run_datafree_tests.py",
+    "stage05_admission_review/source_inventory.csv",
+    "stage05_admission_review/static_test_inventory.json",
+    "stage05_admission_review/public_file_allowlist.json"
+  ],
+  "private_logs_and_source_copy_excluded": true
+}

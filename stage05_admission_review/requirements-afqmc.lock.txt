@@ -1,0 +1,9 @@
+# AFQMC audit snapshot of the existing frozen environment; no installation performed.
+# Python 3.12.10; independent from root five-experiment requirements.
+numpy==2.5.3
+scipy==1.17.0
+scikit-learn==1.9.1
+Pillow==12.3.0
+joblib==1.6.0
+threadpoolctl==3.7.0
+packaging==26.3
