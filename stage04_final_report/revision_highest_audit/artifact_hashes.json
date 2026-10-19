@@ -1,0 +1,54 @@
+{
+  "old_working_docx": {
+    "sha256": "7eb840c78930e9e3546b7bd90173b40c0fe93bcfba79951b467491238e2f4fb3",
+    "bytes": 439639
+  },
+  "old_working_pdf": {
+    "sha256": "cb5468bfe8e0d86853193fd6cb427841aaa7ce9cfdf6fd83bee394ef371a96f2",
+    "bytes": 950052,
+    "pages": 14,
+    "page_text_lengths": [
+      242,
+      1324,
+      1185,
+      1212,
+      1432,
+      1850,
+      742,
+      382,
+      591,
+      566,
+      597,
+      1550,
+      1152,
+      1340
+    ],
+    "images_per_page": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0
+    ]
+  },
+  "revised_docx": {
+    "docx_sha256": "5b4026031822bffa7247bf85793d64c0f30593bf53dfd0699b8cc181fd340007",
+    "docx_bytes": 441895,
+    "pages": 15
+  },
+  "revised_pdf": {
+    "pdf_sha256": "701e5d45ad2bd9afbe30b152572c41cbef794bdd77436412d1ee5cc84e5efc5a",
+    "pdf_bytes": 973972,
+    "pages": 15
+  },
+  "template_sha256": "9977abdebacbf1aad2d46559b35bd28d411758d9834245da85b9aa38de551b8f"
+}

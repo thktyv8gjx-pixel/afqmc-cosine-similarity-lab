@@ -1,0 +1,23 @@
+{
+  "files": [
+    ".gitignore",
+    "stage04_final_report/revision_highest_audit/01_独立缺陷与严重性审计.md",
+    "stage04_final_report/revision_highest_audit/02_数学公式和变量一致性审计.md",
+    "stage04_final_report/revision_highest_audit/03_教师100分最高验收矩阵.md",
+    "stage04_final_report/revision_highest_audit/04_Word与PDF同源及文件元数据审计.md",
+    "stage04_final_report/revision_highest_audit/05_图表和真实结果一致性审查.md",
+    "stage04_final_report/revision_highest_audit/06_逐页视觉验收.md",
+    "stage04_final_report/revision_highest_audit/07_剩余风险与提交前待确认事项.md",
+    "stage04_final_report/revision_highest_audit/08_Stage04B修订最终验收.md",
+    "stage04_final_report/revision_highest_audit/artifact_hashes.json",
+    "stage04_final_report/revision_highest_audit/check_document.py",
+    "stage04_final_report/revision_highest_audit/document_gate.json",
+    "stage04_final_report/revision_highest_audit/execution_summary.json",
+    "stage04_final_report/revision_highest_audit/public_file_allowlist.json",
+    "stage04_final_report/revision_highest_audit/saved_metrics_check.json",
+    "stage04_final_report/revision_highest_audit/verify_saved_metrics.py",
+    "stage04_final_report/revision_highest_audit/visual_review.json",
+    "stage04_final_report/revision_highest_audit/public_file_allowlist.json"
+  ],
+  "private_reports_and_identity_not_authorized_for_publication": true
+}

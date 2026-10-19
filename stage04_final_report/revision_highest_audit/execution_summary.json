@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "verification_programs_passed": 4,
+  "unit_test_count_claimed": false,
+  "final_pdf_pixels_identical_to_all_fifteen_viewed_pages": true,
+  "commands": [
+    {
+      "script": "stage04_final_report/revision_highest_audit/local_only/check_numbers_actual.py",
+      "started_utc": "2026-10-19T03:22:44.069187+00:00",
+      "finished_utc": "2026-10-19T03:22:44.785554+00:00",
+      "returncode": 0
+    },
+    {
+      "script": "stage04_final_report/revision_highest_audit/check_document.py",
+      "started_utc": "2026-10-19T03:22:44.785554+00:00",
+      "finished_utc": "2026-10-19T03:22:46.927182+00:00",
+      "returncode": 0
+    },
+    {
+      "script": "stage04_final_report/revision_highest_audit/local_only/finish_evidence.py",
+      "started_utc": "2026-10-19T03:22:46.927182+00:00",
+      "finished_utc": "2026-10-19T03:22:47.132558+00:00",
+      "returncode": 0
+    },
+    {
+      "script": "stage04_final_report/revision_highest_audit/verify_saved_metrics.py",
+      "started_utc": "2026-10-19T03:22:47.132558+00:00",
+      "finished_utc": "2026-10-19T03:22:49.320205+00:00",
+      "returncode": 0
+    }
+  ],
+  "private_full_log_sha256": "46bf5cd33a85fc4df4bfe079f4dedbdbe33c08ff4aa5d2611b0857edb65f798f",
+  "not_a_new_run_of_legacy_50_tests": true
+}
