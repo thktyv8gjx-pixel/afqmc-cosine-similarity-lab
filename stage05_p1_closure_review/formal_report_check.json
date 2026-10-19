@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "formal_source_sha256": "478a07d01b082edb93be766d99c6c6ef230145ea235c14fff3a6b97622451c67",
+  "docx_sha256": "5b4026031822bffa7247bf85793d64c0f30593bf53dfd0699b8cc181fd340007",
+  "pdf_sha256": "701e5d45ad2bd9afbe30b152572c41cbef794bdd77436412d1ee5cc84e5efc5a",
+  "pages": 15,
+  "native_math_objects": 52,
+  "formula_role_checks_source_docx_pdf": "PASS",
+  "confirmed_five_identity_fields": "PASS",
+  "date_pending": true,
+  "original_institution_retained": true,
+  "report_pair_rewritten": false,
+  "prior_fifteen_page_visual_evidence_bound_by_hash": true,
+  "historical_draft_expressions_are_not_formal_sources": true
+}

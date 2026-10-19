@@ -1,0 +1,28 @@
+{
+  "reviewed_utc": "2026-10-19T10:31:08.489541+00:00",
+  "verdict": "CONDITIONAL PASS; engineering P1 items closed, final submission prerequisites remain",
+  "report_source_lock": "CLOSED",
+  "report_pair_hash_and_role_checks": "PASS_UNCHANGED_15_PAGES",
+  "fresh_environment_install_and_pip_check": "CLOSED",
+  "original_49_synthetic_tests": "PASS",
+  "transitive_dependency_lock": "CLOSED_9_PACKAGES_WITH_ACTUAL_WHEEL_HASHES",
+  "synthetic_material_executable": "CLOSED",
+  "candidate_file_count": 64,
+  "base_file_count_preserved": 58,
+  "frozen_source_file_count_unchanged": 34,
+  "official_metrics_unchanged": true,
+  "raw_dev_accesses_or_runs": 0,
+  "final_zip_created": false,
+  "personal_report_published": false,
+  "course_platform_upload": false,
+  "open_prerequisites": [
+    "submission date and institution heading pending",
+    "personal final reading/confirmation pending",
+    "AFQMC redistribution rights not established",
+    "teacher acceptance of no-raw-data delivery pending",
+    "lawful exact Manifest acquisition/rebuild for formal reproduction pending",
+    "official Dev replay not authorized or performed"
+  ],
+  "github_issue_updates": "To be verified after commit; keep #2 #3 #4 OPEN",
+  "status": "FINAL_DELIVERY_P1_CLOSURE_READY_FOR_REVIEW"
+}

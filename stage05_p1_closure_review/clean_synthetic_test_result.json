@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "tests_run": 49,
+  "failures": 0,
+  "errors": 0,
+  "groups": {
+    "math": 21,
+    "implementation": 13,
+    "official_helpers": 4,
+    "recovery": 11
+  },
+  "excluded_real_train_tests": 1,
+  "git_history_proof_tests_not_run": 2,
+  "raw_afqmc_reads": 0,
+  "official_dev_evaluation": false,
+  "synthetic_zip_member_reads": 19,
+  "uses_isolated_virtual_environment": true,
+  "python_version": "3.12.10"
+}

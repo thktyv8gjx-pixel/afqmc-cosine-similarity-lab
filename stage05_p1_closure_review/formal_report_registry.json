@@ -1,0 +1,75 @@
+{
+  "version": "formal-report-source-v1",
+  "created_utc": "2026-10-19T10:31:07.755420+00:00",
+  "status": "canonical_body_locked_report_pair_unchanged_pending_user_confirmation",
+  "canonical_source": {
+    "path": "stage05_p1_closure_review/local_only/formal_report_source.md",
+    "sha256": "478a07d01b082edb93be766d99c6c6ef230145ea235c14fff3a6b97622451c67",
+    "copied_from": "stage04_final_report/revision_highest_audit/local_only/report_revised.md",
+    "privacy": "Full report body is local only; not a public repository artifact"
+  },
+  "figure_sources": [
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig1a.png",
+      "sha256": "2ec099b021cde08d97e62f437d0e182e526a7b7ef5c5a476bf8f17d4ab8d1f3c"
+    },
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig1b.png",
+      "sha256": "c4ce1240f43d9b182079996cb8e6b7c5cd1c7b788f0758d45bcffe0a91dd2b94"
+    },
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig2.png",
+      "sha256": "2581ac6d00d23af57dc865b89079a65a9c8d3d74de15cc708776323e0e11d0b8"
+    },
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig3a.png",
+      "sha256": "08c44262438b4d752c9914966bc784a52d7be88aae747b04736876dd1c1e6d10"
+    },
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig3b.png",
+      "sha256": "70aa9b213f39685737d55f15166b46b647e41c9ef4a7d114338206cf0580e16b"
+    },
+    {
+      "path": "stage05_p1_closure_review/local_only/print_figures/fig4.png",
+      "sha256": "441f0c8081c4f06c96d5b24e489f54af12d6e95856e3e7b902c00fb05ef8c367"
+    }
+  ],
+  "report_pair_directory": "stage04_final_report/revision_highest_audit/local_only",
+  "docx_sha256": "5b4026031822bffa7247bf85793d64c0f30593bf53dfd0699b8cc181fd340007",
+  "pdf_sha256": "701e5d45ad2bd9afbe30b152572c41cbef794bdd77436412d1ee5cc84e5efc5a",
+  "pages": 15,
+  "historical_sources": [
+    {
+      "path": "stage04_report_draft/report_body.md.in",
+      "before_sha256": "614f8ac5c0f360eba1b40d24d29d3b9201acd6e163dc42ddf0c871a8d14ff478",
+      "after_sha256": "ece139904861a0a17e3a677c387199d7f5f925076aa0e8381495cdb8c8df6c94",
+      "role": "historical_draft_only_not_a_formal_regeneration_entry"
+    },
+    {
+      "path": "stage04_report_draft/报告正文初稿_公开安全版.md",
+      "before_sha256": "3e34c03e8a18b01d44185160ea6904fff91c7396259ce82d31d42fe8c5c4942c",
+      "after_sha256": "5233d89f3bb77910799b41a5d6304709f5792faba9693b27fd0ae0dd2650b8b7",
+      "role": "historical_draft_only_not_a_formal_regeneration_entry"
+    },
+    {
+      "path": "stage04_report_draft/build_report.py",
+      "before_sha256": "e195a704a643d4858ae6bd04a58205cf697d4f76d2ea3b990f67051f11b7f522",
+      "after_sha256": "c92c039ddf0a5397c92381ab355d9c1331618d6cca0874776f7cd0269467dd1d",
+      "role": "historical_draft_only_not_a_formal_regeneration_entry"
+    },
+    {
+      "path": "stage04_report_draft/README.md",
+      "before_sha256": "71db8b38a70b951fe41ac5011a3df27ece2f4cde955e41e1c039ff7cceb2da1d",
+      "after_sha256": "e96ba0d403be69e7d7edfeb2450bf986d7d479607643ed7d771ca2cb93386a52",
+      "role": "historical_draft_only_not_a_formal_regeneration_entry"
+    }
+  ],
+  "regeneration_adapter": "stage05_p1_closure_review/local_only/regenerate_from_canonical.py",
+  "regeneration_performed_this_round": false,
+  "regeneration_adapter_sha256": "2327ef2c2ffe6ad09e4688ac707a0ee8fbacf883837f4123edc5df768561a015",
+  "formatting_helper": {
+    "path": "stage04_final_report/revision_highest_audit/local_only/build_revision.py",
+    "sha256": "401f14c618bd09f2c566b40110d9b526000f436bf8a46ee06f545807cdd4941b",
+    "role": "formatting helper only; canonical adapter replaces its historical body transformation"
+  }
+}

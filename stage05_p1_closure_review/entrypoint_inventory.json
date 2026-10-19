@@ -1,0 +1,151 @@
+{
+  "all_staged_python_syntax": "PASS",
+  "entries": [
+    {
+      "path": "scripts/build_pre_dev_freeze.py",
+      "line": 270,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/build_public_evidence.py",
+      "line": 122,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/build_recovery_freeze.py",
+      "line": 122,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/review_public_staging.py",
+      "line": 81,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/review_recovery_staging.py",
+      "line": 26,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/run_pre_dev_checks.py",
+      "line": 62,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "scripts/run_recovery_checks.py",
+      "line": 49,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage01_data_audit/audit_afqmc.py",
+      "line": 689,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage02_math_protocol/run_math_tests.py",
+      "line": 46,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage02_math_protocol/tests/test_math_validation.py",
+      "line": 173,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03a_internal_experiment/generate_plots.py",
+      "line": 26,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03a_internal_experiment/run_experiment.py",
+      "line": 26,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03a_internal_experiment/run_tests.py",
+      "line": 47,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03a_internal_experiment/tests/test_stage3a.py",
+      "line": 223,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03a_internal_experiment/validate_outputs.py",
+      "line": 183,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03b_official_validation/generate_dev_plots.py",
+      "line": 216,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03b_official_validation/recheck_saved_results.py",
+      "line": 72,
+      "role": "historical_or_prerequisite_bound",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03b_official_validation/run_official_dev.py",
+      "line": 496,
+      "role": "requires_explicit_freeze_and_train_preflight_no_dev_replay_authorized",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03b_official_validation/test_official_dev_runner.py",
+      "line": 49,
+      "role": "synthetic_test_entry",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage03b_official_validation/test_recovery_runner.py",
+      "line": 237,
+      "role": "synthetic_test_entry",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage05_p1_closure_review/check_external_inputs.py",
+      "line": 12,
+      "role": "datafree_delivery_entry",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage05_p1_closure_review/demo_cosine.py",
+      "line": 22,
+      "role": "datafree_delivery_entry",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage05_p1_closure_review/run_synthetic_validation.py",
+      "line": 35,
+      "role": "datafree_delivery_entry",
+      "executed_as_default": false
+    },
+    {
+      "path": "stage05_admission_review/run_datafree_tests.py",
+      "role": "historical_top_level_synthetic_launcher; do not import as a module; newer explicit entry tested",
+      "executed_as_default": false
+    }
+  ],
+  "help_and_error_probes_logged": true,
+  "historical_builders_not_executed": true,
+  "default_synthetic_entries_tested_separately": true
+}

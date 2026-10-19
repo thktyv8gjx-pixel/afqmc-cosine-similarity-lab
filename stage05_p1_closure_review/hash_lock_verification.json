@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "started_utc": "2026-10-19T10:24:02.455396+00:00",
+  "finished_utc": "2026-10-19T10:24:19.848493+00:00",
+  "returncode": 0,
+  "mode": "pip dry-run ignore-installed, require-hashes, binary-only, no-cache",
+  "packages": 9,
+  "matches_the_nine_actual_freshly_installed_artifacts": true,
+  "new_lock_install_replayed": false,
+  "actual_initial_install_recorded_separately": true,
+  "log_sha256": "7eb7df1d6329410a0be343a1b3b8988ab65c11ac83f2ac701dcad46aba334220"
+}

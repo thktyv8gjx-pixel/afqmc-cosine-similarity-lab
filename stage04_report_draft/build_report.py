@@ -1,9 +1,15 @@
-"""Render prose and aggregate plots from saved evidence. Never import/run evaluators.
+"""HISTORICAL DRAFT ONLY. Disabled as a report regeneration entry point.
 
-Usage: python build_report.py [--local-cases]
-The public build requires saved internal aggregate evidence; obtain it locally.
-No dataset archive, original Dev member, fitting or threshold search is accessed.
+The implementation is retained for historical inspection only. Both the command
+line and main() reject report generation. Select the registered private formal
+source through the canonical adapter; never fall back to this draft template.
 """
+# This guard precedes optional plotting imports, so the deprecation message also
+# works in the dedicated AFQMC environment where report dependencies are absent.
+if __name__ == '__main__':
+    import sys
+    print('HISTORICAL_DRAFT_ONLY: this generator is disabled; use the registered formal source in stage05_p1_closure_review/formal_report_registry.json.')
+    raise SystemExit(0 if any(x in sys.argv for x in ['--help', '-h']) else 2)
 import argparse
 import csv
 import hashlib
@@ -60,6 +66,7 @@ def leaves(x, prefix=''):
     else: yield prefix,x
 
 def main():
+    raise RuntimeError('HISTORICAL_DRAFT_ONLY: final report generation from this source is forbidden')
     parser=argparse.ArgumentParser(); parser.add_argument('--local-cases',action='store_true'); args=parser.parse_args()
     data={k:json.loads((ROOT/v).read_text(encoding='utf-8')) for k,v in SOURCES.items()}
     before={v:sha(ROOT/v) for v in SOURCES.values()}

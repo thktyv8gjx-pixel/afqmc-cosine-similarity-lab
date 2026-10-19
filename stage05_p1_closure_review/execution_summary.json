@@ -1,0 +1,376 @@
+{
+  "passed": true,
+  "fresh_venv_created_and_installed": true,
+  "system_site_packages": false,
+  "user_site_enabled": false,
+  "commands": [
+    {
+      "step": "01_create_venv",
+      "argv": [
+        "<PYTHON312_EXECUTABLE>",
+        "-m",
+        "venv",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\environment_001"
+      ],
+      "python_flags": [],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:13:34.347176+00:00",
+      "finished_utc": "2026-10-19T10:13:43.222981+00:00",
+      "private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "02_install_dependencies",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\environment_001\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "--isolated",
+        "install",
+        "--no-cache-dir",
+        "--only-binary=:all:",
+        "--index-url",
+        "https://pypi.org/simple",
+        "--report",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\pip_install_report.json",
+        "-r",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage05_admission_review\\requirements-afqmc.lock.txt"
+      ],
+      "python_flags": [],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:13:43.222981+00:00",
+      "finished_utc": "2026-10-19T10:14:53.758798+00:00",
+      "private_log_sha256": "6adae12ec939be06a47a03201c81fafb806dd2884dcfd721f782d47973b91f50"
+    },
+    {
+      "step": "03_pip_check",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\environment_001\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "python_flags": [],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:14:53.768456+00:00",
+      "finished_utc": "2026-10-19T10:14:54.269209+00:00",
+      "private_log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "step": "04_pip_freeze",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\environment_001\\Scripts\\python.exe",
+        "-I",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "python_flags": [],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:14:54.280631+00:00",
+      "finished_utc": "2026-10-19T10:14:54.655271+00:00",
+      "private_log_sha256": "480fb4d3cf4f0e9a52f55f56b78afcfe036b3ed85c7ecfc87acc675f10b8b571"
+    },
+    {
+      "step": "05_environment_fingerprint",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\environment_001\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sys,site,importlib.metadata as m,json; print(json.dumps({'python':sys.version,'prefix':sys.prefix,'base_prefix':sys.base_prefix,'enable_user_site':site.ENABLE_USER_SITE,'packages':{p:m.version(p) for p in ['numpy','scipy','scikit-learn','Pillow','joblib','threadpoolctl','packaging']},'sys_path':sys.path},indent=2))"
+      ],
+      "python_flags": [],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:14:54.666855+00:00",
+      "finished_utc": "2026-10-19T10:14:54.799100+00:00",
+      "private_log_sha256": "10e3ee1e8bee200d923604e41d7851cf53ddf0e2908fc6cbf988cfbfdf9297cb"
+    },
+    {
+      "step": "06_original_49_synthetic_tests",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage05_p1_closure_review\\run_synthetic_validation.py",
+        "--root",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001",
+        "--output",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\validation_run_002\\synthetic_tests_actual.json"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:21:59.931402+00:00",
+      "finished_utc": "2026-10-19T10:22:01.582254+00:00",
+      "private_log_sha256": "28ff0aadf2e70bd885780abad2a2518654d1c3d7f776350efcb10098706721ba"
+    },
+    {
+      "step": "07_synthetic_cosine_demo",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage05_p1_closure_review\\demo_cosine.py",
+        "--root",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001",
+        "--output",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\validation_run_002\\synthetic_demo_actual.json"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:01.591766+00:00",
+      "finished_utc": "2026-10-19T10:22:02.814946+00:00",
+      "private_log_sha256": "2e7e12d5c01c1077c52ad66e1744cc1bd745029d2ba2d9d9d98dce57f300b0a5"
+    },
+    {
+      "step": "08_missing_prerequisite_message",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage05_p1_closure_review\\check_external_inputs.py",
+        "--root",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:02.828428+00:00",
+      "finished_utc": "2026-10-19T10:22:02.904637+00:00",
+      "private_log_sha256": "c1ed6e6e07f9e361479848c1017c24b1290c9b70ecca3260e877421639ff1109"
+    },
+    {
+      "step": "09_internal_help",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03a_internal_experiment\\run_experiment.py",
+        "--help"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:02.905641+00:00",
+      "finished_utc": "2026-10-19T10:22:04.095478+00:00",
+      "private_log_sha256": "5b0222e638cf60808da8d2a2a5bd76f206f94f6f22860bdaf48a72c3da184a3b"
+    },
+    {
+      "step": "10_internal_plot_help",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03a_internal_experiment\\generate_plots.py",
+        "--help"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:04.097478+00:00",
+      "finished_utc": "2026-10-19T10:22:05.303274+00:00",
+      "private_log_sha256": "a658a3906dd4c69d83ed3e91857d17e462b1d9069775d9ec7d0678b6234ff902"
+    },
+    {
+      "step": "11_official_runner_help",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03b_official_validation\\run_official_dev.py",
+        "--help"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:05.305280+00:00",
+      "finished_utc": "2026-10-19T10:22:06.577863+00:00",
+      "private_log_sha256": "01b3e173025df2fbabdce094db40ce1d1acebd28533a47807878e77f8e10e97a"
+    },
+    {
+      "step": "12_saved_recheck_help",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03b_official_validation\\recheck_saved_results.py",
+        "--help"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:06.588708+00:00",
+      "finished_utc": "2026-10-19T10:22:07.903972+00:00",
+      "private_log_sha256": "c76ed497bf3d9e47628629a437a7bcc6ee481df6d6839958194ede7795c23e34"
+    },
+    {
+      "step": "13_official_required_argument",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03b_official_validation\\run_official_dev.py"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:07.912709+00:00",
+      "finished_utc": "2026-10-19T10:22:09.194052+00:00",
+      "private_log_sha256": "e5a567a76763c50004edd8bfbf1da63aa8581dc64c49dd4c81fb3715d38702ad"
+    },
+    {
+      "step": "14_internal_missing_data",
+      "argv": [
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001\\stage03a_internal_experiment\\run_experiment.py",
+        "--root",
+        "<PROJECT_ROOT>\\stage05_p1_closure_review\\local_only\\staging_001"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 1,
+      "expected_returncode": 1,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:09.203602+00:00",
+      "finished_utc": "2026-10-19T10:22:10.402187+00:00",
+      "private_log_sha256": "f36c828b0b27d958cc23dd0a94c8c16bf34ea25fb722b09a2f601c2966a296c2"
+    },
+    {
+      "step": "15_historical_report_disabled",
+      "argv": [
+        "<PROJECT_ROOT>\\stage04_report_draft\\build_report.py"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 2,
+      "expected_returncode": 2,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:10.412948+00:00",
+      "finished_utc": "2026-10-19T10:22:10.451696+00:00",
+      "private_log_sha256": "6b105d9a25eca97955a503c3743799ad5da0412252c79e62f1233ecf9ae14353"
+    },
+    {
+      "step": "16_historical_report_help",
+      "argv": [
+        "<PROJECT_ROOT>\\stage04_report_draft\\build_report.py",
+        "--help"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:10.460219+00:00",
+      "finished_utc": "2026-10-19T10:22:10.505146+00:00",
+      "private_log_sha256": "6b105d9a25eca97955a503c3743799ad5da0412252c79e62f1233ecf9ae14353"
+    },
+    {
+      "step": "17_core_import_probe",
+      "argv": [
+        "-c",
+        "import sys,json,zipfile;from pathlib import Path;r=Path.cwd();sys.path[:0]=[str(r/'stage03a_internal_experiment/src'),str(r/'stage03b_official_validation')];zipfile.ZipFile.open=lambda *a,**k:(_ for _ in ()).throw(AssertionError('archive read during import'));import data_pipeline,features,pipeline,threshold_metrics,visualize,run_official_dev,recovery_runtime,recheck_saved_results;print(json.dumps({'eight_core_modules_imported':True,'archive_reads':0,'fit_calls':0}))"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:10.506206+00:00",
+      "finished_utc": "2026-10-19T10:22:11.732029+00:00",
+      "private_log_sha256": "2267293845746c3265f379c01a726ff61e7071066f363fbe8506901c26a961b6"
+    },
+    {
+      "step": "18_full_distribution_fingerprint",
+      "argv": [
+        "-c",
+        "import sys,site,json,importlib.metadata as m,platform;print(json.dumps({'python':sys.version.split()[0],'platform':platform.platform(),'machine':platform.machine(),'isolated':sys.prefix!=sys.base_prefix,'user_site_enabled':site.ENABLE_USER_SITE,'distributions':{x.metadata['Name']:x.version for x in m.distributions()}},indent=2))"
+      ],
+      "python_flags": [
+        "-s",
+        "-E",
+        "-X",
+        "utf8"
+      ],
+      "returncode": 0,
+      "expected_returncode": 0,
+      "passed": true,
+      "started_utc": "2026-10-19T10:22:11.740463+00:00",
+      "finished_utc": "2026-10-19T10:22:11.958271+00:00",
+      "private_log_sha256": "f7309b9f9167e46eb4a5358f0e08c7032a80bf60fc08e51d89c8bde4736eefb3"
+    }
+  ],
+  "hash_locked_download_resolution": {
+    "passed": true,
+    "started_utc": "2026-10-19T10:24:02.455396+00:00",
+    "finished_utc": "2026-10-19T10:24:19.848493+00:00",
+    "returncode": 0,
+    "mode": "pip dry-run ignore-installed, require-hashes, binary-only, no-cache",
+    "packages": 9,
+    "matches_the_nine_actual_freshly_installed_artifacts": true,
+    "new_lock_install_replayed": false,
+    "actual_initial_install_recorded_separately": true,
+    "log_sha256": "7eb7df1d6329410a0be343a1b3b8988ab65c11ac83f2ac701dcad46aba334220"
+  },
+  "initial_probe_incident": {
+    "retained": true,
+    "failed_step": "official_runner_help",
+    "failure": "-I removed the script directory, hiding sibling recovery_runtime",
+    "resolved_by": "fresh venv standard script path with -s -E -X utf8; no frozen code edit",
+    "first_probe_did_not_access_real_afqmc": true
+  },
+  "official_dev_runs": 0,
+  "synthetic_tests": 49,
+  "actual_pip_install_report_sha256": "5d5b5920aed4b9a4af1f4a79c85bc55cda148d58143ab44f0b003111f0953727"
+}

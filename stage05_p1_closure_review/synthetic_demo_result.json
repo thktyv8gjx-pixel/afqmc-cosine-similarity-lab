@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "origin": "author_constructed_for_delivery_validation",
+  "input_sha256": "fd7615060766578bcf5c8ba87dd9c111dd7e906b7ac80a2b699981d0488dfbd3",
+  "corpus_documents": 2,
+  "feature_dimension": 5,
+  "scope": "Tiny synthetic corpus only; not AFQMC, not the frozen 54330-document model, not a performance evaluation",
+  "formal_afqmc_model_used": false,
+  "thresholds_or_performance_metrics_computed": false,
+  "rows": [
+    {
+      "example_id": "synthetic_identical",
+      "method": "count_char2",
+      "score": 1.0,
+      "left_zero": false,
+      "right_zero": false
+    },
+    {
+      "example_id": "synthetic_partial",
+      "method": "count_char2",
+      "score": 0.33333333333333337,
+      "left_zero": false,
+      "right_zero": false
+    },
+    {
+      "example_id": "synthetic_zero",
+      "method": "count_char2",
+      "score": 0.0,
+      "left_zero": true,
+      "right_zero": false
+    },
+    {
+      "example_id": "synthetic_identical",
+      "method": "tfidf_char2",
+      "score": 1.0,
+      "left_zero": false,
+      "right_zero": false
+    },
+    {
+      "example_id": "synthetic_partial",
+      "method": "tfidf_char2",
+      "score": 0.2019930924979184,
+      "left_zero": false,
+      "right_zero": false
+    },
+    {
+      "example_id": "synthetic_zero",
+      "method": "tfidf_char2",
+      "score": 0.0,
+      "left_zero": true,
+      "right_zero": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "origin": "author_constructed_for_delivery_validation",
+  "scope": "Tiny synthetic corpus only; not AFQMC, not the frozen 54330-document model, not a performance evaluation",
+  "corpus": ["人工智能", "人工数学"],
+  "pairs": [
+    {"source_row_id": "synthetic_identical", "sentence1": "人工智能", "sentence2": "人工智能"},
+    {"source_row_id": "synthetic_partial", "sentence1": "人工智能", "sentence2": "人工数学"},
+    {"source_row_id": "synthetic_zero", "sentence1": "Z", "sentence2": "人工智能"}
+  ]
+}

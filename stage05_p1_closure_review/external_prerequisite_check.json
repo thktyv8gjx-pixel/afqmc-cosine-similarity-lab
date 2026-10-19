@@ -1,0 +1,12 @@
+{
+  "original_manifest_present_locally": true,
+  "original_manifest_file_sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+  "matches_v2_frozen_hash": true,
+  "manifest_copied_into_staging": false,
+  "manifest_rebuilt_this_round": false,
+  "original_archive_opened_this_round": false,
+  "official_download_rechecked_this_round": false,
+  "legal_redistribution_permission_established": false,
+  "fresh_downloader_can_immediately_reproduce_formal_results": false,
+  "teacher_acceptance_of_no_raw_data_zip": "pending"
+}
