@@ -1,0 +1,119 @@
+{
+  "status": "FINAL_PREPARATION_REVIEW_PASS",
+  "checked_utc": "2026-10-20T10:16:41.889700+00:00",
+  "base_commit": "4f1a0e6ce2c2e3e38f5ffbfb98b1293b3662755e",
+  "isolation": "Tracked HEAD snapshot plus three revised scripts; existing clean AFQMC venv reused",
+  "new_preparation_and_launcher_tests": {
+    "run": 37,
+    "failures": 0,
+    "errors": 0
+  },
+  "original_synthetic_tests": {
+    "passed": true,
+    "tests_run": 49,
+    "failures": 0,
+    "errors": 0,
+    "groups": {
+      "math": 21,
+      "implementation": 13,
+      "official_helpers": 4,
+      "recovery": 11
+    },
+    "excluded_real_train_tests": 1,
+    "git_history_proof_tests_not_run": 2,
+    "raw_afqmc_reads": 0,
+    "official_dev_evaluation": false,
+    "synthetic_zip_member_reads": 19,
+    "uses_isolated_virtual_environment": true,
+    "python_version": "3.12.10"
+  },
+  "synthetic_cosine_demo_passed": true,
+  "guard": {
+    "synthetic_member_reads": 163,
+    "blocked": 0,
+    "real_afqmc_member_reads": 0
+  },
+  "pip_check": {
+    "exit_code": 0,
+    "message": "No broken requirements found."
+  },
+  "environment": [
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0"
+    },
+    {
+      "name": "narwhals",
+      "version": "2.27.1"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "version": "25.0.1"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.9.1"
+    },
+    {
+      "name": "scipy",
+      "version": "1.17.0"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0"
+    }
+  ],
+  "frozen_sources_verified": 34,
+  "frozen_sources_manifests_and_dev_metrics_unchanged": true,
+  "revised_script_sha256": {
+    "scripts/prepare_afqmc.py": "a13d2d4061d58b25482eaa110aff0fef89f3696c6603ed7287d05670fab54ab0",
+    "scripts/check_afqmc_synthetic.py": "e7ef4aed118a2e50783f37b5e5a0fb391b8924cdb87f93a6d07c74c10192ccd1",
+    "scripts/test_prepare_afqmc.py": "d1edf075068e86b3f87c4fef098f2136a734bdb176156c7b117895430dbce08b"
+  },
+  "real_afqmc_record_reads_this_review": 0,
+  "afqmc_model_runs": 0,
+  "official_dev_evaluations": 0,
+  "real_download_and_manifest_repeated_this_review": false,
+  "prior_real_download_and_exact_manifest_evidence": "validation_summary.json",
+  "private_log_sha256": {
+    "environment.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "environment.stdout.log": "0caaa805d910d085a618383c0e572b122bacc47ebe92bf336ea148857a9aac73",
+    "existing_synthetic.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "existing_synthetic.stdout.log": "e3cbb0f9d7d23da62bcd89ee24a78ece16fbb98f8d5f432adf14372927bcafb8",
+    "pip_check.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pip_check.stdout.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "preparation_tests.stderr.log": "d6a45f84734b73827331d04f3c387364a794cb76bca3c6bf731e2f6f097623c1",
+    "preparation_tests.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "unchanged_preparation_constants_and_function_ast": [
+    "URL",
+    "ARCHIVE_SHA256",
+    "MANIFEST_SHA256",
+    "STAGE1_SHA256",
+    "MEMBERS",
+    "FIELDNAMES",
+    "DEPENDENCIES",
+    "MAX_DOWNLOAD_BYTES",
+    "validate_records",
+    "validate_archive",
+    "manifest_rows",
+    "check_environment",
+    "publish_without_overwrite"
+  ]
+}

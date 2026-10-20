@@ -15,15 +15,24 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
+def checked_result(output: Path, returncode: int, name: str) -> dict:
+    if returncode or not output.is_file():
+        raise RuntimeError(f'{name} failed with exit {returncode} or missing result file')
+    result = json.loads(output.read_text(encoding='utf-8'))
+    if not isinstance(result, dict) or result.get('passed') is not True:
+        raise RuntimeError(f'{name} did not report an explicit successful result')
+    return result
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     args = parser.parse_args(argv)
     root = args.root.resolve()
     private = root / 'stage05_p1_closure_review/local_only'
-    private.mkdir(parents=True, exist_ok=True)
     record = {'passed': False, 'raw_afqmc_read': False, 'dev_evaluation': False}
     try:
+        private.mkdir(parents=True, exist_ok=True)
         freeze_path = 'stage03b_official_validation/pre_dev_freeze_manifest.v2.json'
         freeze = json.loads((root / freeze_path).read_text(encoding='utf-8'))
         claimed = freeze.pop('freeze_manifest_sha256')
@@ -65,11 +74,11 @@ def main(argv=None):
                 output = work / f'{name}.json'
                 command = [sys.executable, '-s', '-E', '-X', 'utf8', str(snapshot / 'stage05_p1_closure_review' / script), '--root', str(snapshot), '--output', str(output)]
                 process = subprocess.run(command, cwd=snapshot, env=env, capture_output=True, text=True, encoding='utf-8')
-                if process.returncode or not output.exists():
+                if process.returncode:
                     # Only synthetic test messages; no external data is in snapshot.
                     print(process.stderr[-5000:], file=sys.stderr)
-                    raise RuntimeError(f'{name} failed with exit {process.returncode}')
-                runs.append({'name': name, 'exit_code': process.returncode, 'result': json.loads(output.read_text(encoding='utf-8'))})
+                result = checked_result(output, process.returncode, name)
+                runs.append({'name': name, 'exit_code': process.returncode, 'result': result})
             record.update(passed=True, copied_files=len(hashes)+2, runs=runs,
                           json_fixture_check='registered v1/v2 canonical digests; original bytes copied unchanged',
                           python=sys.version.split()[0], isolated_environment=sys.prefix != sys.base_prefix,

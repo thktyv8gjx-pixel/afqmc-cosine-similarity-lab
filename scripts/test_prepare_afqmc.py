@@ -1,10 +1,9 @@
 """Synthetic-only tests of the real preparation functions; no AFQMC opens."""
 import contextlib
+import email.message
 import hashlib
-import importlib.util
 import io
 import json
-import os
 import tempfile
 import unittest
 import urllib.error
@@ -13,6 +12,7 @@ from pathlib import Path
 from unittest import mock
 
 import prepare_afqmc as prep
+import check_afqmc_synthetic as synthetic
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -68,20 +68,20 @@ class PreparationTests(unittest.TestCase):
         self.assertEqual(self.archive.read_bytes(), b'wrong version')
 
     def test_download_atomic_and_no_parts(self):
-        with mock.patch.object(prep.urllib.request, 'urlopen', return_value=Response(self.archive_bytes)) as request:
+        with mock.patch.object(prep, 'open_official_archive', return_value=Response(self.archive_bytes)) as request:
             _, mode = prep.obtain_archive(self.archive, offline=False, timeout=7)
-        request.assert_called_once_with(prep.URL, timeout=7)
+        request.assert_called_once_with(7)
         self.assertEqual(mode, 'downloaded_and_verified')
         self.assertEqual(self.archive.read_bytes(), self.archive_bytes)
         self.assertFalse(list(self.raw.glob('*.part')))
 
     def test_existing_valid_is_offline_idempotent(self):
         self.save()
-        with mock.patch.object(prep.urllib.request, 'urlopen', side_effect=AssertionError('network forbidden')):
+        with mock.patch.object(prep, 'open_official_archive', side_effect=AssertionError('network forbidden')):
             self.assertEqual(prep.obtain_archive(self.archive, offline=False, timeout=1)[1], 'existing_verified')
 
     def test_network_error_cleans_temporary_and_explains_manual_download(self):
-        with mock.patch.object(prep.urllib.request, 'urlopen', side_effect=urllib.error.URLError('fake failure')), contextlib.redirect_stderr(io.StringIO()) as stderr:
+        with mock.patch.object(prep, 'open_official_archive', side_effect=urllib.error.URLError('fake failure')), contextlib.redirect_stderr(io.StringIO()) as stderr:
             code = prep.main(['--root', str(self.root), '--archive-only'])
         self.assertEqual(code, 2)
         self.assertIn(prep.URL, stderr.getvalue())
@@ -90,27 +90,54 @@ class PreparationTests(unittest.TestCase):
         self.assertEqual(list(self.raw.iterdir()), [])
 
     def test_incomplete_download_never_published(self):
-        with mock.patch.object(prep.urllib.request, 'urlopen', return_value=Response(self.archive_bytes[:20])):
+        with mock.patch.object(prep, 'open_official_archive', return_value=Response(self.archive_bytes[:20])):
             with self.assertRaises(prep.PreparationError):
                 prep.obtain_archive(self.archive, offline=False, timeout=1)
         self.assertFalse(self.archive.exists())
         self.assertEqual(list(self.raw.iterdir()), [])
 
     def test_offline_missing_never_network(self):
-        with mock.patch.object(prep.urllib.request, 'urlopen', side_effect=AssertionError('network forbidden')):
+        with mock.patch.object(prep, 'open_official_archive', side_effect=AssertionError('network forbidden')):
             with self.assertRaises(prep.PreparationError):
                 prep.obtain_archive(self.archive, offline=True, timeout=1)
 
     def test_redirect_rejected(self):
         response = Response(self.archive_bytes)
         response.geturl = lambda: 'https://example.invalid/unregistered.zip'
-        with mock.patch.object(prep.urllib.request, 'urlopen', return_value=response):
+        with mock.patch.object(prep, 'open_official_archive', return_value=response):
             with self.assertRaises(prep.PreparationError):
                 prep.obtain_archive(self.archive, offline=False, timeout=1)
         self.assertFalse(self.archive.exists())
 
+    def test_real_opener_refuses_redirect_before_destination_request(self):
+        contacted = []
+
+        class SyntheticHTTPS(prep.urllib.request.HTTPSHandler):
+            def https_open(self, request):
+                contacted.append(request.full_url)
+                headers = email.message.Message()
+                headers['Location'] = 'https://example.invalid/unregistered.zip'
+                response = prep.urllib.request.addinfourl(io.BytesIO(b''), headers, request.full_url, 302)
+                response.msg = 'Found'
+                return response
+
+        # Real urllib redirect processing, with a synthetic transport and no sockets.
+        opener = prep.urllib.request.build_opener(SyntheticHTTPS(), prep.OfficialSourceOnly())
+        with mock.patch.object(prep.urllib.request, 'build_opener', return_value=opener):
+            with self.assertRaisesRegex(prep.PreparationError, 'redirect'):
+                prep.obtain_archive(self.archive, offline=False, timeout=1)
+        self.assertEqual(contacted, [prep.URL])
+        self.assertFalse(self.archive.exists())
+        self.assertEqual(list(self.raw.iterdir()), [])
+
+    def test_interruption_cleans_partial_file(self):
+        with mock.patch.object(prep, 'open_official_archive', side_effect=KeyboardInterrupt):
+            with self.assertRaises(KeyboardInterrupt):
+                prep.obtain_archive(self.archive, offline=False, timeout=1)
+        self.assertEqual(list(self.raw.iterdir()), [])
+
     def test_download_limit(self):
-        with mock.patch.object(prep, 'MAX_DOWNLOAD_BYTES', 1), mock.patch.object(prep.urllib.request, 'urlopen', return_value=Response(self.archive_bytes)):
+        with mock.patch.object(prep, 'MAX_DOWNLOAD_BYTES', 1), mock.patch.object(prep, 'open_official_archive', return_value=Response(self.archive_bytes)):
             with self.assertRaises(prep.PreparationError):
                 prep.obtain_archive(self.archive, offline=False, timeout=1)
         self.assertFalse(self.archive.exists())
@@ -219,6 +246,60 @@ class PreparationTests(unittest.TestCase):
                 prep.rebuild_manifest(ROOT, self.archive, self.destination)
         self.assertEqual(self.destination.read_bytes(), b'wrong historical file')
 
+    def test_prepare_wrong_manifest_rejected_before_archive_access(self):
+        self.destination.write_bytes(b'keep original')
+        with mock.patch.object(prep, 'obtain_archive') as acquire:
+            with self.assertRaisesRegex(prep.PreparationError, 'Existing Manifest'):
+                prep.prepare(self.root)
+        acquire.assert_not_called()
+        self.assertEqual(self.destination.read_bytes(), b'keep original')
+
+    def test_prepare_wrong_environment_rejected_before_archive_access(self):
+        with mock.patch.object(prep, 'check_environment', side_effect=prep.PreparationError('environment blocked')), mock.patch.object(prep, 'obtain_archive') as acquire:
+            with self.assertRaisesRegex(prep.PreparationError, 'environment blocked'):
+                prep.prepare(self.root)
+        acquire.assert_not_called()
+
+    def test_prepare_wrong_source_rejected_before_archive_access(self):
+        with mock.patch.object(prep, 'check_environment', return_value={}), mock.patch.object(prep, 'obtain_archive') as acquire:
+            with self.assertRaisesRegex(prep.PreparationError, 'Stage 1 source'):
+                prep.prepare(self.root)
+        acquire.assert_not_called()
+
+    def test_cli_rejects_invalid_timeout_before_preparation(self):
+        for value in ['0', '-1', 'nan', 'inf', '301']:
+            with self.subTest(value=value), mock.patch.object(prep, 'prepare') as prepare, contextlib.redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as raised:
+                    prep.main(['--timeout', value])
+                self.assertEqual(raised.exception.code, 2)
+                prepare.assert_not_called()
+
+    def test_complete_cli_download_and_offline_manifest_roundtrip(self):
+        self.save()
+        stage1 = prep.load_stage1(ROOT)
+        records, _, _ = stage1.load_archive(self.archive)
+        rows, _ = prep.manifest_rows(stage1, records)
+        expected = self.raw / 'expected.csv'
+        stage1.write_csv(expected, rows, prep.FIELDNAMES)
+        digest = prep.sha256_file(expected)
+        self.archive.unlink()
+        (self.raw.parent / 'audit_afqmc.py').write_bytes((ROOT / 'stage01_data_audit/audit_afqmc.py').read_bytes())
+        with mock.patch.object(stage1, 'EXPECTED', {'train': 20, 'dev': 4, 'test': 1}), mock.patch.object(prep, 'load_stage1', return_value=stage1), mock.patch.object(prep, 'MANIFEST_SHA256', digest):
+            with mock.patch.object(prep, 'open_official_archive', return_value=Response(self.archive_bytes)) as request, contextlib.redirect_stdout(io.StringIO()) as stdout:
+                self.assertEqual(prep.main(['--root', str(self.root)]), 0)
+            first = json.loads(stdout.getvalue())
+            request.assert_called_once()
+            with mock.patch.object(prep, 'open_official_archive', side_effect=AssertionError('offline network forbidden')), contextlib.redirect_stdout(io.StringIO()) as stdout:
+                self.assertEqual(prep.main(['--root', str(self.root), '--offline']), 0)
+            second = json.loads(stdout.getvalue())
+        self.assertEqual(first['status'], 'DATA_PREPARATION_PASS')
+        self.assertEqual(first['acquisition'], 'downloaded_and_verified')
+        self.assertEqual(second['acquisition'], 'existing_verified')
+        self.assertEqual(first['manifest']['sha256'], second['manifest']['sha256'])
+        self.assertEqual(self.destination.read_bytes(), expected.read_bytes())
+        self.assertTrue(second['manifest']['existing_manifest_preserved'])
+        self.assertFalse(first['dev_performance_evaluation'])
+
     def test_atomic_publication_never_overwrites(self):
         source = self.raw / 'source'
         source.write_bytes(b'candidate')
@@ -229,11 +310,46 @@ class PreparationTests(unittest.TestCase):
 
     def test_archive_only_never_loads_model_or_splitter(self):
         self.save()
-        with mock.patch.object(prep, 'rebuild_manifest', side_effect=AssertionError('not allowed')):
+        with mock.patch.object(prep, 'rebuild_manifest', side_effect=AssertionError('not allowed')), mock.patch.object(prep, 'check_environment', side_effect=AssertionError('not needed')), mock.patch.object(prep, 'verify_stage1_source', side_effect=AssertionError('not needed')):
             result = prep.prepare(self.root, offline=True, archive_only=True)
         self.assertEqual(result['status'], 'ARCHIVE_VALIDATED')
         self.assertFalse(result['dev_performance_evaluation'])
         self.assertFalse(self.destination.exists())
+
+
+class SyntheticLauncherTests(unittest.TestCase):
+    def test_unwritable_workspace_returns_clear_failure(self):
+        with mock.patch.object(synthetic.Path, 'mkdir', side_effect=PermissionError('synthetic permission denial')), contextlib.redirect_stderr(io.StringIO()) as stderr:
+            self.assertEqual(synthetic.main(['--root', str(ROOT)]), 2)
+        self.assertIn('DATA_FREE_CHECK_FAILED: PermissionError', stderr.getvalue())
+        self.assertNotIn('Traceback', stderr.getvalue())
+
+    def test_result_requires_explicit_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = Path(directory) / 'result.json'
+            for value in [{'passed': False}, {}, {'passed': 1}, {'passed': 'true'}, []]:
+                result.write_text(json.dumps(value), encoding='utf-8')
+                with self.subTest(value=value), self.assertRaises(RuntimeError):
+                    synthetic.checked_result(result, 0, 'synthetic')
+
+    def test_result_rejects_missing_file_failed_exit_or_invalid_json(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = Path(directory) / 'result.json'
+            with self.assertRaises(RuntimeError):
+                synthetic.checked_result(result, 0, 'synthetic')
+            result.write_text('{"passed": true}', encoding='utf-8')
+            with self.assertRaises(RuntimeError):
+                synthetic.checked_result(result, 1, 'synthetic')
+            result.write_text('broken json', encoding='utf-8')
+            with self.assertRaises(ValueError):
+                synthetic.checked_result(result, 0, 'synthetic')
+
+    def test_successful_result_loaded_without_changes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            result = Path(directory) / 'result.json'
+            expected = {'passed': True, 'tests_run': 49}
+            result.write_text(json.dumps(expected), encoding='utf-8')
+            self.assertEqual(synthetic.checked_result(result, 0, 'synthetic'), expected)
 
 
 if __name__ == '__main__':

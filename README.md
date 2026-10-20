@@ -33,7 +33,7 @@ python scripts/check_afqmc_synthetic.py
 python scripts/test_prepare_afqmc.py
 ```
 
-第一条核对已登记的v1/v2规范化清单摘要、34个冻结源码及三个合成辅助文件的原始字节哈希，建立不含`.git`、原始数据和私有报告的39文件临时快照，运行原49项合成测试及自有两句语料的Count/TF-IDF余弦演示。第二条运行26项数据准备合成测试（模拟网络故障、错版本、CRC、字段和Manifest门禁），不接触真实AFQMC。两条均需要上面的数值依赖；临时产物保存在已忽略的local_only目录。合成验证成功不等于完整AFQMC结果复现成功。
+第一条核对已登记的v1/v2规范化清单摘要、34个冻结源码及三个合成辅助文件的原始字节哈希，建立不含`.git`、原始数据和私有报告的39文件临时快照，运行原49项合成测试及自有两句语料的Count/TF-IDF余弦演示。第二条运行37项数据准备与入口合成测试（模拟网络故障、错版本、CRC、字段和Manifest门禁），不接触真实AFQMC。两条均需要上面的数值依赖；第一条快照保存在已忽略的local_only目录，第二条使用系统临时目录并自动清理。合成验证成功不等于完整AFQMC结果复现成功。
 
 ### B. 官方数据下载、完整性校验和Manifest准备
 
@@ -41,7 +41,7 @@ python scripts/test_prepare_afqmc.py
 python scripts/prepare_afqmc.py
 ```
 
-从CLUE公布的固定URL下载到`stage01_data_audit/raw/afqmc_public.zip`。使用同目录临时文件，只有固定SHA-256、3成员CRC和成员指纹、Train/Dev/Test数量34,334/4,316/3,861及字段全部通过后才以原始字节发布到本地。Test保留整数`id`，没有label，不补造标签。已有正确归档直接校验，已有错误归档保留并报错；不切换镜像或数据版本，不解压生成重复问句文件。
+完整模式先检查依赖版本、Stage1源码指纹及既有Manifest；发现已知问题时在下载或读取归档前退出。随后从CLUE公布的固定URL下载到`stage01_data_audit/raw/afqmc_public.zip`。使用同目录临时文件，只有固定SHA-256、3成员CRC和成员指纹、Train/Dev/Test数量34,334/4,316/3,861及字段全部通过后才以原始字节发布到本地。Test保留整数`id`，没有label，不补造标签。已有正确归档直接校验，已有错误归档保留并报错；不切换镜像或数据版本；重定向在访问目标地址前被拒绝，不解压生成重复问句文件。
 
 随后复用原Stage1的固定种子2026、分组五折首折及写出函数，生成完整42,511行`stage01_data_audit/split_manifest.csv`。固定列序、UTF-8 BOM及CRLF是字节复现协议的一部分。必须与目标SHA-256 `e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907`一致，才接纳候选；已有正确文件保留并比对，已有错误文件不覆盖。新入口不调用旧审计主函数，因此不会额外生成含真实案例的重复/冲突报告。
 
@@ -54,7 +54,7 @@ python scripts/prepare_afqmc.py --archive-only
 
 标准库归档检查使用Python 3.11及以上；完整Manifest重建使用已记录的Python 3.12.10和依赖版本。默认根目录由脚本位置决定，不依赖终端当前目录；`--root`只用于明确指定的项目副本。归档检查会读取三个拆分进行数据结构审计，Manifest划分只使用Train；两者均不构造模型特征、不预测、不搜索阈值、不重评Dev。
 
-官方下载地址和手工放置路径会在网络失败时打印，退出码为2；失败临时文件清理，半文件不冒充可用归档。目标归档SHA-256为`5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc`。原始归档与Manifest仍被`.gitignore`排除。详见[来源说明](DATASET_PROVENANCE.md)和[实际准备验证](public_evidence/data_preparation/README.md)。
+官方下载地址和手工放置路径会在网络失败时打印，退出码为2；失败临时文件清理，半文件不冒充可用归档。目标归档SHA-256为`5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc`。原始归档与Manifest仍被`.gitignore`排除。详见[来源说明](DATASET_PROVENANCE.md)、[实际准备验证](public_evidence/data_preparation/README.md)和[最终检查记录](public_evidence/data_preparation/final_review.md)。
 
 ### C. 前提齐备后可单独运行的真实Train实验
 

@@ -39,6 +39,17 @@ class PreparationError(Exception):
     """A sanitized, actionable data-preparation error."""
 
 
+class OfficialSourceOnly(urllib.request.HTTPRedirectHandler):
+    """Reject a redirect before making any request to its destination."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise PreparationError('Unexpected download redirect; only the registered official URL is permitted')
+
+
+def open_official_archive(timeout: float):
+    return urllib.request.build_opener(OfficialSourceOnly()).open(URL, timeout=timeout)
+
+
 def sha256_file(path: Path) -> str:
     with path.open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
@@ -124,7 +135,7 @@ def obtain_archive(path: Path, *, offline: bool, timeout: float) -> tuple[dict, 
     temporary = Path(temporary_name)
     try:
         try:
-            with os.fdopen(fd, 'wb') as stream, urllib.request.urlopen(URL, timeout=timeout) as response:
+            with os.fdopen(fd, 'wb') as stream, open_official_archive(timeout) as response:
                 if response.geturl() != URL:
                     raise PreparationError('Unexpected download redirect; no alternative data version accepted')
                 total = 0
@@ -158,10 +169,15 @@ def check_environment() -> dict:
     return versions
 
 
-def load_stage1(root: Path):
+def verify_stage1_source(root: Path) -> Path:
     path = root / 'stage01_data_audit/audit_afqmc.py'
     if not path.is_file() or sha256_file(path) != STAGE1_SHA256:
         raise PreparationError('Historical Stage 1 source missing or fingerprint mismatch; rebuild blocked')
+    return path
+
+
+def load_stage1(root: Path):
+    path = verify_stage1_source(root)
     spec = importlib.util.spec_from_file_location('afqmc_original_stage1', path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -182,10 +198,14 @@ def manifest_rows(stage1, split_rows: dict) -> tuple[list, dict]:
     return rows, info
 
 
-def rebuild_manifest(root: Path, archive: Path, destination: Path) -> dict:
-    # Reject an existing wrong manifest before reading records or writing anything.
+def check_manifest_destination(destination: Path) -> None:
     if destination.is_symlink() or (destination.exists() and sha256_file(destination) != MANIFEST_SHA256):
         raise PreparationError('Existing Manifest differs from frozen SHA-256; preserved without overwrite')
+
+
+def rebuild_manifest(root: Path, archive: Path, destination: Path) -> dict:
+    # Also enforce these checks when called independently of the CLI.
+    check_manifest_destination(destination)
     versions = check_environment()
     stage1 = load_stage1(root)
     split_rows, _, issues = stage1.load_archive(archive)
@@ -219,6 +239,11 @@ def prepare(root: Path, *, offline=False, archive_only=False, timeout=30.0) -> d
     # Prevent symlink parents from sending private outputs outside the target.
     if any(p.is_symlink() for p in (base, archive.parent)):
         raise PreparationError('Refusing symlink data directories')
+    if not archive_only:
+        # Check known blockers before downloading or opening any AFQMC records.
+        check_manifest_destination(destination)
+        check_environment()
+        verify_stage1_source(root)
     members, acquisition = obtain_archive(archive, offline=offline, timeout=timeout)
     result = {'status': 'ARCHIVE_VALIDATED' if archive_only else 'DATA_PREPARATION_PASS',
               'created_utc': datetime.now(timezone.utc).isoformat(), 'source_url': URL,
