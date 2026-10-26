@@ -16,15 +16,18 @@ Each method uses its threshold selected on the internal tune split by positive-c
 
 ## 环境安装与运行边界
 
-使用项目专用环境，不使用工作区中其他课程实验的根requirements文件。本次已验证环境为Windows AMD64、Python 3.12.10。依赖安装仍需网络或合法、已核验的依赖来源。
+当前跨平台课程入口与准确安装命令见 [delivery/README.md](delivery/README.md)。
+使用原生 Python 3.12.10 的独立虚拟环境；Mac ARM64 和 Windows x64 分别使用各自的
+完整九包 wheel SHA 锁。不要将 Windows 锁用于 Mac，也不要改用其他数值库版本。
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install --only-binary=:all: --require-hashes -r stage05_p1_closure_review/requirements-cp312-win_amd64.lock.txt
-.\.venv\Scripts\python.exe -m pip check
+```sh
+python scripts/verify_course_delivery.py
 ```
 
-下文`python`指上述项目虚拟环境解释器，可直接用`.\.venv\Scripts\python.exe`替换；不要求激活环境。完整9包平台锁含wheel SHA，仅适用于CPython 3.12 / Windows AMD64。其他系统可按`stage03a_internal_experiment/requirements.txt`安装，但尚未现场验收；Manifest入口严格检查已记录的Python、NumPy、SciPy及scikit-learn版本，不通过时不会改变冻结输入。
+默认运行无数据验证并输出新日志/摘要。`--mode prepare`、`--mode train` 和
+`--mode frozen` 分别表示数据准备、显式隔离 Train 实验、历史冻结结果核验。
+支持状态以 [本轮验收记录](public_evidence/course_delivery/README.md) 和真实 Actions 为准。
+旧阶段记录保留历史定位，不能替代本轮原生测试或实际报告文件。
 
 ### A. 无原始数据的数学测试与合成演示
 
@@ -61,10 +64,10 @@ python scripts/prepare_afqmc.py --archive-only
 仅在B完整成功、环境与配置核验通过、并明确希望开展新的内部Train实验时使用：
 
 ```powershell
-python stage03a_internal_experiment/run_experiment.py --root .
+python scripts/verify_course_delivery.py --mode train --output local_delivery/train-001
 ```
 
-该入口使用Train内部fit/tune；不应作为数据安装或合成测试的一部分自动执行。输出为本地忽略目录；若已有历史输出或门禁阻止执行，停止并检查，不删除历史文件来绕过。此次数据准备任务没有运行该命令，没有修改词表、IDF规则、阈值或正式结果。
+该入口使用Train内部fit/tune；不应作为数据安装或合成测试的一部分自动执行。输出为本地忽略目录；若已有历史输出或门禁阻止执行，停止并检查，不删除历史文件来绕过。新入口只在不存在的私有快照中运行；Mac 本轮独立 Train 结果及浮点差异见最新验收记录，历史词表、IDF规则、正式阈值和结果不变。
 
 ### D. 正式Dev的历史冻结与恢复边界
 
