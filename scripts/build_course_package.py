@@ -81,7 +81,7 @@ def write_package(root: Path, names: list[str], destination: Path, head: str) ->
         for name, data in payloads:
             info = zipfile.ZipInfo(PREFIX + name, date_time=(2026, 10, 26, 0, 0, 0))
             info.create_system = 3
-            info.external_attr = (stat.S_IFREG | 0o644) << 16
+            info.external_attr = (stat.S_IFREG | (0o755 if name.endswith('.command') else 0o644)) << 16
             info.compress_type = zipfile.ZIP_STORED
             archive.writestr(info, data)
     result = verify_package(destination)
@@ -123,6 +123,8 @@ def verify_package(path: Path, extract: Path | None = None) -> dict:
             output.parent.mkdir(parents=True, exist_ok=True)
             with output.open('xb') as stream:
                 stream.write(data)
+            if name.endswith('.command') and os.name != 'nt':
+                output.chmod(0o755)
             if sha(output) != hashlib.sha256(data).hexdigest():
                 raise DeliveryError('Extracted file fingerprint mismatch')
     return {'passed': True, 'source_commit': manifest['source_commit'], 'files': len(entries),

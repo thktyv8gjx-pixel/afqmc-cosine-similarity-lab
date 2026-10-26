@@ -53,6 +53,17 @@ class PackageTests(unittest.TestCase):
             self.p.verify_package(self.zip, dest)
         self.assertFalse(dest.exists())
 
+    def test_mac_launcher_keeps_executable_bit(self):
+        (self.root / 'Run_Mac.command').write_bytes(b'#!/bin/sh\nexit 0\n')
+        self.build(['Run_Mac.command'])
+        with zipfile.ZipFile(self.zip) as archive:
+            self.assertEqual((archive.getinfo(self.p.PREFIX + 'Run_Mac.command').external_attr >> 16) & 0o777, 0o755)
+        import os
+        if os.name != 'nt':
+            out = self.root / 'executable'
+            self.p.verify_package(self.zip, out)
+            self.assertTrue(os.access(out / self.p.PREFIX / 'Run_Mac.command', os.X_OK))
+
     def test_path_traversal_rejected(self):
         self.build()
         self.rewrite(lambda name, data: ('../escape.py' if name.endswith('hello.py') else name, data))

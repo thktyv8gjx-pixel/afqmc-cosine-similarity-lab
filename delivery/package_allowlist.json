@@ -6,7 +6,10 @@
     ".gitignore",
     "DATASET_PROVENANCE.md",
     "README.md",
+    "Run_Mac.command",
+    "Run_Windows.cmd",
     "delivery/README.md",
+    "delivery/START_HERE.md",
     "delivery/TEACHER_EVIDENCE.md",
     "delivery/frozen_baseline.json",
     "delivery/macos-wheel-sources.json",
@@ -26,6 +29,7 @@
     "public_evidence/stage3a_internal_tune_metrics.json",
     "public_evidence/stage3a_qa_summary.json",
     "scripts/build_course_package.py",
+    "scripts/build_course_submission.py",
     "scripts/build_pre_dev_freeze.py",
     "scripts/build_public_evidence.py",
     "scripts/build_recovery_freeze.py",
@@ -42,6 +46,8 @@
     "scripts/run_course_train.py",
     "scripts/run_pre_dev_checks.py",
     "scripts/run_recovery_checks.py",
+    "scripts/start_course.ps1",
+    "scripts/start_course.py",
     "scripts/synthetic_guard/sitecustomize.py",
     "scripts/test_prepare_afqmc.py",
     "scripts/verify_course_delivery.py",
@@ -104,7 +110,9 @@
     "stage05_p1_closure_review/run_synthetic_validation.py",
     "stage05_p1_closure_review/synthetic_example.json",
     "tests/test_course_delivery.py",
+    "tests/test_course_launcher.py",
     "tests/test_course_package.py",
-    "tests/test_course_portability.py"
+    "tests/test_course_portability.py",
+    "tests/test_course_submission.py"
   ]
 }

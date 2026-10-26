@@ -6,6 +6,7 @@ Only --prepare performs official data preparation, after the data-free checks.
 from __future__ import annotations
 import argparse
 import json
+import os
 from pathlib import Path
 import platform
 import shutil
@@ -26,9 +27,9 @@ def main(argv=None):
     record = {'passed': False, 'system': platform.system(), 'machine': platform.machine(),
               'python': platform.python_version(), 'prepare_requested': a.prepare, 'steps': []}
 
-    def execute(name, args, cwd=ROOT):
+    def execute(name, args, cwd=ROOT, env=None):
         proc = subprocess.run([str(x) for x in args], cwd=cwd, capture_output=True,
-                              text=True, encoding='utf-8', errors='replace')
+                              text=True, encoding='utf-8', errors='replace', env=env)
         log = evidence / (name + '.log')
         log.write_text(proc.stdout + proc.stderr, encoding='utf-8', newline='\n')
         record['steps'].append({'name': name, 'exit_code': proc.returncode, 'log_sha256': sha(log)})
@@ -87,6 +88,59 @@ def main(argv=None):
             finally:
                 if (validation / 'summary.json').is_file():
                     shutil.copyfile(validation / 'summary.json', evidence / 'preparation-summary.json')
+            # Only the explicitly dispatched preparation job handles real data.
+            # The private ZIP never becomes a GitHub artifact.
+            private_zip = ROOT / 'local_delivery/private-course-submission.zip'
+            result = execute('private-package-build', [second, source / 'scripts/build_course_submission.py',
+                             '--source', package, '--data-root', source, '--output', private_zip])
+            write_json_new(evidence / 'submission-summary.json', json.loads(result.stdout))
+            private_extract = ROOT / 'course_validation/教师 私有解压'
+            execute('private-package-extract', [second, source / 'scripts/build_course_submission.py',
+                    '--verify', private_zip, '--extract', private_extract])
+            private_source = private_extract / 'afqmc-course-source'
+            if (private_source / '.course_runtime').exists():
+                raise DeliveryError('Cold launcher test found a pre-existing runtime')
+            launcher = ([private_source / 'Run_Mac.command'] if platform.system() == 'Darwin'
+                        else ['cmd.exe', '/d', '/c', private_source / 'Run_Windows.cmd'])
+            execute('launcher-online', [*launcher, '--no-pause'], cwd=evidence)
+            latest = private_source / '.course_runtime/last_run.json'
+            first = json.loads(latest.read_text(encoding='utf-8'))
+            if not first.get('passed') or first.get('exit_code') != 0 or first.get('dev_evaluation') is not False:
+                raise DeliveryError('First launcher result failed')
+            write_json_new(evidence / 'launcher-online-summary.json', first)
+            offline_environment = os.environ.copy()
+            offline_environment.update({'UV_OFFLINE': '1', 'PIP_NO_INDEX': '1',
+                'HTTP_PROXY': 'http://127.0.0.1:9', 'HTTPS_PROXY': 'http://127.0.0.1:9',
+                'ALL_PROXY': 'http://127.0.0.1:9', 'NO_PROXY': ''})
+            execute('launcher-offline', [*launcher, '--offline', '--no-pause'], cwd=evidence, env=offline_environment)
+            second_run = json.loads(latest.read_text(encoding='utf-8'))
+            if not second_run.get('passed') or second_run.get('exit_code') != 0 or second_run.get('dev_evaluation') is not False:
+                raise DeliveryError('Offline launcher result failed')
+            if second_run.get('output') == first.get('output'):
+                raise DeliveryError('Launcher reused an earlier result directory')
+            write_json_new(evidence / 'launcher-offline-summary.json', second_run)
+            # A normal second double-click has no --offline flag. It must also
+            # work with cached runtime/data when network proxies are unavailable.
+            execute('launcher-default-offline', [*launcher, '--no-pause'], cwd=evidence, env=offline_environment)
+            default_offline = json.loads(latest.read_text(encoding='utf-8'))
+            if not default_offline.get('passed') or not default_offline.get('environment_reused') or default_offline.get('output') in (first.get('output'), second_run.get('output')):
+                raise DeliveryError('Normal launcher did not reuse its environment offline with a new output')
+            write_json_new(evidence / 'launcher-default-offline-summary.json', default_offline)
+            train_output = private_source / 'local_delivery/native-ci-train'
+            try:
+                execute('private-train-validation', [second, private_source / 'scripts/verify_course_delivery.py',
+                        '--mode', 'train', '--output', train_output], cwd=evidence)
+            finally:
+                if (train_output / 'summary.json').is_file():
+                    train_record = json.loads((train_output / 'summary.json').read_text(encoding='utf-8'))
+                    # Explicit aggregate-only projection, never copy Train output trees.
+                    train = train_record.get('train', {})
+                    safe_train = {key: train.get(key) for key in ('passed', 'scope', 'inputs', 'metadata',
+                        'methods', 'threshold_comparison', 'zip_members_opened', 'font_filename', 'font_sha256')}
+                    write_json_new(evidence / 'train-summary.json', {
+                        'passed': train_record.get('passed', False), 'exit_code': train_record.get('exit_code'),
+                        'environment': train_record.get('environment'), 'dev_evaluation': False,
+                        'train': safe_train, 'frozen_after': train_record.get('frozen_after')})
         record['passed'] = True
     except Exception as error:
         record['error'] = str(error) if isinstance(error, DeliveryError) else type(error).__name__

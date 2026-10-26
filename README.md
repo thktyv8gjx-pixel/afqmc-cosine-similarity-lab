@@ -16,6 +16,11 @@ Each method uses its threshold selected on the internal tune split by positive-c
 
 ## 环境安装与运行边界
 
+解压课程提交包后，Mac 双击 `Run_Mac.command`，Windows 双击 `Run_Windows.cmd`。
+首次联网自动配置隔离的 Python 与依赖，之后可在同一解压目录离线运行。
+提交包内附固定版本原始数据；公开源码包不附数据，首次会从官方入口获取。
+具体步骤、结果位置和系统要求见 [开始运行](delivery/START_HERE.md)。
+
 当前跨平台课程入口与准确安装命令见 [delivery/README.md](delivery/README.md)。
 使用原生 Python 3.12.10 的独立虚拟环境；Mac ARM64 和 Windows x64 分别使用各自的
 完整九包 wheel SHA 锁。不要将 Windows 锁用于 Mac，也不要改用其他数值库版本。

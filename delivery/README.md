@@ -4,6 +4,11 @@
 源码与合成样例可在无 AFQMC 数据时验证；完整课程交付另需私有正式报告和教师模板。
 本目录是 2026-10-26 新增的工程层；Stage 4A 是历史初稿，不能生成正式报告。
 
+## 双击运行
+
+优先按 [START_HERE.md](START_HERE.md) 使用 Mac / Windows 双击入口。首次联网自动
+准备项目内独立的运行环境，之后在同一路径离线复跑。以下手工安装方式供需要命令行的读者使用。
+
 ## 安装（原生 CPython 3.12.10）
 
 macOS 14+ / Apple Silicon，先用 `uname -m` 确认为 `arm64`：
@@ -83,8 +88,22 @@ ZIP 带 `PACKAGE_MANIFEST.json`，绑定提交、全部成员大小和 SHA；不
 普通 Push/PR CI 检查 `macos-15` ARM64 与 `windows-2025` x64 的实际运行架构，使用
 Python 3.12.10。每端安装独立环境、运行 A/D、构建当前 HEAD 包，再在含中文和空格的新路径
 解压并安装第二套环境重跑。平台支持以真实 Actions 结果为准。
-手动 `workflow_dispatch` 的 `prepare_real_data=true` 才允许 B；普通 CI 不下载 AFQMC。
-上传白名单仅含 `course_validation/ci/*summary.json` 的明确五个文件，不上传整个目录或数据。
+手动 `workflow_dispatch` 的 `prepare_real_data=true` 才允许 B、私有数据包的冷启动/离线复跑
+和新的内部 Train 验证；普通 CI 不下载 AFQMC。上传白名单仅含 workflow 明确列出的十份
+脱敏摘要，不上传源码 ZIP、私有提交 ZIP、原始数据、逐行预测或整个输出目录。
+
+## 私有课程提交包（附原始数据）
+
+教师已通过用户明确要求随包附原始数据。以下入口将已验证的公开源码包与固定 SHA 的
+原始 AFQMC ZIP、完整 Manifest 合成一个私有提交包；不会自动收集其他本地文件。
+
+```sh
+python scripts/build_course_submission.py --source dist/afqmc-course-source.zip --output local_delivery/course-submission.zip
+python scripts/build_course_submission.py --verify local_delivery/course-submission.zip --extract local_delivery/submission-check
+```
+
+包内 `SUBMISSION_MANIFEST.json` 记录原始数据指纹及原公开源码 ZIP 指纹。
+此包仅供课程受限提交，不能推送到公开仓库或作为公开 CI 附件。公开打包器仍拒绝原始数据。
 
 运行器标签依据 [GitHub 官方运行器文档](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)；
 仍在进程里断言平台，标签不当作测试结果。
@@ -95,5 +114,5 @@ Codex 辅助了工程适配、测试、CI、源码包及审计文字；现有冻
 新增自有小样例明确为人工构造，不能算 AFQMC 性能。本人应阅读理解公式、代码和结果，
 AI/CI 通过不等于教师评分、本人已审阅或正式课程提交。
 AFQMC 来源 CLUE/蚂蚁金服；获取与再分发限制见 DATASET_PROVENANCE。
-教师是否接受“源码 ZIP + 官方获取说明”仍需确认；未经确认不将原始问句放入公开包。
-完整 Word/PDF、模板、正式正文源和生成器需从原 Windows 私有工作区转移后另验。
+课程提交采用附原始数据的私有包，公开仓库仍只提供官方获取入口。
+正式 Word/PDF、模板、正文源和生成器在私有恢复目录中独立核验，不随公开源码分发。

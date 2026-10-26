@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       prepare_real_data:
-        description: 'Explicitly download official AFQMC and rebuild the full Manifest in the extracted ZIP (no Dev model evaluation)'
+        description: 'Private data packaging, cold/second-offline launcher verification and internal Train only; no Dev model evaluation'
         type: boolean
         required: true
         default: false
@@ -31,7 +31,7 @@ jobs:
             machine: amd64
             python_arch: x64
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -60,3 +60,8 @@ jobs:
             course_validation/ci/package-summary.json
             course_validation/ci/extracted-summary.json
             course_validation/ci/preparation-summary.json
+            course_validation/ci/submission-summary.json
+            course_validation/ci/launcher-online-summary.json
+            course_validation/ci/launcher-offline-summary.json
+            course_validation/ci/launcher-default-offline-summary.json
+            course_validation/ci/train-summary.json
