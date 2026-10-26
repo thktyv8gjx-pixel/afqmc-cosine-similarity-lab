@@ -1,0 +1,67 @@
+name: Course delivery
+run-name: Course delivery / ${{ github.event_name }} / prepare=${{ inputs.prepare_real_data || false }}
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      prepare_real_data:
+        description: 'Private data packaging, cold/second-offline launcher verification and internal Train only; no Dev model evaluation'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: course-delivery-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: false
+jobs:
+  native:
+    name: ${{ matrix.os }} / ${{ matrix.machine }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            system: Darwin
+            machine: arm64
+            python_arch: arm64
+          - os: windows-2025
+            system: Windows
+            machine: amd64
+            python_arch: x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12.10'
+          architecture: ${{ matrix.python_arch }}
+      - name: Data-free source and fresh ZIP verification
+        if: github.event_name != 'workflow_dispatch' || !inputs.prepare_real_data
+        run: python -X utf8 scripts/run_course_ci.py --expected-system ${{ matrix.system }} --expected-machine ${{ matrix.machine }}
+      - name: Explicit controlled official preparation in fresh ZIP
+        if: github.event_name == 'workflow_dispatch' && inputs.prepare_real_data
+        run: python -X utf8 scripts/run_course_ci.py --expected-system ${{ matrix.system }} --expected-machine ${{ matrix.machine }} --prepare
+      - name: Upload only sanitized summaries and exit codes
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: course-${{ matrix.os }}-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            course_validation/ci/summary.json
+            course_validation/ci/worktree-summary.json
+            course_validation/ci/package-summary.json
+            course_validation/ci/extracted-summary.json
+            course_validation/ci/preparation-summary.json
+            course_validation/ci/submission-summary.json
+            course_validation/ci/launcher-online-summary.json
+            course_validation/ci/launcher-offline-summary.json
+            course_validation/ci/launcher-default-offline-summary.json
+            course_validation/ci/train-summary.json

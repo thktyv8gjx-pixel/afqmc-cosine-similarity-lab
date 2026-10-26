@@ -1,0 +1,541 @@
+{
+  "scope": "Completed immutable CI evidence snapshot; later documentation-only package revision is checked again by CI at its own HEAD. Final ZIP SHA is recorded outside the ZIP to avoid self-reference.",
+  "runs": [
+    {
+      "run_id": 40250018868,
+      "event": "push",
+      "url": "https://github.com/thktyv8gjx-pixel/afqmc-cosine-similarity-lab/actions/runs/40250018868",
+      "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+      "platforms": [
+        {
+          "environment": {
+            "system": "Darwin",
+            "platform": "macOS-15.7.9-arm64-arm-64bit",
+            "machine": "arm64",
+            "python": "3.12.10",
+            "isolated_venv": true,
+            "versions": {
+              "numpy": "2.5.3",
+              "scipy": "1.17.0",
+              "scikit-learn": "1.9.1",
+              "pillow": "12.3.0",
+              "joblib": "1.6.0",
+              "threadpoolctl": "3.7.0",
+              "packaging": "26.3",
+              "cloudpickle": "3.1.2",
+              "narwhals": "2.27.1"
+            },
+            "lock": "delivery/requirements-cp312-macos-arm64.lock.txt",
+            "native_imports": true,
+            "pip": "25.0.1"
+          },
+          "steps": [
+            {
+              "name": "worktree-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "worktree-install",
+              "exit_code": 0,
+              "log_sha256": "b73c146c0efbea0b0f38065b95113910ae095240248b87536839ed3070caefde"
+            },
+            {
+              "name": "worktree-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "worktree-validation",
+              "exit_code": 0,
+              "log_sha256": "162a768866597987e6b6e31257463135e7a968abffa43a8be09d1d717afabd24"
+            },
+            {
+              "name": "package-build",
+              "exit_code": 0,
+              "log_sha256": "b643c7020de1d847fc1177a8bd6cd214267cf9f0b05863b9ff3dfbe82a0b3052"
+            },
+            {
+              "name": "package-extract",
+              "exit_code": 0,
+              "log_sha256": "6372db5464d21214cbfc6f0df648318cbc247d0dd14e337240732b5a20986f27"
+            },
+            {
+              "name": "zip-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "zip-install",
+              "exit_code": 0,
+              "log_sha256": "59ca211e66abaf3ada58c970d4f5174229a429d77226b387700ab9cf7686327e"
+            },
+            {
+              "name": "zip-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "zip-validation",
+              "exit_code": 0,
+              "log_sha256": "bf4e89b866b44d486e5233a2eedd4c67c52040923d0fb0728fa2a6c7dab91267"
+            }
+          ],
+          "worktree_and_extracted_passed": true,
+          "synthetic_tests": 49,
+          "preparation_tests": 37,
+          "delivery_tests": 26,
+          "package": {
+            "passed": true,
+            "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+            "files": 101,
+            "bytes": 1248137,
+            "sha256": "0facfccd6a1554488f46d4f5506c7a33cdbdb9de882cf59ee21003eced0cee72",
+            "all_member_hashes_and_crc_verified": true,
+            "extracted": false,
+            "exit_code": 0
+          }
+        },
+        {
+          "environment": {
+            "system": "Windows",
+            "platform": "Windows-2025Server-10.0.26100-SP0",
+            "machine": "AMD64",
+            "python": "3.12.10",
+            "isolated_venv": true,
+            "versions": {
+              "numpy": "2.5.3",
+              "scipy": "1.17.0",
+              "scikit-learn": "1.9.1",
+              "pillow": "12.3.0",
+              "joblib": "1.6.0",
+              "threadpoolctl": "3.7.0",
+              "packaging": "26.3",
+              "cloudpickle": "3.1.2",
+              "narwhals": "2.27.1"
+            },
+            "lock": "stage05_p1_closure_review/requirements-cp312-win_amd64.lock.txt",
+            "native_imports": true,
+            "pip": "25.0.1"
+          },
+          "steps": [
+            {
+              "name": "worktree-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "worktree-install",
+              "exit_code": 0,
+              "log_sha256": "eeec19195bf4953ae5d24256790252288880787e418092023ff0a757c0703e19"
+            },
+            {
+              "name": "worktree-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "worktree-validation",
+              "exit_code": 0,
+              "log_sha256": "cb5a115a30d7fbb5f8cdea46f00f5f1fd3dda694b48db34a2e6353d371fb463b"
+            },
+            {
+              "name": "package-build",
+              "exit_code": 0,
+              "log_sha256": "b643c7020de1d847fc1177a8bd6cd214267cf9f0b05863b9ff3dfbe82a0b3052"
+            },
+            {
+              "name": "package-extract",
+              "exit_code": 0,
+              "log_sha256": "6372db5464d21214cbfc6f0df648318cbc247d0dd14e337240732b5a20986f27"
+            },
+            {
+              "name": "zip-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "zip-install",
+              "exit_code": 0,
+              "log_sha256": "d94876fc4c899e54db4965064e263387b8d260750ed6196a64b0f2fc6e6267d2"
+            },
+            {
+              "name": "zip-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "zip-validation",
+              "exit_code": 0,
+              "log_sha256": "dbe464fbe118a288ed5c5c43009b008b48e7ad25888efb6c11a6e9543e6b4798"
+            }
+          ],
+          "worktree_and_extracted_passed": true,
+          "synthetic_tests": 49,
+          "preparation_tests": 37,
+          "delivery_tests": 26,
+          "package": {
+            "passed": true,
+            "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+            "files": 101,
+            "bytes": 1248137,
+            "sha256": "0facfccd6a1554488f46d4f5506c7a33cdbdb9de882cf59ee21003eced0cee72",
+            "all_member_hashes_and_crc_verified": true,
+            "extracted": false,
+            "exit_code": 0
+          }
+        }
+      ]
+    },
+    {
+      "run_id": 40250103987,
+      "event": "workflow_dispatch:prepare_real_data=true",
+      "url": "https://github.com/thktyv8gjx-pixel/afqmc-cosine-similarity-lab/actions/runs/40250103987",
+      "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+      "platforms": [
+        {
+          "environment": {
+            "system": "Darwin",
+            "platform": "macOS-15.7.9-arm64-arm-64bit",
+            "machine": "arm64",
+            "python": "3.12.10",
+            "isolated_venv": true,
+            "versions": {
+              "numpy": "2.5.3",
+              "scipy": "1.17.0",
+              "scikit-learn": "1.9.1",
+              "pillow": "12.3.0",
+              "joblib": "1.6.0",
+              "threadpoolctl": "3.7.0",
+              "packaging": "26.3",
+              "cloudpickle": "3.1.2",
+              "narwhals": "2.27.1"
+            },
+            "lock": "delivery/requirements-cp312-macos-arm64.lock.txt",
+            "native_imports": true,
+            "pip": "25.0.1"
+          },
+          "steps": [
+            {
+              "name": "worktree-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "worktree-install",
+              "exit_code": 0,
+              "log_sha256": "c91dc04085bae9ca32f65608a187da2386da272f2de98c3b362cd512fa66872a"
+            },
+            {
+              "name": "worktree-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "worktree-validation",
+              "exit_code": 0,
+              "log_sha256": "6d371063bcc2a7b0e352b7d6c202e677abf4b3feae043fc29fa259649f96aceb"
+            },
+            {
+              "name": "package-build",
+              "exit_code": 0,
+              "log_sha256": "b643c7020de1d847fc1177a8bd6cd214267cf9f0b05863b9ff3dfbe82a0b3052"
+            },
+            {
+              "name": "package-extract",
+              "exit_code": 0,
+              "log_sha256": "6372db5464d21214cbfc6f0df648318cbc247d0dd14e337240732b5a20986f27"
+            },
+            {
+              "name": "zip-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "zip-install",
+              "exit_code": 0,
+              "log_sha256": "59ca211e66abaf3ada58c970d4f5174229a429d77226b387700ab9cf7686327e"
+            },
+            {
+              "name": "zip-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "zip-validation",
+              "exit_code": 0,
+              "log_sha256": "836a8926528e3d0a7da434dee4ff01e723c4380d0cb94f68d5a189370b9ffdb7"
+            },
+            {
+              "name": "official-preparation",
+              "exit_code": 0,
+              "log_sha256": "1d4cc3e3489375409beb601b0c7ac9ddbe1ba63cb65cb733735d441593e7f88f"
+            }
+          ],
+          "worktree_and_extracted_passed": true,
+          "synthetic_tests": 49,
+          "preparation_tests": 37,
+          "delivery_tests": 26,
+          "package": {
+            "passed": true,
+            "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+            "files": 101,
+            "bytes": 1248137,
+            "sha256": "0facfccd6a1554488f46d4f5506c7a33cdbdb9de882cf59ee21003eced0cee72",
+            "all_member_hashes_and_crc_verified": true,
+            "extracted": false,
+            "exit_code": 0
+          },
+          "official_preparation": {
+            "status": "DATA_PREPARATION_PASS",
+            "created_utc": "2026-10-26T00:36:41.845604+00:00",
+            "source_url": "https://storage.googleapis.com/cluebenchmark/tasks/afqmc_public.zip",
+            "archive_path": "stage01_data_audit/raw/afqmc_public.zip",
+            "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+            "acquisition": "downloaded_and_verified",
+            "members": {
+              "train.json": {
+                "rows": 34334,
+                "fields": [
+                  "label",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {
+                  "0": 23761,
+                  "1": 10573
+                },
+                "bytes": 4392205,
+                "sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+                "crc": "PASS"
+              },
+              "test.json": {
+                "rows": 3861,
+                "fields": [
+                  "id",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {},
+                "bytes": 481865,
+                "sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+                "crc": "PASS"
+              },
+              "dev.json": {
+                "rows": 4316,
+                "fields": [
+                  "label",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {
+                  "0": 2978,
+                  "1": 1338
+                },
+                "bytes": 551449,
+                "sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+                "crc": "PASS"
+              }
+            },
+            "manifest": {
+              "sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+              "rows": 42511,
+              "internal_split_rows": {
+                "fit": 27467,
+                "tune": 6867
+              },
+              "seed": 2026,
+              "repeated_split_generation_identical": true,
+              "existing_manifest_preserved": false,
+              "versions": {
+                "python": "3.12.10",
+                "numpy": "2.5.3",
+                "scipy": "1.17.0",
+                "scikit-learn": "1.9.1"
+              },
+              "serialization": "Stage 1 write_csv; UTF-8 BOM; fixed columns; CRLF",
+              "status": "BYTE_IDENTICAL_TO_FROZEN_MANIFEST"
+            },
+            "model_fit": false,
+            "model_predictions": false,
+            "threshold_search": false,
+            "dev_performance_evaluation": false,
+            "raw_data_redistributed": false
+          },
+          "offline_idempotent": true
+        },
+        {
+          "environment": {
+            "system": "Windows",
+            "platform": "Windows-2025Server-10.0.26100-SP0",
+            "machine": "AMD64",
+            "python": "3.12.10",
+            "isolated_venv": true,
+            "versions": {
+              "numpy": "2.5.3",
+              "scipy": "1.17.0",
+              "scikit-learn": "1.9.1",
+              "pillow": "12.3.0",
+              "joblib": "1.6.0",
+              "threadpoolctl": "3.7.0",
+              "packaging": "26.3",
+              "cloudpickle": "3.1.2",
+              "narwhals": "2.27.1"
+            },
+            "lock": "stage05_p1_closure_review/requirements-cp312-win_amd64.lock.txt",
+            "native_imports": true,
+            "pip": "25.0.1"
+          },
+          "steps": [
+            {
+              "name": "worktree-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "worktree-install",
+              "exit_code": 0,
+              "log_sha256": "53f846b4f0192cfff2fbae649830143bcfea9b4a4b45e7369051d7895e83df54"
+            },
+            {
+              "name": "worktree-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "worktree-validation",
+              "exit_code": 0,
+              "log_sha256": "21d87ea9dd6a0dbea27486e68513083b868cfba9fce621c04f0d899857b1fae1"
+            },
+            {
+              "name": "package-build",
+              "exit_code": 0,
+              "log_sha256": "b643c7020de1d847fc1177a8bd6cd214267cf9f0b05863b9ff3dfbe82a0b3052"
+            },
+            {
+              "name": "package-extract",
+              "exit_code": 0,
+              "log_sha256": "6372db5464d21214cbfc6f0df648318cbc247d0dd14e337240732b5a20986f27"
+            },
+            {
+              "name": "zip-venv",
+              "exit_code": 0,
+              "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": "zip-install",
+              "exit_code": 0,
+              "log_sha256": "d94876fc4c899e54db4965064e263387b8d260750ed6196a64b0f2fc6e6267d2"
+            },
+            {
+              "name": "zip-install-pip-check",
+              "exit_code": 0,
+              "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+            },
+            {
+              "name": "zip-validation",
+              "exit_code": 0,
+              "log_sha256": "d9d6005d25ff3418a5bc4bccfd5819c53ec62dee5c8cc9f9d86f93013d009b2b"
+            },
+            {
+              "name": "official-preparation",
+              "exit_code": 0,
+              "log_sha256": "f7d898416eb24b8f5ad6346f87d25389ae758166769ad84dd9396be4fa230225"
+            }
+          ],
+          "worktree_and_extracted_passed": true,
+          "synthetic_tests": 49,
+          "preparation_tests": 37,
+          "delivery_tests": 26,
+          "package": {
+            "passed": true,
+            "source_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+            "files": 101,
+            "bytes": 1248137,
+            "sha256": "0facfccd6a1554488f46d4f5506c7a33cdbdb9de882cf59ee21003eced0cee72",
+            "all_member_hashes_and_crc_verified": true,
+            "extracted": false,
+            "exit_code": 0
+          },
+          "official_preparation": {
+            "status": "DATA_PREPARATION_PASS",
+            "created_utc": "2026-10-26T00:37:08.985662+00:00",
+            "source_url": "https://storage.googleapis.com/cluebenchmark/tasks/afqmc_public.zip",
+            "archive_path": "stage01_data_audit/raw/afqmc_public.zip",
+            "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+            "acquisition": "downloaded_and_verified",
+            "members": {
+              "train.json": {
+                "rows": 34334,
+                "fields": [
+                  "label",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {
+                  "0": 23761,
+                  "1": 10573
+                },
+                "bytes": 4392205,
+                "sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+                "crc": "PASS"
+              },
+              "test.json": {
+                "rows": 3861,
+                "fields": [
+                  "id",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {},
+                "bytes": 481865,
+                "sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+                "crc": "PASS"
+              },
+              "dev.json": {
+                "rows": 4316,
+                "fields": [
+                  "label",
+                  "sentence1",
+                  "sentence2"
+                ],
+                "label_counts": {
+                  "0": 2978,
+                  "1": 1338
+                },
+                "bytes": 551449,
+                "sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+                "crc": "PASS"
+              }
+            },
+            "manifest": {
+              "sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+              "rows": 42511,
+              "internal_split_rows": {
+                "fit": 27467,
+                "tune": 6867
+              },
+              "seed": 2026,
+              "repeated_split_generation_identical": true,
+              "existing_manifest_preserved": false,
+              "versions": {
+                "python": "3.12.10",
+                "numpy": "2.5.3",
+                "scipy": "1.17.0",
+                "scikit-learn": "1.9.1"
+              },
+              "serialization": "Stage 1 write_csv; UTF-8 BOM; fixed columns; CRLF",
+              "status": "BYTE_IDENTICAL_TO_FROZEN_MANIFEST"
+            },
+            "model_fit": false,
+            "model_predictions": false,
+            "threshold_search": false,
+            "dev_performance_evaluation": false,
+            "raw_data_redistributed": false
+          },
+          "offline_idempotent": true
+        }
+      ]
+    }
+  ]
+}

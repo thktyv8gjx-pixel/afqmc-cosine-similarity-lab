@@ -7,6 +7,13 @@ venv/
 .mypy_cache/
 .ruff_cache/
 *.log
+/local_delivery/
+/course_validation/
+/dist/
+/.course_runtime/
+/AFQMC_PRIVATE_TRANSFER_*.zip
+/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF.docx
+/.superpowers/
 
 # Secrets and local settings
 .env

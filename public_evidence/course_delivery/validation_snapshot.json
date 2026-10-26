@@ -1,0 +1,326 @@
+{
+  "evidence_code_commit": "a69d1e646158e5009bd3a353ec5d22c322f1c434",
+  "local_environment": {
+    "system": "Darwin",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.10",
+    "isolated_venv": true,
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.9.1",
+      "pillow": "12.3.0",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.7.0",
+      "packaging": "26.3",
+      "cloudpickle": "3.1.2",
+      "narwhals": "2.27.1"
+    },
+    "lock": "delivery/requirements-cp312-macos-arm64.lock.txt",
+    "native_imports": true,
+    "pip": "25.0.1"
+  },
+  "synthetic_49": {
+    "passed": true,
+    "tests_run": 49,
+    "failures": 0,
+    "errors": 0,
+    "groups": {
+      "math": 21,
+      "implementation": 13,
+      "official_helpers": 4,
+      "recovery": 11
+    },
+    "excluded_real_train_tests": 1,
+    "git_history_proof_tests_not_run": 2,
+    "raw_afqmc_reads": 0,
+    "official_dev_evaluation": false,
+    "synthetic_zip_member_reads": 19,
+    "uses_isolated_virtual_environment": true,
+    "python_version": "3.12.10"
+  },
+  "synthetic_demo": {
+    "passed": true,
+    "origin": "author_constructed_for_delivery_validation",
+    "input_sha256": "fd7615060766578bcf5c8ba87dd9c111dd7e906b7ac80a2b699981d0488dfbd3",
+    "corpus_documents": 2,
+    "feature_dimension": 5,
+    "scope": "Tiny synthetic corpus only; not AFQMC, not the frozen 54330-document model, not a performance evaluation",
+    "formal_afqmc_model_used": false,
+    "thresholds_or_performance_metrics_computed": false,
+    "rows": [
+      {
+        "example_id": "synthetic_identical",
+        "method": "count_char2",
+        "score": 1.0,
+        "left_zero": false,
+        "right_zero": false
+      },
+      {
+        "example_id": "synthetic_partial",
+        "method": "count_char2",
+        "score": 0.33333333333333337,
+        "left_zero": false,
+        "right_zero": false
+      },
+      {
+        "example_id": "synthetic_zero",
+        "method": "count_char2",
+        "score": 0.0,
+        "left_zero": true,
+        "right_zero": false
+      },
+      {
+        "example_id": "synthetic_identical",
+        "method": "tfidf_char2",
+        "score": 1.0,
+        "left_zero": false,
+        "right_zero": false
+      },
+      {
+        "example_id": "synthetic_partial",
+        "method": "tfidf_char2",
+        "score": 0.2019930924979184,
+        "left_zero": false,
+        "right_zero": false
+      },
+      {
+        "example_id": "synthetic_zero",
+        "method": "tfidf_char2",
+        "score": 0.0,
+        "left_zero": true,
+        "right_zero": false
+      }
+    ]
+  },
+  "preparation_tests": 37,
+  "delivery_tests": 26,
+  "frozen": {
+    "passed": true,
+    "frozen_source_count": 34,
+    "protected_files": 60,
+    "baseline_commit": "ce804ca64240beddf0ab229026ddc19076ab0160",
+    "v2_canonical_sha256": "dc8798a981ea15689a84005f256e292ddecb5397f56375394650b3699e21b6d2",
+    "tfidf_confusion": {
+      "tp": 1186,
+      "fp": 2425,
+      "fn": 152,
+      "tn": 553
+    },
+    "dev_replayed": false,
+    "scope": "Raw byte fingerprints and saved aggregate arithmetic; not row-level prediction replay"
+  },
+  "official_preparation": {
+    "status": "DATA_PREPARATION_PASS",
+    "created_utc": "2026-10-26T00:22:46.488997+00:00",
+    "source_url": "https://storage.googleapis.com/cluebenchmark/tasks/afqmc_public.zip",
+    "archive_path": "stage01_data_audit/raw/afqmc_public.zip",
+    "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+    "acquisition": "downloaded_and_verified",
+    "members": {
+      "train.json": {
+        "rows": 34334,
+        "fields": [
+          "label",
+          "sentence1",
+          "sentence2"
+        ],
+        "label_counts": {
+          "0": 23761,
+          "1": 10573
+        },
+        "bytes": 4392205,
+        "sha256": "41c0ed462fe3da60c575c4f81f4799ba8fbe51155f962adcfc19c26b2de3f012",
+        "crc": "PASS"
+      },
+      "test.json": {
+        "rows": 3861,
+        "fields": [
+          "id",
+          "sentence1",
+          "sentence2"
+        ],
+        "label_counts": {},
+        "bytes": 481865,
+        "sha256": "9d2a78d43215a0d4d34230f4aaca1d2cdbad03e1f268bef9da0468e0dc9eb4e5",
+        "crc": "PASS"
+      },
+      "dev.json": {
+        "rows": 4316,
+        "fields": [
+          "label",
+          "sentence1",
+          "sentence2"
+        ],
+        "label_counts": {
+          "0": 2978,
+          "1": 1338
+        },
+        "bytes": 551449,
+        "sha256": "20b35a40e1aec2141e50247f798b2eef0e974accb9ca7196105ecb547c65c7b8",
+        "crc": "PASS"
+      }
+    },
+    "manifest": {
+      "sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907",
+      "rows": 42511,
+      "internal_split_rows": {
+        "fit": 27467,
+        "tune": 6867
+      },
+      "seed": 2026,
+      "repeated_split_generation_identical": true,
+      "existing_manifest_preserved": false,
+      "versions": {
+        "python": "3.12.10",
+        "numpy": "2.5.3",
+        "scipy": "1.17.0",
+        "scikit-learn": "1.9.1"
+      },
+      "serialization": "Stage 1 write_csv; UTF-8 BOM; fixed columns; CRLF",
+      "status": "BYTE_IDENTICAL_TO_FROZEN_MANIFEST"
+    },
+    "model_fit": false,
+    "model_predictions": false,
+    "threshold_search": false,
+    "dev_performance_evaluation": false,
+    "raw_data_redistributed": false
+  },
+  "offline_bytes_and_mtime_unchanged": true,
+  "train": {
+    "passed": true,
+    "scope": "new internal Train experiment, not official Dev replay",
+    "inputs": {
+      "archive_sha256": "5a4cb1556b833010c329fa2ad2207d9e98fc94071b7e474015e9dd7c385db4dc",
+      "manifest_sha256": "e856f4b9fd42be0ecfe530c002048933e31d971a3ba8d070a0c13daed241d907"
+    },
+    "metadata": {
+      "internal_fit_rows": 27467,
+      "internal_tune_rows": 6867,
+      "unique_idf_questions": 54330,
+      "vocabulary_size": 35242,
+      "fit_corpus_content_sha256": "990560a2af5118447e593ce1ef91aa7f3d71d64d426ee3eb3b5c0465bb7dc227",
+      "vocabulary_sha256": "4ee51825b0482949c293bcd6ac836468259b32d602cbab20f6a6c99117c713d8"
+    },
+    "methods": {
+      "count_char2": {
+        "method": "count_char2",
+        "dataset_split": "internal_tune",
+        "threshold": 0.10660035817780521,
+        "threshold_selection_source": "internal_tune_only",
+        "threshold_candidate_count": 1356,
+        "sample_count": 6867,
+        "tp": 2080,
+        "fp": 4602,
+        "fn": 35,
+        "tn": 150,
+        "precision": 0.311284046692607,
+        "recall": 0.983451536643026,
+        "f1": 0.4728884847106969,
+        "accuracy": 0.32474151740206786,
+        "zero_vector_left_count": 0,
+        "zero_vector_right_count": 0,
+        "zero_vector_pair_count": 0
+      },
+      "tfidf_char2": {
+        "method": "tfidf_char2",
+        "dataset_split": "internal_tune",
+        "threshold": 0.055742420734156695,
+        "threshold_selection_source": "internal_tune_only",
+        "threshold_candidate_count": 6862,
+        "sample_count": 6867,
+        "tp": 1857,
+        "fp": 3871,
+        "fn": 258,
+        "tn": 881,
+        "precision": 0.32419692737430167,
+        "recall": 0.8780141843971632,
+        "f1": 0.4735432870075226,
+        "accuracy": 0.39871850881025195,
+        "zero_vector_left_count": 0,
+        "zero_vector_right_count": 0,
+        "zero_vector_pair_count": 0
+      },
+      "majority_fit_baseline": {
+        "method": "majority_fit_baseline",
+        "dataset_split": "internal_tune",
+        "threshold": null,
+        "threshold_selection_source": null,
+        "threshold_candidate_count": 0,
+        "sample_count": 6867,
+        "tp": 0,
+        "fp": 0,
+        "fn": 2115,
+        "tn": 4752,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.6920052424639581,
+        "majority_label": 0,
+        "fit_label_counts": {
+          "0": 19009,
+          "1": 8458
+        },
+        "zero_vector_left_count": 0,
+        "zero_vector_right_count": 0,
+        "zero_vector_pair_count": 0
+      }
+    },
+    "threshold_comparison": {
+      "count_char2": {
+        "observed_internal_threshold": 0.10660035817780521,
+        "frozen_official_threshold": 0.10660035817780521,
+        "exact_equal": true
+      },
+      "tfidf_char2": {
+        "observed_internal_threshold": 0.055742420734156695,
+        "frozen_official_threshold": 0.05574242073415668,
+        "exact_equal": false
+      }
+    },
+    "zip_members_opened": [
+      "train.json"
+    ],
+    "font_filename": "STHeiti Medium.ttc",
+    "font_sha256": "f8fa4a63e2cf500e98e64d4c73260daaba049306cf85dec9e3729bc285b7d645",
+    "figures": {
+      "score_distribution": {
+        "path": "outputs/figures/internal_tune_score_distribution.png",
+        "sha256": "1285ab7a839bcb700dc9300ab6c3a91f682a74d5251992bf4bef91ddb863a435",
+        "bytes": 59896
+      },
+      "threshold_metrics": {
+        "path": "outputs/figures/internal_tune_threshold_metrics.png",
+        "sha256": "2ce442581777e15006c81d31e8c36a4a5562c9a37b7c292590f7d09e5f1d48ca",
+        "bytes": 62027
+      },
+      "method_comparison": {
+        "path": "outputs/figures/internal_tune_method_comparison.png",
+        "sha256": "92e5d232aa74a8271886cb315b202c8feb29ee92d39986459d460c076daddf0e",
+        "bytes": 60049
+      },
+      "tfidf_confusion_matrix": {
+        "path": "outputs/figures/internal_tune_tfidf_confusion_matrix.png",
+        "sha256": "72d3f0ad1e66b85d6230533faff51bbaf2641fce324416988c82e0deb8570da3",
+        "bytes": 81043
+      }
+    },
+    "raw_outputs_private": true
+  },
+  "official_dev_model_replays": 0,
+  "independent_code_review": {
+    "scope": "ce804ca..a69d1e6, fresh Codex reviewer; not human/teacher review",
+    "p0": 0,
+    "p1": 0,
+    "p2": 0,
+    "new_tests": 26,
+    "preparation_tests": 37,
+    "extracted_cli": "49+37+26 and demo passed; reviewer reused an existing venv, primary separately installed new extraction venv"
+  },
+  "external_blockers": [
+    "Private teacher template and formal DOCX/PDF/canonical sources missing on current Mac",
+    "Teacher acceptance of source-only ZIP plus official acquisition instructions unconfirmed"
+  ],
+  "status": "CROSS_PLATFORM_COURSE_DELIVERY_BLOCKED"
+}
