@@ -13,8 +13,22 @@ import shutil
 import subprocess
 import sys
 import venv
+import tempfile
 
 from course_delivery import ROOT, DeliveryError, lock_path, new_output, sha, write_json_new
+
+
+def safe_diagnostic(text: str, root: Path = ROOT) -> str:
+    """Bounded data-free test diagnostics; reject credentials after path redaction."""
+    from build_course_package import scan_text
+    for path in (str(root), str(Path.home()), tempfile.gettempdir()):
+        for form in (path, path.replace('\\', '/'), path.replace('\\', '\\\\')):
+            text = text.replace(form, '<local-path>')
+    try:
+        scan_text('ci-diagnostic.txt', text.encode('utf-8'))
+    except DeliveryError:
+        return 'Diagnostic withheld by private-path/credential scan'
+    return text[-12000:]
 
 
 def main(argv=None):
@@ -35,6 +49,17 @@ def main(argv=None):
         record['steps'].append({'name': name, 'exit_code': proc.returncode, 'log_sha256': sha(log)})
         print(f'{name}: exit {proc.returncode}', flush=True)
         if proc.returncode:
+            if name in ('worktree-validation', 'zip-validation'):
+                validation_output = Path(args[args.index('--output') + 1])
+                test_log = validation_output / 'delivery-tests.log'
+                if test_log.is_file():
+                    diagnostic = safe_diagnostic(test_log.read_text(encoding='utf-8'), ROOT)
+                    record['steps'][-1]['delivery_test_diagnostic'] = diagnostic
+                    print(diagnostic, flush=True)
+            elif name.startswith('launcher-'):
+                diagnostic = safe_diagnostic(proc.stdout + proc.stderr, ROOT)
+                record['steps'][-1]['launcher_diagnostic'] = diagnostic
+                print(diagnostic, flush=True)
             # The CLI summary is sanitized; pip/build stderr may contain host paths.
             if name.endswith('validation') or name == 'official-preparation':
                 try:
