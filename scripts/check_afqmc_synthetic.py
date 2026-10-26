@@ -68,7 +68,9 @@ def main(argv=None):
                 target = snapshot / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(source, target)
-            env = {**os.environ, 'TMP': str(temp), 'TEMP': str(temp), 'PYTHONIOENCODING': 'utf-8'}
+            # tempfile prefers TMPDIR over TEMP/TMP on macOS. Keep all three
+            # inside the guarded snapshot; do not weaken the frozen ZIP guard.
+            env = {**os.environ, 'TMPDIR': str(temp), 'TMP': str(temp), 'TEMP': str(temp), 'PYTHONIOENCODING': 'utf-8'}
             runs = []
             for script, name in [('run_synthetic_validation.py', 'tests'), ('demo_cosine.py', 'demo')]:
                 output = work / f'{name}.json'
