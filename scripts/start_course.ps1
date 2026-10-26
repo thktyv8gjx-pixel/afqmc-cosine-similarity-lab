@@ -9,6 +9,18 @@ function Fail([int]$Code, [string]$Message) {
     $script:ExitCode = $Code
     throw $Message
 }
+function Get-ArchiveSha256([string]$Path) {
+    # .NET is available in Windows PowerShell 5.1 without module autoloading.
+    $Algorithm = [System.Security.Cryptography.SHA256]::Create()
+    $Stream = $null
+    try {
+        $Stream = [System.IO.File]::OpenRead($Path)
+        return [System.BitConverter]::ToString($Algorithm.ComputeHash($Stream)).Replace('-', '').ToLowerInvariant()
+    } finally {
+        if ($null -ne $Stream) { $Stream.Dispose() }
+        $Algorithm.Dispose()
+    }
+}
 function Safe-Path([string]$Path) {
     $Current = [System.IO.Path]::GetFullPath($Path)
     while ($Current) {
@@ -48,10 +60,10 @@ try {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             try { Invoke-WebRequest -UseBasicParsing -Uri 'https://github.com/astral-sh/uv/releases/download/0.13.5/uv-x86_64-pc-windows-msvc.zip' -OutFile $Part -TimeoutSec 180 }
             catch { Fail 13 'uv download failed. Check connection and retry; existing files preserved.' }
-            if ((Get-FileHash -LiteralPath $Part -Algorithm SHA256).Hash.ToLowerInvariant() -ne $Expected) { Fail 11 'Downloaded uv SHA-256 mismatch; untrusted bytes were not executed.' }
+            if ((Get-ArchiveSha256 $Part) -ne $Expected) { Fail 11 'Downloaded uv SHA-256 mismatch; untrusted bytes were not executed.' }
             [System.IO.File]::Move($Part, $Archive)
         }
-        if ((Get-FileHash -LiteralPath $Archive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $Expected) { Fail 11 'Cached uv SHA-256 mismatch; cache preserved and never executed. Restore a verified cache or use a new extraction.' }
+        if ((Get-ArchiveSha256 $Archive) -ne $Expected) { Fail 11 'Cached uv SHA-256 mismatch; cache preserved and never executed. Restore a verified cache or use a new extraction.' }
         $Boot = Join-Path (Join-Path $Runtime 'bootstrap') ('run-' + [guid]::NewGuid().ToString('N'))
         [System.IO.Directory]::CreateDirectory($Boot) | Out-Null
         Add-Type -AssemblyName System.IO.Compression.FileSystem
