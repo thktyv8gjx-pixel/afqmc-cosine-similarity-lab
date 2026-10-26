@@ -1,0 +1,23 @@
+{
+  "status": "CROSS_PLATFORM_COURSE_DELIVERY_BLOCKED",
+  "code_review_findings": {"P0": 0, "P1": 0, "P2": 0},
+  "final_delivery_open": [
+    {"id": "REPORT-001", "priority": "P0", "state": "BLOCKED_EXTERNAL", "reason": "Required private formal DOCX/PDF, canonical source and teacher template are absent on current Mac; cannot deliver or inspect them"},
+    {"id": "REPORT-002", "priority": "P1", "state": "BLOCKED_EXTERNAL", "reason": "Confirmed final date cannot be applied, Word-native PDF export and page/formula/template checks cannot be completed until actual files arrive"},
+    {"id": "DATA-DELIVERY-001", "priority": "P1", "state": "BLOCKED_EXTERNAL", "reason": "Teacher acceptance of source ZIP plus official acquisition instructions is not established; original AFQMC redistribution is not authorized"}
+  ],
+  "closed_engineering": [
+    "Native Mac exact Python and 9-wheel install, pip check and runtime imports",
+    "Native Windows CI worktree and extracted ZIP verification",
+    "macOS TMPDIR synthetic ZIP isolation regression",
+    "37 preparation tests and official download/SHA/CRC/full Manifest reconstruction",
+    "offline preparation byte and mtime idempotency",
+    "Teacher A/B/C/D entry and no default data/Dev evaluation",
+    "Private new Train snapshot plus Mac font adapter without frozen source edits",
+    "Current-HEAD explicit source package, member hashes, traversal/collision and extraction checks",
+    "Frozen 34 source files and 60 baseline evidence files preserved byte-for-byte",
+    "Independent fresh code review"
+  ],
+  "P2_open": [],
+  "not_a_defect": "Weak F1/high FPR are the preserved scientific findings, not grounds to alter the experiment"
+}
